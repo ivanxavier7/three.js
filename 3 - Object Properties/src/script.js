@@ -1,6 +1,4 @@
-import './style.css'
 import * as THREE from 'three'
-import { MeshBasicMaterial } from 'three'
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -12,40 +10,59 @@ const scene = new THREE.Scene()
  * Objects
  */
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 })
 const mesh = new THREE.Mesh(geometry, material)
-scene.add(mesh)
 
+// Position
 mesh.position.x = 0.7
-mesh.position.y = - 0.6
+mesh.position.y = -0.6
 mesh.position.z = 1
 
-// Reduz a distancia do objeto ao vetor para uma unidade
-mesh.position.normalize()
+const group = new THREE.Group() // Group the objects
 
-// position é um objeto Vector3 e apresenta varias propriedades do vector
+const cube1 = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({ color: 0xffff00 })
+)
+
+const cube2 = new THREE.Mesh(
+    new THREE.BoxGeometry(0.5, 0.25, 2),
+    new THREE.MeshBasicMaterial({ color: 0xff00ff })
+)
+
+cube1.position.set(-2, 1, -2)
+cube2.position.set(2, 0.5, -2)
+
+group.add(cube1, mesh, cube2)
+group.position.y = -1
+group.scale.y = 0.5
+group.rotation.y = Math.PI / 0.55
+
+scene.add(group)
+
+// Lenght between object and center of scene
 console.log(mesh.position.length())
 
-// Alterar vários eixos em simultâneo
-mesh.position.set(0.7, -0.6, -0.5)
+// Normalize, reduce the vector distance to 1
+mesh.position.normalize()
+console.log(mesh.position.length())
 
-// Escala
-mesh.scale.x = 1.5
-mesh.scale.y = 0.5
-mesh.scale.z = 0.5
-mesh.scale.set(0.75, 1.25, 0.25)
+// Other way to move the object
+mesh.position.set(0.7, -0.1, 1)
 
-// Diz qual é a ordem com que o objeto faz rotação
-mesh.rotation.reorder('YXZ')
-// Rotação
-mesh.rotation.x = Math.PI * 0.2
-mesh.rotation.y = Math.PI * 0.25
-mesh.rotation.z = Math.PI * 2 // rotação total
+// Scale of the object
+mesh.scale.x = 1.85
+mesh.scale.set(1.85, 0.25, 0.5)
 
+// Rotate the object
+mesh.rotation.reorder('YXZ') // Defines rotation order
+mesh.rotation.x = Math.PI / 2   // PI number to align the object
+mesh.rotation.y = Math.PI * 0.25   // PI number to align the object
 
 
-// Criar eixos de ajuda, o parametro é o comprimento dos eixos em unidades
-const axesHelper = new THREE.AxesHelper(3)
+
+// Axes helper
+const axesHelper =  new THREE.AxesHelper()
 scene.add(axesHelper)
 
 /**
@@ -60,49 +77,17 @@ const sizes = {
  * Camera
  */
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height)
+camera.position.z = 3
 camera.position.x = 1
 camera.position.y = 1
-camera.position.z = 3
+
 scene.add(camera)
 
-// Distância entre dois objetos
+// Distance from the cube to the camera
 console.log(mesh.position.distanceTo(camera.position))
-console.log(mesh.position.distanceTo(new THREE.Vector3(0, 1, 2)))
 
-// Olhar para um objeto
+// Look at some object
 camera.lookAt(mesh.position)
-
-// Criar um grupo que partilham as mesmas propriedades
-const group = new THREE.Group()
-scene.add(group)
-
-const cube1 = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new MeshBasicMaterial({ color: 0x00ff00})
-)
-
-group.add(cube1)
-
-const cube2 = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new MeshBasicMaterial({ color: 0x00ffff})
-)
-
-cube2.position.x = - 2
-group.add(cube2)
-
-const cube3 = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new MeshBasicMaterial({ color: 0x0000ff})
-)
-
-cube3.position.x = 2
-group.add(cube3)
-
-// mudar propriedades do grupo
-group.position.y = 1
-group.scale.y = 0.75
-group.rotation.y = Math.PI * 0.75
 
 /**
  * Renderer
