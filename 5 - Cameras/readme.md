@@ -1,4 +1,4 @@
-# Three.js Journey
+# Cameras
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).

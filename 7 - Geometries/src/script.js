@@ -1,4 +1,3 @@
-import './style.css'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 
@@ -12,98 +11,8 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 // Object
-//const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2)
-
-// Triangle
-/* const geometry = new THREE.Geometry()
-
-const vertex1 = new THREE.Vector3(0, 0, 0)
-geometry.vertices.push(vertex1)
-
-const vertex2 = new THREE.Vector3(0, 1, 0)
-geometry.vertices.push(vertex2)
-
-const vertex3 = new THREE.Vector3(1, 0, 0)
-geometry.vertices.push(vertex3)
-
-// Os argumentos sao o index do array com os vertices
-const face = new THREE.Face3(0, 1, 2)
-geometry.faces.push(face) */
-
-
-// Criar vertices random
-/* const geometry = new THREE.Geometry()
-
-for(let i=0; i<50; i++) {
-    for(let j=0; j<3; j++){
-        geometry.vertices.push(new THREE.Vector3(
-            (Math.random() - 0.5) * 4,  // x
-            (Math.random() - 0.5) * 4,  // y
-            (Math.random() - 0.5) * 4   // z
-        ))
-    }
-
-    const verticesIndex = i * 3
-    geometry.faces.push()
-    geometry.faces.push(new THREE.Face3(
-        verticesIndex,
-        verticesIndex + 1,
-        verticesIndex + 2
-    ))
-}
- */
-
-// Devemos usar geometrias Buffer por motivos de performance, mas sao mais dificeis de implementar
-/* const geometry = new THREE.BoxBufferGeometry(1, 1, 1, 2, 2, 2) */
-
-// Custom Buffer Geometry
-/* const positionsArray = new Float32Array(9) */
-
-
-// Hard Method
-/* // First Vertice
-positionsArray[0] = 0
-positionsArray[1] = 0
-positionsArray[2] = 0
-
-// Second Vertice
-positionsArray[3] = 0
-positionsArray[4] = 1
-positionsArray[5] = 0
-
-// Thir Vertice
-positionsArray[6] = 1
-positionsArray[7] = 0
-positionsArray[8] = 0 */
-
-// Simple Method
-const geometry = new THREE.BufferGeometry()
-
-/* const positionsArray = new Float32Array([
-    0, 0, 0,
-    0, 1, 0,
-    1, 0, 0
-])
-
-const poisitionsAttribute = new THREE.BufferAttribute(positionsArray, 3)
-geometry.setAttribute('position', poisitionsAttribute)
- */
-
-// Random Buffer triangles
-const count = 500
-const positionsArray = new Float32Array(count * 3 * 3)
-
-for(let i=0; i<count*3*3; i++){
-    positionsArray[i] = (Math.random() - 0.5) * 4
-}
-
-const positionsAttribute = new THREE.BufferAttribute(positionsArray, 3)
-geometry.setAttribute('position', positionsAttribute)
-
-const material = new THREE.MeshBasicMaterial({
-    color: 0xff0000,
-    wireframe: true
-})
+const geometry = new THREE.BoxGeometry(1, 1, 1)
+const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
