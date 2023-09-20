@@ -24,7 +24,7 @@ npm run build
 
 ------
 
-## Starting
+# Starting
 
 * Scene
 * Objects
@@ -33,7 +33,7 @@ npm run build
 
 ------
 
-#### Scene
+## Scene
 
 * Like a container
 * To put objects, models, lights, etc. in it
@@ -41,7 +41,7 @@ npm run build
 
 ------
 
-#### Objects
+## Objects
 
 * Primitive geometries
 * Imported models
@@ -54,7 +54,7 @@ Mesh is the combination of a geometry and a material to create an object
 
 ------
 
-#### Camera
+## Camera
 
 * Not visible
 * Serve as point of view when doing a render
@@ -65,7 +65,7 @@ Mesh is the combination of a geometry and a material to create an object
 
 ------
 
-#### Renderer
+## Renderer
 
 * Render from POV
 * Result draw into a canvas
@@ -218,7 +218,7 @@ tick()
 
 ------
 
-#### Cameras
+## Cameras
 
 Custom camera controls
 ``` javascript
@@ -301,7 +301,7 @@ tick()
 
 ------
 
-#### Fullscreen
+## Fullscreen
 
 ```javascript
 const sizes = {
@@ -379,7 +379,7 @@ window.addEventListener('dblclick', () => {
 
 ------
 
-#### Geometries
+## Geometries
 
 * width
 * height
@@ -437,6 +437,10 @@ const mesh2 = new THREE.Mesh( customGeometry, new THREE.MeshBasicMaterial({
 scene.add(mesh2)
 
 ```
+
+------
+
+## Debug UI
 
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
