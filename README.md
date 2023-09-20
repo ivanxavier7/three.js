@@ -190,20 +190,6 @@ Animation suggestions for looping
 
 ```
 
-------
-
-#### Cameras
-
-```javascript
-
-```
-
-```javascript
-
-```
-
-------
-
 For better animation controll, use GSAP library
 
 install inside client/frontend
@@ -232,6 +218,15 @@ tick()
 
 ------
 
+#### Cameras
+
+```javascript
+
+```
+
+```javascript
+
+```
 
 
 | Tables        | Are           | Cool  |

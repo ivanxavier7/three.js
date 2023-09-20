@@ -79,3 +79,28 @@ Animation suggestions for looping
     camera.lookAt(mesh.position)
 
 ```
+
+For better animation controll, use GSAP library
+
+install inside client/frontend
+
+this moves the object 2 units in 1 second after 1 second delay
+
+```bash
+npm install --save gsap@3.5.1
+```
+```javascript
+import gsap from 'gsap'
+
+gsap.to(mesh.position, { duration: 1, delay:1, x: 2 })
+
+// Animation
+const tick = () => {
+    renderer.render(scene, camera)
+
+    window.requestAnimationFrame(tick)
+}
+
+tick()
+
+```
