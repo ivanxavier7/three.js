@@ -108,7 +108,7 @@ renderer.render(scene, camera);
 ```
 ------
 
-#### Animations
+## Animations
 
 requestAnimationFrame calls a function in the next frame
 
