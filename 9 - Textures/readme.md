@@ -168,6 +168,7 @@ colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 * The data type
 
 `.jpg` - Lossy compression but usually lighter
+
 `.png` - Lossless compression but usually heavier
 
 [Compression Website - TinyPNG](https://tinypng.com/)
