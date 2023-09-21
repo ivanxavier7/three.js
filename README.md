@@ -1,14 +1,15 @@
 # Three.js
- Three.js
 
-https://threejs.org/docs/
+* [Three.js Docs](https://threejs.org/docs/)
 
 ------
 
 # Setup project with Vite
 
 ## Setup
-Download [Node.js](https://nodejs.org/en/download/).
+
+#### Download [Node.js](https://nodejs.org/en/download/).
+
 Run this followed commands:
 
 ``` bash
@@ -26,10 +27,10 @@ npm run build
 
 # Starting
 
-* Scene
-* Objects
-* Camera
-* Renderer
+* `Scene`
+* `Objects`
+* `Camera`
+* `Renderer`
 
 ------
 
@@ -50,7 +51,7 @@ npm run build
 * Etc.
 * Mesh
 
-Mesh is the combination of a geometry and a material to create an object
+#### `Mesh` is the combination of a geometry and a material to create an object.
 
 ------
 
@@ -110,7 +111,7 @@ renderer.render(scene, camera);
 
 ## Animations
 
-requestAnimationFrame calls a function in the next frame
+`requestAnimationFrame` calls a function in the next frame
 
 ```javascript
 
@@ -127,7 +128,7 @@ tick()
 
 ```
 
-To sync frames in any device we need time difference implementation
+#### To sync frames in any device we need time difference implementation
 
 ```javascript
 
@@ -153,7 +154,7 @@ tick()
 
 ```
 
-The best way to implement time difference is using Clock class, we get per second interaction
+#### The best way to implement time difference is using `Clock` class, we get per second interaction
 
 ```javascript
 
@@ -178,7 +179,7 @@ tick()
 
 ```
 
-Animation suggestions for looping
+#### Animation suggestions for looping
 
 ```javascript
 
@@ -190,11 +191,9 @@ Animation suggestions for looping
 
 ```
 
-For better animation controll, use GSAP library
+#### For simpler animation controll, use `GSAP library`
 
-install inside client/frontend
-
-this moves the object 2 units in 1 second after 1 second delay
+Install inside `client/frontend`, this moves the object 2 units in 1 second after 1 second delay
 
 ```bash
 npm install --save gsap@3.5.1
@@ -215,12 +214,12 @@ tick()
 
 ```
 
-
 ------
 
 ## Cameras
 
-Custom camera controls
+#### Custom camera controls
+
 ``` javascript
 
 /**
@@ -267,14 +266,14 @@ const tick = () =>
 tick()
 ```
 
-Built in Controls:
+#### Built in Controls:
 * DeviceOrientationControls (Android)
 * FlyControls
 * OrbitControls
 * FirstPersonControls
 * PointerLockControls
 
-https://threejs.org/docs/#examples/en/controls/OrbitControls
+[OrbitControls Documentation](https://threejs.org/docs/#examples/en/controls/OrbitControls)
 
 ```javascript
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
@@ -329,7 +328,7 @@ canvas.webgl {
     outline: none;
 }
 ```
-Handle resize and pixel ratio
+#### Handle `resize` and `pixel ratio`
 
 ```javascript
 /**
@@ -354,7 +353,7 @@ window.addEventListener('resize', () => {
 
 ```
 
-Handle fullscreen
+#### Handle `fullscreen`
 
 ```javascript
 // Fullscreen with safari support
@@ -396,7 +395,7 @@ const material = new THREE.MeshBasicMaterial({
 })
 ```
 
-Custom Geometry
+#### Custom Geometry
 
 ```javascript
 
@@ -441,6 +440,104 @@ scene.add(mesh2)
 ------
 
 ## Debug UI
+
+* [lil-gui](https://github.com/georgealways/lil-gui)
+
+[npm lil-gui install](https://www.npmjs.com/package/lil-gui)
+
+```bash
+
+npm install --save dat.gui
+
+```
+
+```javascript
+import GUI from 'lil-gui';
+
+/**
+ * Debug gui
+ */
+const gui = new GUI();
+
+// Position
+gui.add(mesh.position, 'x')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('X Position')
+
+gui.add(mesh.position, 'y')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('Y Position')
+
+gui.add(mesh.position, 'z')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('Z Position')
+
+// Rotation
+gui.add(mesh.rotation, 'x')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('X Rotation')
+
+gui.add(mesh.rotation, 'y')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('Y Rotation')
+
+gui.add(mesh.rotation, 'z')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('Z Rotation')
+
+// Booleans / Flags
+gui.add(mesh, 'visible')
+    .name('Show Mesh')
+gui.add(material, 'wireframe')
+    .name('Enable Wireframe')
+
+//Colors
+gui.addColor(material, 'color')
+    .name('Color')
+
+const functions = {
+    spinX: () => {
+        gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.x + Math.PI * 2})
+    },
+    spinY: () => {
+        gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.y + Math.PI * 2})
+    },
+}
+
+// Function Execution / Unitary Test
+gui.add(functions, 'spinX')
+gui.add(functions, 'spinY')
+```
+
+------
+
+## Textures
+
+```javascript
+// Start of the code
+THREE.ColorManagement.enabled = false
+
+// After instantiating the renderer
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace
+
+```
+
+------
+------
+
+#### README Axiliary Material:
 
 | Tables        | Are           | Cool  |
 | ------------- |:-------------:| -----:|
