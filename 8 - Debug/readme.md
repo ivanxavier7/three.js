@@ -6,7 +6,7 @@
 
 ```bash
 
-npm install --save dat.gui
+npm install --save lil-gui
 
 ```
 
