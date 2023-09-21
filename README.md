@@ -73,7 +73,7 @@ npm run build
 * Canvas is a HTML element in witch you can draw stuff
 * Three.js use WebGL to draw inside the canvas
 
-```javascript
+``` javascript
 // Scene
 const scene = new THREE.Scene();
 
@@ -113,7 +113,7 @@ renderer.render(scene, camera);
 
 `requestAnimationFrame` calls a function in the next frame
 
-```javascript
+``` javascript
 
 const tick = () => {
     mesh.position.x -= 0.005
@@ -130,7 +130,7 @@ tick()
 
 #### To sync frames in any device we need time difference implementation
 
-```javascript
+``` javascript
 
 //Time
 let time = Date.now()
@@ -156,7 +156,7 @@ tick()
 
 #### The best way to implement time difference is using `Clock` class, we get per second interaction
 
-```javascript
+``` javascript
 
 //Time
 let clock = new THREE.Clock()
@@ -181,7 +181,7 @@ tick()
 
 #### Animation suggestions for looping
 
-```javascript
+``` javascript
 
     mesh.position.y = Math.sin(elapsedTime)
     mesh.position.x = Math.cos(elapsedTime)
@@ -195,10 +195,10 @@ tick()
 
 Install inside `client/frontend`, this moves the object 2 units in 1 second after 1 second delay
 
-```bash
+``` bash
 npm install --save gsap@3.5.1
 ```
-```javascript
+``` javascript
 import gsap from 'gsap'
 
 gsap.to(mesh.position, { duration: 1, delay:1, x: 2 })
@@ -275,7 +275,7 @@ tick()
 
 [OrbitControls Documentation](https://threejs.org/docs/#examples/en/controls/OrbitControls)
 
-```javascript
+``` javascript
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 // Controls - Orbit Controls
 const controls = new OrbitControls(camera, canvas)
@@ -302,7 +302,7 @@ tick()
 
 ## Fullscreen
 
-```javascript
+``` javascript
 const sizes = {
     width: window.innerWidth,
     height: window.innerHeight
@@ -315,7 +315,7 @@ const sizes = {
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 ```
 
-```css
+``` css
 html,
 body {
     overflow: hidden;
@@ -330,7 +330,7 @@ canvas.webgl {
 ```
 #### Handle `resize` and `pixel ratio`
 
-```javascript
+``` javascript
 /**
  * Sizes
  */
@@ -355,7 +355,7 @@ window.addEventListener('resize', () => {
 
 #### Handle `fullscreen`
 
-```javascript
+``` javascript
 // Fullscreen with safari support
 window.addEventListener('dblclick', () => {
     const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement
@@ -387,7 +387,7 @@ window.addEventListener('dblclick', () => {
 * heightSegments
 * depthSegments
 
-```javascript
+``` javascript
 const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2)
 const material = new THREE.MeshBasicMaterial({
     color: 0xff0000,
@@ -397,7 +397,7 @@ const material = new THREE.MeshBasicMaterial({
 
 #### Custom Geometry
 
-```javascript
+``` javascript
 
 // Custom Geometry
 const positions = new Float32Array(9)
@@ -445,13 +445,13 @@ scene.add(mesh2)
 
 [npm lil-gui install](https://www.npmjs.com/package/lil-gui)
 
-```bash
+``` bash
 
 npm install --save dat.gui
 
 ```
 
-```javascript
+``` javascript
 import GUI from 'lil-gui';
 
 /**
@@ -525,13 +525,58 @@ gui.add(functions, 'spinY')
 
 ## Textures
 
-```javascript
+* [3D Textures](https://3dtextures.me/)
+* [3D Door Texture](https://3dtextures.me/2019/04/16/door-wood-001/)
+
+
+``` javascript
 // Start of the code
 THREE.ColorManagement.enabled = false
 
 // After instantiating the renderer
 renderer.outputColorSpace = THREE.LinearSRGBColorSpace
 
+/**
+ * Texture
+ */
+const image = new Image()
+const texture = new THREE.Texture(image)
+
+image.addEventListener('load', () => {
+    texture.needsUpdate = true
+    console.log('Image loaded successfully!')
+})
+
+image.src = '/textures/door/color.jpg'
+
+// Instead of using color:
+const material = new THREE.MeshBasicMaterial({ color: 0xff0000 })
+
+// Change to map
+const material = new THREE.MeshBasicMaterial({ map: texture })
+```
+
+#### Using the `LoadingManager`
+
+Should be used when loading multiple textures and inform when everything is loaded
+
+``` javascript
+// Start of the code
+THREE.ColorManagement.enabled = false
+
+// After instantiating the renderer
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace
+```
+
+
+
+Note:
+``` javascript
+// Start of the code
+THREE.ColorManagement.enabled = false
+
+// After instantiating the renderer
+renderer.outputColorSpace = THREE.LinearSRGBColorSpace
 ```
 
 ------
