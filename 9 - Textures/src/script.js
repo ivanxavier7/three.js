@@ -15,25 +15,59 @@ const scene = new THREE.Scene()
 /**
  * Texture
  */
-const textureLoader = new THREE.TextureLoader()
-const texture = textureLoader.load(
-        '/textures/door/color.jpg',
-        () => {
-            console.log('When the texture loaded successfully')
-        },
-        () => {
-            console.log('When the loading is progressing')
-        },
-        () => {
-            console.log('When something went wrong')
-        }
-    )
+const loadingManager = new THREE.LoadingManager()
+
+loadingManager.onStart = () => {
+    console.log('Loading started')
+}
+loadingManager.onProgress = () => {
+    console.log('Loading object')
+}
+loadingManager.onLoad = () => {
+    console.log('Loading finished')
+}
+loadingManager.onError = () => {
+    console.log('Error loading objects')
+}
+
+const textureLoader = new THREE.TextureLoader(loadingManager)
+const colorTexture = textureLoader.load('/textures/minecraft.png')
+const alphaTexture = textureLoader.load('/textures/door/alpha.jpg')
+const heightTexture = textureLoader.load('/textures/door/height.jpg')
+const normalTexture = textureLoader.load('/textures/door/normal.jpg')
+const ambientOcclusionTexture = textureLoader.load('/textures/door/ambientOcclusion.jpg')
+const metalnessTexture = textureLoader.load('/textures/door/metalness.jpg')
+const roughnessTexture = textureLoader.load('/textures/door/roughness.jpg')
+
+//Repeat texture
+//colorTexture.repeat.x = 2
+//colorTexture.repeat.y = 3
+//colorTexture.wrapS = THREE.RepeatWrapping   // Let the texture repeat, without stretching the last pixels
+//colorTexture.wrapT = THREE.MirroredRepeatWrapping
+
+// Padding the texture
+//colorTexture.offset.x = 0.1
+
+// Rotate texture in the specified uv point
+//colorTexture.rotation = Math.PI * 0.25
+//colorTexture.center.x = 0.5
+//colorTexture.center.y = 0.5
+
+// Change the object when it is far away
+colorTexture.minFilter = THREE.LinearFilter
+
+// MIPMaping is when you map smaller versions of the texture, we dont need in the THREE.NearestFilter
+colorTexture.generateMipmaps = false
+
+// Change the object when it is close
+// colorTexture.magFilter = THREE.LinearFilter // Default
+colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 
 /**
  * Object
  */
 const geometry = new THREE.BoxGeometry(1, 1, 1)
-const material = new THREE.MeshBasicMaterial({ map: texture })
+const material = new THREE.MeshBasicMaterial({ map: colorTexture })
 const mesh = new THREE.Mesh(geometry, material)
 scene.add(mesh)
 
