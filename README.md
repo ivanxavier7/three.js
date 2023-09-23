@@ -913,7 +913,7 @@ fontLoader.load(
 
 ------
 
-## Measure Time loading resources
+### Measure Time loading resources
 
 `console.time()`
 
@@ -944,6 +944,15 @@ for(let i=0; i<200; i++) {
     scene.add(donut)
 }
 console.timeEnd('donuts')
+```
+
+------
+
+## Lights
+
+
+``` javascript
+
 ```
 
 Update Notes:
