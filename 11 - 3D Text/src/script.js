@@ -2,6 +2,9 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
+import { TextGeometry} from 'three/examples/jsm/geometries/TextGeometry.js'
+
 THREE.ColorManagement.enabled = false
 
 /**
@@ -20,16 +23,82 @@ const scene = new THREE.Scene()
  * Textures
  */
 const textureLoader = new THREE.TextureLoader()
+const matcapTexture = textureLoader.load('/textures/matcaps/3.png')
+
+/**
+ * Fonts
+ */
+const fontLoader =  new FontLoader()
+
+fontLoader.load(
+    '/fonts/helvetiker_regular.typeface.json',
+    (font) => {
+        const textGeometry = new TextGeometry(
+            'Ivan Xavier',
+            {
+                font: font,
+                size: 0.5,
+                height: 0.2,
+                curveSegments: 5,
+                bevelEnabled: true,
+                bevelThickness: 0.03,
+                bevelSize: 0.02,
+                bevelOffset: 0,
+                bevelSegments: 4,
+            }
+        )
+        textGeometry.center()
+
+        const material = new THREE.MeshMatcapMaterial( 
+            {   
+                matcap: matcapTexture
+            } )
+        const text = new THREE.Mesh(textGeometry, material)
+        
+        scene.add(text)
+        console.log('Font loaded')
+
+        // Monitor time to load something
+        console.time('donuts')
+
+        // 100 random Donuts
+        const donutGeometry = new THREE.TorusGeometry(0.3, 0.2, 20, 45)
+
+        for(let i=0; i<200; i++) {
+            const donut = new THREE.Mesh(donutGeometry, material)
+
+            donut.position.set(
+                1 + (Math.random() - 0.5) * 10,
+                1 +(Math.random() - 0.5) * 10,
+                1 + (Math.random() - 0.5) * 10,
+            )
+
+            donut.rotation.x = Math.random() * Math.PI
+            donut.rotation.y = Math.random() * Math.PI
+
+            const scale = Math.random()
+            donut.scale.set(scale, scale, scale)
+
+            scene.add(donut)
+        }
+        console.timeEnd('donuts')
+    }
+)
+
+// Axes helper
+const axesHelper = new THREE.AxesHelper()
+scene.add(axesHelper)
 
 /**
  * Object
  */
+/*
 const cube = new THREE.Mesh(
     new THREE.BoxGeometry(1, 1, 1),
     new THREE.MeshBasicMaterial()
 )
-
 scene.add(cube)
+*/
 
 /**
  * Sizes
@@ -61,7 +130,7 @@ window.addEventListener('resize', () =>
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 100)
 camera.position.x = 1
 camera.position.y = 1
-camera.position.z = 2
+camera.position.z = 5
 scene.add(camera)
 
 // Controls
