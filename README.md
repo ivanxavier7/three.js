@@ -330,22 +330,36 @@ scene.add(mesh2)
 * Metalness
 * Roughness
 
-Color: The albedo texture is the most simple one. It'll only take the pixels of the texture and apply them to the geometry.
+`Color`
 
-Alpha: The alpha texture is a grayscale image where white will be visible, and black won't.
+The albedo texture is the most simple one. It'll only take the pixels of the texture and apply them to the geometry.
 
-Height: The height texture is a grayscale image that will move the vertices to create some relief. You'll need to add subdivision if you want to see it.
+`Alpha`
 
-Normal: The normal texture will add small details. It won't move the vertices, but it will lure the light into thinking that the face is oriented differently.
+The alpha texture is a grayscale image where white will be visible, and black won't.
 
-Ambient occlusion: The ambient occlusion texture is a grayscale image that will fake shadow in the surface's crevices. While it's not physically accurate, it certainly helps to create contrast.
+`Height`
 
-Metalness: The metalness texture is a grayscale image that will specify which part is metallic (white) and non-metallic (black). This information will help to create reflection.
+The height texture is a grayscale image that will move the vertices to create some relief. You'll need to add subdivision if you want to see it.
 
-Roughness: The roughness is a grayscale image that comes with metalness, and that will specify which part is rough (white) and which part is smooth (black). This information will help to dissipate the light.
+`Normal`
+
+The normal texture will add small details. It won't move the vertices, but it will lure the light into thinking that the face is oriented differently.
+
+`Ambient occlusion`
+
+The ambient occlusion texture is a grayscale image that will fake shadow in the surface's crevices. While it's not physically accurate, it certainly helps to create contrast.
+
+`Metalness`
+
+The metalness texture is a grayscale image that will specify which part is metallic (white) and non-metallic (black). This information will help to create reflection.
+
+`Roughness`
+
+The roughness is a grayscale image that comes with metalness, and that will specify which part is rough (white) and which part is smooth (black). This information will help to dissipate the light.
 
 
-Free textures
+Free textures:
 * [Polligon](https://www.poliigon.com/search/free?type=textures)
 * [3D Textures](https://3dtextures.me/)
 * [Arroway Textures](https://www.arroway-textures.ch/textures/)
@@ -359,7 +373,7 @@ Texture used in the example:
 [3D Door Texture](https://3dtextures.me/2019/04/16/door-wood-001/)
 
 
-#### 4.2.1 - Loading Textures
+### 4.2.1 - Loading Textures
 
 Put the `image` in the `/static/` folder
 
@@ -385,7 +399,7 @@ const material = new THREE.MeshBasicMaterial({ map: texture })
 
 ```
 
-#### 4.2.2 - Loading Textures using `TextureLoader`
+### 4.2.2 - Loading Textures using `TextureLoader`
 
 You should use this for loading textures
 
@@ -400,7 +414,7 @@ const texture = textureLoader.load('/textures/door/color.jpg')
 const material = new THREE.MeshBasicMaterial({ map: texture })
 ```
 
-#### 4.2.3 - Using the `LoadingManager`
+### 4.2.3 - Using the `LoadingManager`
 
 Should be used when loading multiple textures and inform when everything is loaded
 
@@ -434,7 +448,7 @@ const metalnessTexture = textureLoader.load('/textures/door/metalness.jpg')
 const roughnessTexture = textureLoader.load('/textures/door/roughness.jpg')
 ```
 
-#### 4.2.4 - Texture transformation
+### 4.2.4 - Texture transformation
 
 How the texture is wrapped around the object, uses UV coordinates
 
@@ -457,7 +471,7 @@ colorTexture.center.x = 0.5
 colorTexture.center.y = 0.5
 ```
 
-#### 4.2.5 - Filtering and MIPMapping
+### 4.2.5 - Filtering and MIPMapping
 
 how the texture is processed near or far, for example a low pixel texture may be blurred with the wrong filter
 
@@ -483,7 +497,7 @@ colorTexture.generateMipmaps = false
 colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 ```
 
-#### 4.2.6 - Texture Optimization
+### 4.2.6 - Texture Optimization
 
 * The weight
 * The resolution
