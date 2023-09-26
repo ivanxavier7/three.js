@@ -42,8 +42,7 @@ npm run build
 * To put objects, models, lights, etc. in it
 * At some point we ask Three.js to render that scene
 
-Basic scene example:
-
+### Basic scene example
 ``` javascript
 // Scene
 const scene = new THREE.Scene();
@@ -173,6 +172,7 @@ tick()
 
 ## Fullscreen
 
+### Fullscreen example
 ``` javascript
 const sizes = {
     width: window.innerWidth,
@@ -261,6 +261,7 @@ window.addEventListener('dblclick', () => {
 
 ## 4.1.1 - Geometry
 
+### Geometry is defined by the following properties
 * width
 * height
 * depth
@@ -322,6 +323,7 @@ scene.add(mesh2)
 
 ## 4.2 - Textures
 
+### Textures are defined by the following properties
 * Color or Albedo
 * Alpha
 * Height
@@ -637,7 +639,8 @@ scene.add(pointLight)
 ```
 
 #### 4.3.1 - Environment Map
-image of what's surrounding the scene
+
+Image of the surroundings of the scene, allows you to create realistic reflections on objects
 
 [Environment Map](https://hdri-haven.com/)
 
@@ -723,10 +726,16 @@ scene.add(hemisphereLightHelper, directionalLightHelper, pointLightHelper, rectA
 # 4.5 - Shadows
 
 ### Lights that support shadows
-* PointLight
-* DirectionalLight
-* SpotLight
+1. Enable Shadows
+2. Optimize Shadows
+3. ShadowMap Algorithms
+4. PointLight
+5. DirectionalLight
+6. SpotLight
+7. Baking Shadows
 
+
+### 4.5.1 - Enable Shadows
 ``` javascript
 // Enable shadows with this light
 directionalLight.castShadow = true
@@ -741,7 +750,7 @@ plane.receiveShadow = true
 renderer.shadowMap.enabled = true
 ```
 
-### 4.5.1 - Optimize shadows resolution
+### 4.5.2 - Optimize shadows resolution
 
 ``` javascript
 // Enable shadows with this light
@@ -765,7 +774,7 @@ directionalLight.shadow.camera.left = -2
 scene.add(directionalLight)
 ```
 
-### 4.5.2 - ShadowMap Algorithms
+### 4.5.3 - ShadowMap Algorithms
 
 ### Algorithms in order of increasing performance and decreasing quality
 * BasicShadowMaps
@@ -777,7 +786,7 @@ scene.add(directionalLight)
 renderer.shadowMap.type = THREE.PCFSoftShadowMap
 ```
 
-### 4.5.3 - SpotLight
+### 4.5.4 - SpotLight
 
 
 ``` javascript
@@ -797,7 +806,7 @@ spotLight.shadow.camera.fov = 30
 scene.add(spotLight, spotLight.target)
 ```
 
-### 4.5.6 - PointLight
+### 4.5.5 - PointLight
 
 ``` javascript
 // PointLight
@@ -815,7 +824,7 @@ pointLight.shadow.camera.far = 5
 scene.add(pointLight)
 ```
 
-### 4.5.7 - Baking Shadows
+### 4.5.6 - Baking Shadows
 
 Better performance, can't move the shadows or lights
 
