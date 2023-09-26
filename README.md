@@ -6,17 +6,18 @@
 
 # Starting
 
-1. `Setup`
-2. `Scene`
-3. `Cameras`
-4. `Objects`
-5. `Renderer`
+1. Setup
+2. Scene
+3. Cameras
+4. Objects
+5. Renderer
+6. Extras
 
 ------
 
 # 1 - Setup
 
-Setup project with Vite
+Setup project with `Vite`
 
 #### Download [Node.js](https://nodejs.org/en/download/).
 
@@ -136,7 +137,7 @@ const tick = () =>
 tick()
 ```
 
-#### Built in Controls:
+#### Built in Controls
 * DeviceOrientationControls (Android)
 * FlyControls
 * OrbitControls
@@ -250,8 +251,7 @@ window.addEventListener('dblclick', () => {
 
 # 4 - Objects
 
-To define an object we must take into account the following properties
-
+### To define an object we must take into account the following properties
 1. Geometry
 2. Texture
 3. Material
@@ -359,7 +359,7 @@ The metalness texture is a grayscale image that will specify which part is metal
 The roughness is a grayscale image that comes with metalness, and that will specify which part is rough (white) and which part is smooth (black). This information will help to dissipate the light.
 
 
-Free textures:
+### Free textures
 * [Polligon](https://www.poliigon.com/search/free?type=textures)
 * [3D Textures](https://3dtextures.me/)
 * [Arroway Textures](https://www.arroway-textures.ch/textures/)
@@ -369,7 +369,7 @@ Free textures:
 
 You can use photoshop or something similar to edit or create textures
 
-Texture used in the example:
+### Texture used in the example
 [3D Door Texture](https://3dtextures.me/2019/04/16/door-wood-001/)
 
 
@@ -513,7 +513,7 @@ colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 
 ## 4.3 - Materials
 
-To implement a material in a certain texture we must take into account the following properties
+### To implement a material in a certain texture we must take into account the following properties
 * Color
 * Alpha
 * AmbientOcclusion
@@ -522,7 +522,7 @@ To implement a material in a certain texture we must take into account the follo
 * Metalness
 * Roughness
 
-Algorithm that processes the pixels in a certain object to render, we will use some standard meshes
+### Algorithm that processes the pixels in a certain object to render, we will use some standard meshes
 
 * MeshBasicMaterial
 * MeshNormalMaterial
@@ -649,6 +649,7 @@ image of what's surrounding the scene
 
 [Lights Docs](https://threejs.org/docs/?q=light#api/en/lights/AmbientLight)
 
+### Types of light
 * AmbientLight      Minimal
 * HemisphereLight   Minimal
 * DirectionalLight  Moderate
@@ -721,7 +722,7 @@ scene.add(hemisphereLightHelper, directionalLightHelper, pointLightHelper, rectA
 
 # 4.5 - Shadows
 
-Lights that support shadows:
+### Lights that support shadows
 * PointLight
 * DirectionalLight
 * SpotLight
@@ -766,7 +767,7 @@ scene.add(directionalLight)
 
 ### 4.5.2 - ShadowMap Algorithms
 
-Algorithms in order of increasing performance and decreasing quality:
+### Algorithms in order of increasing performance and decreasing quality
 * BasicShadowMaps
 * PCFShadowMap
 * PCFSoftShadowMap
@@ -844,8 +845,7 @@ const plane = new THREE.Mesh(
 
 # 5 - Renderer
 
-Display the scene onto a HTML canvas
-
+### Display the scene onto a HTML canvas
 * Render from POV
 * Result draw into a canvas
 * Canvas is a HTML element in witch you can draw stuff
@@ -870,7 +870,7 @@ tick()
 
 ```
 
-#### To sync frames in any device we need time difference implementation
+To sync frames in any device we need time difference implementation
 
 ``` javascript
 
@@ -896,7 +896,7 @@ tick()
 
 ```
 
-#### The best way to implement time difference is using `Clock` class, we get per second interaction
+The best way to implement time difference is using `Clock` class, we get per second interaction
 
 ``` javascript
 
@@ -921,7 +921,7 @@ tick()
 
 ```
 
-#### Animation suggestions for looping
+Animation suggestions for looping
 
 ``` javascript
 
@@ -933,7 +933,7 @@ tick()
 
 ```
 
-#### For simpler animation controll, use `GSAP library`
+### For simpler animation controll, use `GSAP library`:
 
 Install inside `client/frontend`, this moves the object 2 units in 1 second after 1 second delay
 
@@ -958,7 +958,7 @@ tick()
 
 ------
 
-# Extra
+# Extras
 
 1. Debug UI
 2. Measure time loading resources
