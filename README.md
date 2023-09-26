@@ -4,9 +4,19 @@
 
 ------
 
-# Setup project with Vite
+# Starting
 
-## Setup
+1. `Setup`
+2. `Scene`
+3. `Cameras`
+4. `Objects`
+5. `Renderer`
+
+------
+
+# 1 - Setup
+
+Setup project with Vite
 
 #### Download [Node.js](https://nodejs.org/en/download/).
 
@@ -25,53 +35,13 @@ npm run build
 
 ------
 
-# Starting
-
-* `Scene`
-* `Objects`
-* `Camera`
-* `Renderer`
-
-------
-
-## Scene
+# 2 - Scene
 
 * Like a container
 * To put objects, models, lights, etc. in it
 * At some point we ask Three.js to render that scene
 
-------
-
-## Objects
-
-* Primitive geometries
-* Imported models
-* Particles
-* Lights
-* Etc.
-* Mesh
-
-#### `Mesh` is the combination of a geometry and a material to create an object.
-
-------
-
-## Camera
-
-* Not visible
-* Serve as point of view when doing a render
-* Can have multiple and switch between them
-* Different types
-* Field of View (FOV) in Degrees
-* Aspect Ratio (screen resolution)
-
-------
-
-## Renderer
-
-* Render from POV
-* Result draw into a canvas
-* Canvas is a HTML element in witch you can draw stuff
-* Three.js use WebGL to draw inside the canvas
+Basic scene example:
 
 ``` javascript
 // Scene
@@ -109,114 +79,14 @@ renderer.render(scene, camera);
 ```
 ------
 
-## Animations
+# 3 - Cameras
 
-`requestAnimationFrame` calls a function in the next frame
-
-``` javascript
-
-const tick = () => {
-    mesh.position.x -= 0.005
-    mesh.position.y += 0.002
-
-    renderer.render(scene, camera)
-
-    window.requestAnimationFrame(tick)
-}
-
-tick()
-
-```
-
-#### To sync frames in any device we need time difference implementation
-
-``` javascript
-
-//Time
-let time = Date.now()
-
-// Animation
-const tick = () => {
-
-    const currentTime = Date.now()
-    const deltaTime = currentTime - time
-    time = currentTime
-
-    mesh.rotation.x -= 0.0005 * deltaTime
-    mesh.position.y += 0.00005 * deltaTime
-
-    renderer.render(scene, camera)
-
-    window.requestAnimationFrame(tick)
-}
-
-tick()
-
-```
-
-#### The best way to implement time difference is using `Clock` class, we get per second interaction
-
-``` javascript
-
-//Time
-let clock = new THREE.Clock()
-
-// Animation
-const tick = () => {
-
-    // Clock
-    const elapsedTime = clock.getElapsedTime()
-
-    mesh.rotation.x -= 0.0005 * elapsedTime
-    mesh.position.y += 0.00005 * elapsedTime
-
-    renderer.render(scene, camera)
-
-    window.requestAnimationFrame(tick)
-}
-
-tick()
-
-```
-
-#### Animation suggestions for looping
-
-``` javascript
-
-    mesh.position.y = Math.sin(elapsedTime)
-    mesh.position.x = Math.cos(elapsedTime)
-    mesh.rotation.x += 0.0005 * Math.cos(elapsedTime)
-
-    camera.lookAt(mesh.position)
-
-```
-
-#### For simpler animation controll, use `GSAP library`
-
-Install inside `client/frontend`, this moves the object 2 units in 1 second after 1 second delay
-
-``` bash
-npm install --save gsap@3.5.1
-```
-``` javascript
-import gsap from 'gsap'
-
-gsap.to(mesh.position, { duration: 1, delay:1, x: 2 })
-
-// Animation
-const tick = () => {
-    renderer.render(scene, camera)
-
-    window.requestAnimationFrame(tick)
-}
-
-tick()
-
-```
-
-------
-
-## Cameras
+* Not visible without helpers
+* Serve as point of view when doing a render
+* Can have multiple and switch between them
+* Different types
+* Field of View (FOV) in Degrees
+* Aspect Ratio (screen resolution)
 
 #### Custom camera controls
 
@@ -378,7 +248,18 @@ window.addEventListener('dblclick', () => {
 
 ------
 
-## Geometries
+# 4 - Objects
+
+To define an object we must take into account the following properties
+
+1. Geometry
+2. Texture
+3. Material
+4. Lighting
+5. Shadows
+------
+
+## 4.1.1 - Geometry
 
 * width
 * height
@@ -395,7 +276,7 @@ const material = new THREE.MeshBasicMaterial({
 })
 ```
 
-#### Custom Geometry
+### 4.1.2 - Custom Geometry
 
 ``` javascript
 
@@ -439,91 +320,7 @@ scene.add(mesh2)
 
 ------
 
-## Debug UI
-
-* [lil-gui](https://github.com/georgealways/lil-gui)
-
-[npm lil-gui install](https://www.npmjs.com/package/lil-gui)
-
-``` bash
-
-npm install --save lil-gui
-
-```
-
-``` javascript
-import GUI from 'lil-gui';
-
-/**
- * Debug gui
- */
-const gui = new GUI();
-
-// Position
-gui.add(mesh.position, 'x')
-    .min(-3)
-    .max(3)
-    .step(0.01)
-    .name('X Position')
-
-gui.add(mesh.position, 'y')
-    .min(-3)
-    .max(3)
-    .step(0.01)
-    .name('Y Position')
-
-gui.add(mesh.position, 'z')
-    .min(-3)
-    .max(3)
-    .step(0.01)
-    .name('Z Position')
-
-// Rotation
-gui.add(mesh.rotation, 'x')
-    .min(-3)
-    .max(3)
-    .step(0.01)
-    .name('X Rotation')
-
-gui.add(mesh.rotation, 'y')
-    .min(-3)
-    .max(3)
-    .step(0.01)
-    .name('Y Rotation')
-
-gui.add(mesh.rotation, 'z')
-    .min(-3)
-    .max(3)
-    .step(0.01)
-    .name('Z Rotation')
-
-// Booleans / Flags
-gui.add(mesh, 'visible')
-    .name('Show Mesh')
-gui.add(material, 'wireframe')
-    .name('Enable Wireframe')
-
-//Colors
-gui.addColor(material, 'color')
-    .name('Color')
-
-const functions = {
-    spinX: () => {
-        gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.x + Math.PI * 2})
-    },
-    spinY: () => {
-        gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.y + Math.PI * 2})
-    },
-}
-
-// Function Execution / Unitary Test
-gui.add(functions, 'spinX')
-gui.add(functions, 'spinY')
-```
-
-------
-
-## Textures
+## 4.2 - Textures
 
 * Color or Albedo
 * Alpha
@@ -562,7 +359,7 @@ Texture used in the example:
 [3D Door Texture](https://3dtextures.me/2019/04/16/door-wood-001/)
 
 
-#### Loading Textures
+#### 4.2.1 - Loading Textures
 
 Put the `image` in the `/static/` folder
 
@@ -588,7 +385,7 @@ const material = new THREE.MeshBasicMaterial({ map: texture })
 
 ```
 
-#### Loading Textures using `TextureLoader`
+#### 4.2.2 - Loading Textures using `TextureLoader`
 
 You should use this for loading textures
 
@@ -603,7 +400,7 @@ const texture = textureLoader.load('/textures/door/color.jpg')
 const material = new THREE.MeshBasicMaterial({ map: texture })
 ```
 
-#### Using the `LoadingManager`
+#### 4.2.3 - Using the `LoadingManager`
 
 Should be used when loading multiple textures and inform when everything is loaded
 
@@ -637,7 +434,7 @@ const metalnessTexture = textureLoader.load('/textures/door/metalness.jpg')
 const roughnessTexture = textureLoader.load('/textures/door/roughness.jpg')
 ```
 
-#### Texture transformation
+#### 4.2.4 - Texture transformation
 
 How the texture is wrapped around the object, uses UV coordinates
 
@@ -660,7 +457,7 @@ colorTexture.center.x = 0.5
 colorTexture.center.y = 0.5
 ```
 
-#### Filtering and MIPMapping
+#### 4.2.5 - Filtering and MIPMapping
 
 how the texture is processed near or far, for example a low pixel texture may be blurred with the wrong filter
 
@@ -686,7 +483,7 @@ colorTexture.generateMipmaps = false
 colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 ```
 
-#### Texture Optimization
+#### 4.2.6 - Texture Optimization
 
 * The weight
 * The resolution
@@ -700,7 +497,7 @@ colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 
 ------
 
-## Materials
+## 4.3 - Materials
 
 To implement a material in a certain texture we must take into account the following properties
 * Color
@@ -825,7 +622,7 @@ pointLight.position.set(2, 3, 4)
 scene.add(pointLight)
 ```
 
-#### Environment Map
+#### 4.3.1 - Environment Map
 image of what's surrounding the scene
 
 [Environment Map](https://hdri-haven.com/)
@@ -834,7 +631,447 @@ image of what's surrounding the scene
 
 ------
 
-## 3D Text
+## 4.4 - Lights
+
+[Lights Docs](https://threejs.org/docs/?q=light#api/en/lights/AmbientLight)
+
+* AmbientLight      Minimal
+* HemisphereLight   Minimal
+* DirectionalLight  Moderate
+* PointLight        Moderate
+* SpotLight         High
+* RectAreaLight     High
+
+
+Lights cost a lot in performance, try to add as few lights as possible, and chose the most efficient ones
+
+``` javascript
+/**
+ * Lights
+ */
+
+// Irrealistic, light's everything
+//const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
+//scene.add(ambientLight)
+
+// Light from one side
+//const directionalLight = new THREE.DirectionalLight(0x00ffff, 0.3)
+//directionalLight.position.set(1, 0.25, 0)
+//scene.add(directionalLight)
+
+// Light from one side and different color from the ground
+//const hemisphereLight = new THREE.HemisphereLight(0xff0000, 0x0000ff, 0.3)
+//scene.add(hemisphereLight)
+
+// Point Light
+//const pointLight = new THREE.PointLight(0x00ff00, 0.5, 10, 2)
+//pointLight.position.set(-1, 0.25, 0)
+//scene.add(pointLight)
+
+// Rectangle Light
+//const rectAreaLight = new THREE.RectAreaLight(0x4e00ff, 2, 5, 1)
+//rectAreaLight.position.set(-1.5, 0, 1.5)
+//rectAreaLight.lookAt(new THREE.Vector3())
+//scene.add(rectAreaLight)
+
+// SpotLight - FlashLight
+const spotLight = new THREE.SpotLight(0x11AA55, 0.5, 10, Math.PI * 0.1, 0.25, 1)
+spotLight.position.set(0, 2, 3)
+spotLight.target.position.x = -0.75
+
+scene.add(spotLight.target, spotLight)
+```
+
+### 4.4.1 - Light Helpers
+
+Assit us positioning the lights
+
+``` javascript
+import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js'
+
+/**
+ * Light Helpers
+ */
+const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 0.2)
+
+const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 0.2)
+
+const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.2)
+
+const rectAreaLightHelper = new RectAreaLightHelper(rectAreaLight)
+
+scene.add(hemisphereLightHelper, directionalLightHelper, pointLightHelper, rectAreaLightHelper)
+```
+
+------
+
+# 4.5 - Shadows
+
+Lights that support shadows:
+* PointLight
+* DirectionalLight
+* SpotLight
+
+``` javascript
+// Enable shadows with this light
+directionalLight.castShadow = true
+
+// CastShadow
+sphere.castShadow = true
+
+// Receive shadow
+plane.receiveShadow = true
+
+// Enable shadows on the renderer
+renderer.shadowMap.enabled = true
+```
+
+### 4.5.1 - Optimize shadows resolution
+
+``` javascript
+// Enable shadows with this light
+directionalLight.castShadow = true
+
+// Optimize shadow map, default is 512x512
+directionalLight.shadow.mapSize.width = 1024
+directionalLight.shadow.mapSize.height = 1024
+directionalLight.shadow.camera.near = 1
+directionalLight.shadow.camera.far = 6
+
+// Move Shadow
+directionalLight.shadow.camera.top = 2
+directionalLight.shadow.camera.right = 2
+directionalLight.shadow.camera.bottom = -2
+directionalLight.shadow.camera.left = -2
+
+// Blur Shadow
+//directionalLight.shadow.radius = 10
+
+scene.add(directionalLight)
+```
+
+### 4.5.2 - ShadowMap Algorithms
+
+Algorithms in order of increasing performance and decreasing quality:
+* BasicShadowMaps
+* PCFShadowMap
+* PCFSoftShadowMap
+* VSMShadowMap
+
+``` javascript
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
+```
+
+### 4.5.3 - SpotLight
+
+
+``` javascript
+// SpotLight
+const spotLight = new THREE.SpotLight(0xffffff, 0.4, 10, Math.PI * 0.3)
+
+spotLight.castShadow = true
+spotLight.position.set(0, 2, 3)
+
+spotLight.shadow.mapSize.width = 1024
+spotLight.shadow.mapSize.height = 1024
+spotLight.shadow.camera.near = 1
+spotLight.shadow.camera.far = 6
+
+spotLight.shadow.camera.fov = 30
+
+scene.add(spotLight, spotLight.target)
+```
+
+### 4.5.6 - PointLight
+
+``` javascript
+// PointLight
+const pointLight = new THREE.PointLight(0xffffff, 0.3)
+
+pointLight.castShadow = true
+
+pointLight.position.set(-1, 1, 0)
+
+pointLight.shadow.mapSize.width = 1024
+pointLight.shadow.mapSize.height = 1024
+pointLight.shadow.camera.near = 0.1
+pointLight.shadow.camera.far = 5
+
+scene.add(pointLight)
+```
+
+### 4.5.7 - Baking Shadows
+
+Better performance, can't move the shadows or lights
+
+``` javascript
+renderer.shadowMap.enabled = false
+directionalLight.castShadow = false
+spotLight.castShadow = false
+pointLight.castShadow = false
+
+/**
+ * Textures
+ *
+ */
+const textureLoader = new THREE.TextureLoader()
+const bakedShadow = textureLoader.load('/textures/bakedShadow.jpg')
+
+// On the receiving
+const plane = new THREE.Mesh(
+    new THREE.PlaneGeometry(5, 5),
+    new THREE.MeshBasicMaterial({
+        map: bakedShadow
+    })
+)
+```
+
+------
+
+# 5 - Renderer
+
+Display the scene onto a HTML canvas
+
+* Render from POV
+* Result draw into a canvas
+* Canvas is a HTML element in witch you can draw stuff
+* Three.js use WebGL to draw inside the canvas
+
+## Animating
+
+`requestAnimationFrame` calls a function in the next frame
+
+``` javascript
+
+const tick = () => {
+    mesh.position.x -= 0.005
+    mesh.position.y += 0.002
+
+    renderer.render(scene, camera)
+
+    window.requestAnimationFrame(tick)
+}
+
+tick()
+
+```
+
+#### To sync frames in any device we need time difference implementation
+
+``` javascript
+
+//Time
+let time = Date.now()
+
+// Animation
+const tick = () => {
+
+    const currentTime = Date.now()
+    const deltaTime = currentTime - time
+    time = currentTime
+
+    mesh.rotation.x -= 0.0005 * deltaTime
+    mesh.position.y += 0.00005 * deltaTime
+
+    renderer.render(scene, camera)
+
+    window.requestAnimationFrame(tick)
+}
+
+tick()
+
+```
+
+#### The best way to implement time difference is using `Clock` class, we get per second interaction
+
+``` javascript
+
+//Time
+let clock = new THREE.Clock()
+
+// Animation
+const tick = () => {
+
+    // Clock
+    const elapsedTime = clock.getElapsedTime()
+
+    mesh.rotation.x -= 0.0005 * elapsedTime
+    mesh.position.y += 0.00005 * elapsedTime
+
+    renderer.render(scene, camera)
+
+    window.requestAnimationFrame(tick)
+}
+
+tick()
+
+```
+
+#### Animation suggestions for looping
+
+``` javascript
+
+    mesh.position.y = Math.sin(elapsedTime)
+    mesh.position.x = Math.cos(elapsedTime)
+    mesh.rotation.x += 0.0005 * Math.cos(elapsedTime)
+
+    camera.lookAt(mesh.position)
+
+```
+
+#### For simpler animation controll, use `GSAP library`
+
+Install inside `client/frontend`, this moves the object 2 units in 1 second after 1 second delay
+
+``` bash
+npm install --save gsap@3.5.1
+```
+``` javascript
+import gsap from 'gsap'
+
+gsap.to(mesh.position, { duration: 1, delay:1, x: 2 })
+
+// Animation
+const tick = () => {
+    renderer.render(scene, camera)
+
+    window.requestAnimationFrame(tick)
+}
+
+tick()
+
+```
+
+------
+
+# Extra
+
+1. Debug UI
+2. Measure time loading resources
+3. 3D Text
+4. Particles
+5. Physics
+
+## 1 - Debug UI
+
+* [lil-gui](https://github.com/georgealways/lil-gui)
+
+[npm lil-gui install](https://www.npmjs.com/package/lil-gui)
+
+``` bash
+
+npm install --save lil-gui
+
+```
+
+``` javascript
+import GUI from 'lil-gui';
+
+/**
+ * Debug gui
+ */
+const gui = new GUI();
+
+// Position
+gui.add(mesh.position, 'x')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('X Position')
+
+gui.add(mesh.position, 'y')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('Y Position')
+
+gui.add(mesh.position, 'z')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('Z Position')
+
+// Rotation
+gui.add(mesh.rotation, 'x')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('X Rotation')
+
+gui.add(mesh.rotation, 'y')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('Y Rotation')
+
+gui.add(mesh.rotation, 'z')
+    .min(-3)
+    .max(3)
+    .step(0.01)
+    .name('Z Rotation')
+
+// Booleans / Flags
+gui.add(mesh, 'visible')
+    .name('Show Mesh')
+gui.add(material, 'wireframe')
+    .name('Enable Wireframe')
+
+//Colors
+gui.addColor(material, 'color')
+    .name('Color')
+
+const functions = {
+    spinX: () => {
+        gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.x + Math.PI * 2})
+    },
+    spinY: () => {
+        gsap.to(mesh.rotation, { duration: 1, y: mesh.rotation.y + Math.PI * 2})
+    },
+}
+
+// Function Execution / Unitary Test
+gui.add(functions, 'spinX')
+gui.add(functions, 'spinY')
+```
+
+------
+
+## 2- Measure Time loading resources
+
+`console.time()`
+
+`console.timeEnd()`
+
+```javascript
+// Monitor time to load something
+console.time('donuts')
+
+// 100 random Donuts
+const donutGeometry = new THREE.TorusGeometry(0.3, 0.2, 20, 45)
+
+for(let i=0; i<200; i++) {
+    const donut = new THREE.Mesh(donutGeometry, material)
+
+    donut.position.set(
+        1 + (Math.random() - 0.5) * 10,
+        1 +(Math.random() - 0.5) * 10,
+        1 + (Math.random() - 0.5) * 10,
+    )
+
+    donut.rotation.x = Math.random() * Math.PI
+    donut.rotation.y = Math.random() * Math.PI
+
+    const scale = Math.random()
+    donut.scale.set(scale, scale, scale)
+
+    scene.add(donut)
+}
+console.timeEnd('donuts')
+```
+
+------
+
+## 3 - 3D Text
 
 `TextGeometry`
 [TextGeometry Docs](https://threejs.org/docs/?q=textGe#examples/en/geometries/TextGeometry)
@@ -913,237 +1150,19 @@ fontLoader.load(
 
 ------
 
-### Measure Time loading resources
+------
 
-`console.time()`
+# 6 - Particles
 
-`console.timeEnd()`
+``` javascript
 
-```javascript
-// Monitor time to load something
-console.time('donuts')
 
-// 100 random Donuts
-const donutGeometry = new THREE.TorusGeometry(0.3, 0.2, 20, 45)
-
-for(let i=0; i<200; i++) {
-    const donut = new THREE.Mesh(donutGeometry, material)
-
-    donut.position.set(
-        1 + (Math.random() - 0.5) * 10,
-        1 +(Math.random() - 0.5) * 10,
-        1 + (Math.random() - 0.5) * 10,
-    )
-
-    donut.rotation.x = Math.random() * Math.PI
-    donut.rotation.y = Math.random() * Math.PI
-
-    const scale = Math.random()
-    donut.scale.set(scale, scale, scale)
-
-    scene.add(donut)
-}
-console.timeEnd('donuts')
 ```
 
 ------
 
-## Lights
-
-[Lights Docs](https://threejs.org/docs/?q=light#api/en/lights/AmbientLight)
-
-* AmbientLight      Minimal
-* HemisphereLight   Minimal
-* DirectionalLight  Moderate
-* PointLight        Moderate
-* SpotLight         High
-* RectAreaLight     High
 
 
-Lights cost a lot in performance, try to add as few lights as possible, and chose the most efficient ones
-
-``` javascript
-/**
- * Lights
- */
-
-// Irrealistic, light's everything
-//const ambientLight = new THREE.AmbientLight(0xffffff, 0.5)
-//scene.add(ambientLight)
-
-// Light from one side
-//const directionalLight = new THREE.DirectionalLight(0x00ffff, 0.3)
-//directionalLight.position.set(1, 0.25, 0)
-//scene.add(directionalLight)
-
-// Light from one side and different color from the ground
-//const hemisphereLight = new THREE.HemisphereLight(0xff0000, 0x0000ff, 0.3)
-//scene.add(hemisphereLight)
-
-// Point Light
-//const pointLight = new THREE.PointLight(0x00ff00, 0.5, 10, 2)
-//pointLight.position.set(-1, 0.25, 0)
-//scene.add(pointLight)
-
-// Rectangle Light
-//const rectAreaLight = new THREE.RectAreaLight(0x4e00ff, 2, 5, 1)
-//rectAreaLight.position.set(-1.5, 0, 1.5)
-//rectAreaLight.lookAt(new THREE.Vector3())
-//scene.add(rectAreaLight)
-
-// SpotLight - FlashLight
-const spotLight = new THREE.SpotLight(0x11AA55, 0.5, 10, Math.PI * 0.1, 0.25, 1)
-spotLight.position.set(0, 2, 3)
-spotLight.target.position.x = -0.75
-
-scene.add(spotLight.target, spotLight)
-```
-
-### Light Helpers
-
-Assit us positioning the lights
-
-``` javascript
-import { RectAreaLightHelper } from 'three/examples/jsm/helpers/RectAreaLightHelper.js'
-
-/**
- * Light Helpers
- */
-const hemisphereLightHelper = new THREE.HemisphereLightHelper(hemisphereLight, 0.2)
-
-const directionalLightHelper = new THREE.DirectionalLightHelper(directionalLight, 0.2)
-
-const pointLightHelper = new THREE.PointLightHelper(pointLight, 0.2)
-
-const rectAreaLightHelper = new RectAreaLightHelper(rectAreaLight)
-
-scene.add(hemisphereLightHelper, directionalLightHelper, pointLightHelper, rectAreaLightHelper)
-```
-
-------
-
-## Shadows
-
-Lights that support shadows:
-* PointLight
-* DirectionalLight
-* SpotLight
-
-``` javascript
-// Enable shadows with this light
-directionalLight.castShadow = true
-
-// CastShadow
-sphere.castShadow = true
-
-// Receive shadow
-plane.receiveShadow = true
-
-// Enable shadows on the renderer
-renderer.shadowMap.enabled = true
-```
-
-### Optimize shadows resolution
-
-``` javascript
-// Enable shadows with this light
-directionalLight.castShadow = true
-
-// Optimize shadow map, default is 512x512
-directionalLight.shadow.mapSize.width = 1024
-directionalLight.shadow.mapSize.height = 1024
-directionalLight.shadow.camera.near = 1
-directionalLight.shadow.camera.far = 6
-
-// Move Shadow
-directionalLight.shadow.camera.top = 2
-directionalLight.shadow.camera.right = 2
-directionalLight.shadow.camera.bottom = -2
-directionalLight.shadow.camera.left = -2
-
-// Blur Shadow
-//directionalLight.shadow.radius = 10
-
-scene.add(directionalLight)
-```
-
-### ShadowMap Algorithms
-
-Algorithms in order of increasing performance and decreasing quality:
-* BasicShadowMaps
-* PCFShadowMap
-* PCFSoftShadowMap
-* VSMShadowMap
-
-``` javascript
-renderer.shadowMap.type = THREE.PCFSoftShadowMap
-```
-
-### SpotLight
-
-
-``` javascript
-// SpotLight
-const spotLight = new THREE.SpotLight(0xffffff, 0.4, 10, Math.PI * 0.3)
-
-spotLight.castShadow = true
-spotLight.position.set(0, 2, 3)
-
-spotLight.shadow.mapSize.width = 1024
-spotLight.shadow.mapSize.height = 1024
-spotLight.shadow.camera.near = 1
-spotLight.shadow.camera.far = 6
-
-spotLight.shadow.camera.fov = 30
-
-scene.add(spotLight, spotLight.target)
-```
-
-### PointLight
-
-``` javascript
-// PointLight
-const pointLight = new THREE.PointLight(0xffffff, 0.3)
-
-pointLight.castShadow = true
-
-pointLight.position.set(-1, 1, 0)
-
-pointLight.shadow.mapSize.width = 1024
-pointLight.shadow.mapSize.height = 1024
-pointLight.shadow.camera.near = 0.1
-pointLight.shadow.camera.far = 5
-
-scene.add(pointLight)
-```
-
-### Baking Shadows
-
-Better performance, can't move the shadows or lights
-
-``` javascript
-renderer.shadowMap.enabled = false
-directionalLight.castShadow = false
-spotLight.castShadow = false
-pointLight.castShadow = false
-
-/**
- * Textures
- *
- */
-const textureLoader = new THREE.TextureLoader()
-const bakedShadow = textureLoader.load('/textures/bakedShadow.jpg')
-
-// On the receiving
-const plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(5, 5),
-    new THREE.MeshBasicMaterial({
-        map: bakedShadow
-    })
-)
-```
-
-------
 
 
 Update Notes:
