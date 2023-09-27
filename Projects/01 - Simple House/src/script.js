@@ -20,6 +20,7 @@ const scene = new THREE.Scene()
  * Textures
  */
 const textureLoader = new THREE.TextureLoader()
+
 // Door
 const doorColorTexture = textureLoader.load('textures/door/color.jpg')
 const doorAlphaTexture = textureLoader.load('textures/door/alpha.jpg')
@@ -28,16 +29,39 @@ const doorHeightTexture = textureLoader.load('textures/door/height.jpg')
 const doorNormalTexture = textureLoader.load('textures/door/normal.jpg')
 const doorMetalnessTexture = textureLoader.load('textures/door/metalness.jpg')
 const doorRoughnessTexture = textureLoader.load('textures/door/roughness.jpg')
+
 // Walls
 const wallsColorTexture = textureLoader.load('textures/walls/color.jpg')
 const wallsAmbientOcclusionTexture = textureLoader.load('textures/walls/ambientOcclusion.jpg')
 const wallsNormalTexture = textureLoader.load('textures/walls/normal.jpg')
 const wallsRoughnessTexture = textureLoader.load('textures/walls/roughness.jpg')
+
 // Grass
 const grassColorTexture = textureLoader.load('textures/grass/color.jpg')
-const grassAmbientOcclusionTexture = textureLoader.load('textures/grass/ambientOcclusion.png')
+const grassAmbientOcclusionTexture = textureLoader.load('textures/grass/ambientOcclusion.jpg')
 const grassNormalTexture = textureLoader.load('textures/grass/normal.jpg')
 const grassRoughnessTexture = textureLoader.load('textures/grass/roughness.jpg')
+
+// Roof
+const roofColorTexture = textureLoader.load('textures/roof/color.jpg')
+const roofAmbientOcclusionTexture = textureLoader.load('textures/roof/ambientOcclusion.jpg')
+const roofNormalTexture = textureLoader.load('textures/roof/normal.jpg')
+const roofRoughnessTexture = textureLoader.load('textures/roof/roughness.jpg')
+const roofHeightTexture = textureLoader.load('textures/roof/height.png')
+
+// Graves
+const gravesColorTexture = textureLoader.load('textures/graves/color.jpg')
+const gravesAmbientOcclusionTexture = textureLoader.load('textures/graves/ambientOcclusion.jpg')
+const gravesNormalTexture = textureLoader.load('textures/graves/normal.jpg')
+const gravesRoughnessTexture = textureLoader.load('textures/graves/roughness.jpg')
+const gravesHeightTexture = textureLoader.load('textures/graves/height.png')
+
+// Bushes
+const bushesColorTexture = textureLoader.load('textures/bushes/color.jpg')
+const bushesAmbientOcclusionTexture = textureLoader.load('textures/bushes/ambientOcclusion.jpg')
+const bushesNormalTexture = textureLoader.load('textures/bushes/normal.jpg')
+const bushesRoughnessTexture = textureLoader.load('textures/bushes/roughness.jpg')
+const bushesHeightTexture = textureLoader.load('textures/bushes/height.png')
 
 /**
  * Fog
@@ -72,9 +96,33 @@ house.add(walls)
 // Roof
 const roof = new THREE.Mesh(
     new THREE.ConeGeometry(3.5, 1, 4),
-    new THREE.MeshStandardMaterial({color: '#b35f44'})
+    new THREE.MeshStandardMaterial({
+        map: roofColorTexture,
+        transparent: true,
+        aoMap: roofAmbientOcclusionTexture,
+        displacementMap: roofHeightTexture,
+        displacementScale: 0.0001,
+        normalMap: roofNormalTexture,
+        roughnessMap: roofRoughnessTexture
+    })
 )
 
+roofColorTexture.repeat.set(8, 8)
+roofAmbientOcclusionTexture.repeat.set(8, 8)
+roofNormalTexture.repeat.set(8, 8)
+roofRoughnessTexture.repeat.set(8, 8)
+
+roofColorTexture.wrapS = THREE.RepeatWrapping
+roofColorTexture.wrapT = THREE.RepeatWrapping
+roofAmbientOcclusionTexture.wrapS = THREE.RepeatWrapping
+roofAmbientOcclusionTexture.wrapT = THREE.RepeatWrapping
+roofNormalTexture.wrapS = THREE.RepeatWrapping
+roofNormalTexture.wrapT = THREE.RepeatWrapping
+roofRoughnessTexture.wrapS = THREE.RepeatWrapping
+roofRoughnessTexture.wrapT = THREE.RepeatWrapping
+
+
+roofColorTexture.rotation = Math.PI * 0.25
 roof.position.y = 2.5 + 0.5
 roof.rotation.y = Math.PI * 0.25
 
@@ -104,7 +152,30 @@ house.add(door)
 
 // Bushes
 const bushGeometry = new THREE.SphereGeometry(1, 16, 16)
-const bushMaterial = new THREE.MeshStandardMaterial({color: '#89c853'})
+const bushMaterial = new THREE.MeshStandardMaterial({
+    map: bushesColorTexture,
+    transparent: true,
+    aoMap: bushesAmbientOcclusionTexture,
+    displacementMap: bushesHeightTexture,
+    displacementScale: 0.0001,
+    normalMap: bushesNormalTexture,
+    roughnessMap: bushesRoughnessTexture
+})
+
+bushesColorTexture.repeat.set(8, 8)
+bushesAmbientOcclusionTexture.repeat.set(8, 8)
+bushesNormalTexture.repeat.set(8, 8)
+bushesRoughnessTexture.repeat.set(8, 8)
+
+bushesColorTexture.wrapS = THREE.RepeatWrapping
+bushesColorTexture.wrapT = THREE.RepeatWrapping
+bushesAmbientOcclusionTexture.wrapS = THREE.RepeatWrapping
+bushesAmbientOcclusionTexture.wrapT = THREE.RepeatWrapping
+bushesNormalTexture.wrapS = THREE.RepeatWrapping
+bushesNormalTexture.wrapT = THREE.RepeatWrapping
+bushesRoughnessTexture.wrapS = THREE.RepeatWrapping
+bushesRoughnessTexture.wrapT = THREE.RepeatWrapping
+
 
 const bush1 = new THREE.Mesh(bushGeometry, bushMaterial)
 bush1.scale.set(0.5, 0.5, 0.5)
@@ -135,7 +206,15 @@ const graves = new THREE.Group()
 scene.add(graves)
 
 const graveGeometry = new THREE.BoxGeometry(0.6, 0.8, 0.2)
-const graveMaterial = new THREE.MeshStandardMaterial({color: '#b2b6b0'})
+const graveMaterial = new THREE.MeshStandardMaterial({
+    map: gravesColorTexture,
+    transparent: true,
+    aoMap: gravesAmbientOcclusionTexture,
+    displacementMap: gravesHeightTexture,
+    displacementScale: -0.0001,
+    normalMap: gravesNormalTexture,
+    roughnessMap: gravesRoughnessTexture
+})
 
 for(let i = 0; i < 50; i++) {
     const angle = Math.random() * Math.PI * 2
@@ -165,7 +244,8 @@ const grass = new THREE.Mesh(
         map: grassColorTexture,
         aoMap: grassAmbientOcclusionTexture,
         normalMap: grassNormalTexture,
-        roughnessMap: grassRoughnessTexture
+        roughnessMap: grassRoughnessTexture,
+        transparent: true
     })
 )
 
