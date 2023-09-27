@@ -19,7 +19,7 @@
 
 Setup project with `Vite`
 
-#### Download [Node.js](https://nodejs.org/en/download/).
+Download [Node.js](https://nodejs.org/en/download/).
 
 Run this followed commands:
 
@@ -42,7 +42,8 @@ npm run build
 * To put objects, models, lights, etc. in it
 * At some point we ask Three.js to render that scene
 
-### Basic scene example
+Basic scene example
+
 ``` javascript
 // Scene
 const scene = new THREE.Scene();
@@ -88,7 +89,7 @@ renderer.render(scene, camera);
 * Field of View (FOV) in Degrees
 * Aspect Ratio (screen resolution)
 
-#### Custom camera controls
+Custom camera controls
 
 ``` javascript
 
@@ -136,7 +137,8 @@ const tick = () =>
 tick()
 ```
 
-#### Built in Controls
+Built in Controls
+
 * DeviceOrientationControls (Android)
 * FlyControls
 * OrbitControls
@@ -172,7 +174,8 @@ tick()
 
 ## Fullscreen
 
-### Fullscreen example
+Fullscreen example
+
 ``` javascript
 const sizes = {
     width: window.innerWidth,
@@ -199,7 +202,7 @@ canvas.webgl {
     outline: none;
 }
 ```
-#### Handle `resize` and `pixel ratio`
+Handle `resize` and `pixel ratio`
 
 ``` javascript
 /**
@@ -224,7 +227,7 @@ window.addEventListener('resize', () => {
 
 ```
 
-#### Handle `fullscreen`
+Handle `fullscreen`
 
 ``` javascript
 // Fullscreen with safari support
@@ -251,7 +254,8 @@ window.addEventListener('dblclick', () => {
 
 # 4 - Objects
 
-### To define an object we must take into account the following properties
+To define an object we must take into account the following properties
+
 1. Geometry
 2. Texture
 3. Material
@@ -261,7 +265,8 @@ window.addEventListener('dblclick', () => {
 
 ## 4.1.1 - Geometry
 
-### Geometry is defined by the following properties
+Geometry is defined by the following properties
+
 * width
 * height
 * depth
@@ -323,7 +328,7 @@ scene.add(mesh2)
 
 ## 4.2 - Textures
 
-### Textures are defined by the following properties
+Textures are defined by the following properties
 * Color or Albedo
 * Alpha
 * Height
@@ -361,7 +366,8 @@ The metalness texture is a grayscale image that will specify which part is metal
 The roughness is a grayscale image that comes with metalness, and that will specify which part is rough (white) and which part is smooth (black). This information will help to dissipate the light.
 
 
-### Free textures
+Free textures
+
 * [Polligon](https://www.poliigon.com/search/free?type=textures)
 * [3D Textures](https://3dtextures.me/)
 * [Arroway Textures](https://www.arroway-textures.ch/textures/)
@@ -371,7 +377,8 @@ The roughness is a grayscale image that comes with metalness, and that will spec
 
 You can use photoshop or something similar to edit or create textures
 
-### Texture used in the example
+Texture used in the example
+
 [3D Door Texture](https://3dtextures.me/2019/04/16/door-wood-001/)
 
 
@@ -515,7 +522,8 @@ colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 
 ## 4.3 - Materials
 
-### To implement a material in a certain texture we must take into account the following properties
+To implement a material in a certain texture we must take into account the following properties
+
 * Color
 * Alpha
 * AmbientOcclusion
@@ -524,7 +532,7 @@ colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 * Metalness
 * Roughness
 
-### Algorithm that processes the pixels in a certain object to render, we will use some standard meshes
+Algorithm that processes the pixels in a certain object to render, we will use some standard meshes
 
 * MeshBasicMaterial
 * MeshNormalMaterial
@@ -652,7 +660,8 @@ Image of the surroundings of the scene, allows you to create realistic reflectio
 
 [Lights Docs](https://threejs.org/docs/?q=light#api/en/lights/AmbientLight)
 
-### Types of light
+Types of light
+
 * AmbientLight      Minimal
 * HemisphereLight   Minimal
 * DirectionalLight  Moderate
@@ -776,7 +785,7 @@ scene.add(directionalLight)
 
 ### 4.5.3 - ShadowMap Algorithms
 
-### Algorithms in order of increasing performance and decreasing quality
+Algorithms in order of increasing performance and decreasing quality:
 * BasicShadowMaps
 * PCFShadowMap
 * PCFSoftShadowMap
@@ -854,7 +863,8 @@ const plane = new THREE.Mesh(
 
 # 5 - Renderer
 
-### Display the scene onto a HTML canvas
+Display the scene onto a HTML canvas
+
 * Render from POV
 * Result draw into a canvas
 * Canvas is a HTML element in witch you can draw stuff
@@ -942,7 +952,7 @@ Animation suggestions for looping
 
 ```
 
-### For simpler animation controll, use `GSAP library`:
+For simpler animation controll, use `GSAP library`:
 
 Install inside `client/frontend`, this moves the object 2 units in 1 second after 1 second delay
 
@@ -1178,7 +1188,93 @@ fontLoader.load(
 
 # 4 - Particles
 
+[Particle Pack](https://www.kenney.nl/assets/particle-pack)
+
+* Geometry
+* Material
+* Points
+
+## Default Geometry
 ``` javascript
+/**
+ * Particles
+ */
+const particlesGeometry = new THREE.SphereGeometry(1, 32, 32)
+const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.02,
+    sizeAttenuation: true,
+})
+
+const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+
+scene.add(particles)
+```
+## Custom Geometry
+``` javascript
+/**
+ * Particles
+ */
+const particlesGeometry = new THREE.BufferGeometry()
+const count = 5000
+
+const positions = new Float32Array(count * 3)    // x,y,z * 3
+
+for(let i = 0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 10
+}
+
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+
+const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.02,
+    sizeAttenuation: true,
+})
+
+const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+
+scene.add(particles)
+```
+
+## Particles Map and AlphaMap
+
+To clean the corners of the texture and the areas that we are not supposed to see on the particle
+
+``` javascript
+const particlesMaterial = new THREE.PointsMaterial({
+    size: 0.02,
+    sizeAttenuation: true,
+    map: particlesTexture,
+    color: new THREE.Color(0, 125, 125),
+    transparent: true,
+    alphaMap: particlesTexture,
+    depthWrite: true,
+
+    // Blending
+    depthWrite: false,
+    blending: THREE.AdditiveBlending    // Makes the particle in front of another brighter, impact the performance
+})
+```
+## Randomize colors
+
+We create a random value for R, G and B
+
+``` javascript	
+const positions = new Float32Array(count * 3)    // x,y,z * 3
+const colors = new Float32Array(count * 3) // red, green, blue
+
+for(let i = 0; i < count * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 10
+    colors[i] = Math.random()
+}
+
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
+```
+
+## Animize particles
+
+
+``` javascript	
 
 
 ```
