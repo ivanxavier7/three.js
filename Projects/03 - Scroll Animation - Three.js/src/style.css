@@ -4,10 +4,9 @@
     padding: 0;
 }
 
-html,
-body
+html
 {
-    overflow: hidden;
+    background: #1d1b21;
 }
 
 .webgl
