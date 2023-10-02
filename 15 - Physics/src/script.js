@@ -35,39 +35,6 @@ const environmentMapTexture = cubeTextureLoader.load([
 ])
 
 /**
- * Test sphere
- */
-const sphere = new THREE.Mesh(
-    new THREE.SphereGeometry(0.5, 32, 32),
-    new THREE.MeshStandardMaterial({
-        metalness: 0.3,
-        roughness: 0.4,
-        envMap: environmentMapTexture,
-        envMapIntensity: 0.5
-    })
-)
-sphere.castShadow = true
-sphere.position.y = 0.5
-scene.add(sphere)
-
-/**
- * Floor
- */
-const floor = new THREE.Mesh(
-    new THREE.PlaneGeometry(10, 10),
-    new THREE.MeshStandardMaterial({
-        color: '#777777',
-        metalness: 0.3,
-        roughness: 0.4,
-        envMap: environmentMapTexture,
-        envMapIntensity: 0.5
-    })
-)
-floor.receiveShadow = true
-floor.rotation.x = - Math.PI * 0.5
-scene.add(floor)
-
-/**
  * Physics World
  */
 const world = new CANNON.World()
@@ -99,9 +66,7 @@ const sphereBody = new CANNON.Body({
 })
 
 // Floor
-const floorShape = new CANNON.Box(
-    CANNON.Vec3(floor.geometry.parameters.width / 2, floor.geometry.parameters.height / 2, 0.1)
-)
+const floorShape = new CANNON.Plane()
 const floorBody = new CANNON.Body({
     mass: 0,
     shape: floorShape
@@ -112,7 +77,41 @@ floorBody.quaternion.setFromAxisAngle(
     Math.PI * 0.5
 )
 
-world.addBody(sphereBody, floorBody)
+world.addBody(sphereBody)
+world.addBody(floorBody)
+
+/**
+ * Test sphere
+ */
+const sphere = new THREE.Mesh(
+    new THREE.SphereGeometry(0.5, 32, 32),
+    new THREE.MeshStandardMaterial({
+        metalness: 0.3,
+        roughness: 0.4,
+        envMap: environmentMapTexture,
+        envMapIntensity: 0.5
+    })
+)
+sphere.castShadow = true
+sphere.position.y = 0.5
+scene.add(sphere)
+
+/**
+ * Floor
+ */
+const floor = new THREE.Mesh(
+    new THREE.PlaneGeometry(10, 10),
+    new THREE.MeshStandardMaterial({
+        color: '#777777',
+        metalness: 0.3,
+        roughness: 0.4,
+        envMap: environmentMapTexture,
+        envMapIntensity: 0.5
+    })
+)
+floor.receiveShadow = true
+floor.rotation.x = - Math.PI * 0.5
+scene.add(floor)
 
 /**
  * Lights
