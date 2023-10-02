@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import * as dat from 'lil-gui'
+import gsap from 'gsap'
 
 THREE.ColorManagement.enabled = false
 
@@ -16,6 +17,7 @@ gui
     .addColor(parameters, 'materialColor')
     .onChange(() => {
         material.color.set(parameters.materialColor)
+        particlesMaterial.color.set(parameters.materialColor)
     })
 
 /**
@@ -68,7 +70,36 @@ mesh1.position.x = 2
 mesh2.position.x = -2
 mesh3.position.x = 2
 
+const sectionMeshes = [ mesh1, mesh2, mesh3 ]
+
 scene.add(mesh1, mesh2, mesh3)
+
+/**
+ * Particles
+ */
+const particlesCount = 200
+const positions = new Float32Array(particlesCount * 3)
+
+for(let i=0; i<particlesCount; i++) {
+    positions[i * 3] = (Math.random() -0.5) * 10    // x
+    positions[i * 3 + 1] = objectsDistance * 0.5 - Math.random() * objectsDistance * sectionMeshes.length       // y
+    positions[i * 3 + 2] = (Math.random()) * 10     // z
+}
+
+const particlesGeometry = new THREE.BufferGeometry()
+particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+
+// Material
+const particlesMaterial = new THREE.PointsMaterial({
+    color: parameters.materialColor,
+    sizeAttenuation: true,
+    size: 0.03,
+})
+
+// Points
+const particles = new THREE.Points(particlesGeometry, particlesMaterial)
+
+scene.add(particles)
 
 /**
  * Lights
@@ -103,10 +134,14 @@ window.addEventListener('resize', () =>
 /**
  * Camera
  */
+// Camera Group
+const cameraGroup = new THREE.Group()
+scene.add(cameraGroup)
+
 // Base camera
 const camera = new THREE.PerspectiveCamera(35, sizes.width / sizes.height, 0.1, 100)
 camera.position.z = 6
-scene.add(camera)
+cameraGroup.add(camera)
 
 /**
  * Renderer
@@ -123,32 +158,68 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
  * Scroll Animation
  */
 let scrollY = window.scrollY
+let currentSection = 0
 
 window.addEventListener('scroll', () => {
     scrollY = window.scrollY
 
-    console.log(scrollY)
+    // Trigger animation in new section
+    const newSection = Math.round(scrollY / sizes.height)
+    
+    if(newSection !== currentSection){
+        currentSection = newSection
+        console.log('Changed!', currentSection)
+
+        gsap.to(
+            sectionMeshes[currentSection].rotation, {
+                duration: 1.5,
+                ease: 'power2.inOut',
+                x: '+=6',
+                y: '+=3',
+                z: '+=1.5'
+            }
+        )
+    }
 })
 
+/**
+ * Cursos Animation
+ */
+const cursor = {
+    x: 0,
+    y: 0
+}
 
+window.addEventListener('mousemove', (event) => {
+    cursor.x = event.clientX / sizes.width - 0.5
+    cursor.y = event.clientY / sizes.height - 0.5
+})
 
 /**
  * Animate
  */
 const clock = new THREE.Clock()
-const sectionMeshes = [ mesh1, mesh2, mesh3 ]
+let previousTime = 0
 
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+    const deltaTime = elapsedTime - previousTime
+    previousTime = elapsedTime
 
     // Update objects
     camera.position.y = - scrollY / sizes.height * objectsDistance
 
     for( const mesh of sectionMeshes ) {
-        mesh.rotation.x = elapsedTime * 0.1
-        mesh.rotation.y = elapsedTime * 0.12
+        mesh.rotation.x += deltaTime * 0.1
+        mesh.rotation.y += deltaTime * 0.12
     }
+
+    // Update Camera
+    const parallaxX = cursor.x * 0.5
+    const parallaxY = - cursor.y * 0.5
+    cameraGroup.rotation.x += (parallaxX - cameraGroup.rotation.x) * 2 * deltaTime
+    cameraGroup.rotation.y += (parallaxY - cameraGroup.rotation.y) * 2 * deltaTime
 
     // Render
     renderer.render(scene, camera)
