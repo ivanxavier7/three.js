@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
+import CANNON from 'cannon'
 
 THREE.ColorManagement.enabled = false
 
@@ -65,6 +66,53 @@ const floor = new THREE.Mesh(
 floor.receiveShadow = true
 floor.rotation.x = - Math.PI * 0.5
 scene.add(floor)
+
+/**
+ * Physics World
+ */
+const world = new CANNON.World()
+world.gravity.set(0, -9.82, 0)  // Earth gravity
+
+// Materials 
+const concreteMaterial = new CANNON.Material('concrete')
+const plasticMaterial = new CANNON.Material('plastic')
+
+const concretePlasticContactMaterial = new CANNON.ContactMaterial(
+    concreteMaterial,
+    plasticMaterial,
+    {
+        friction: 0.1,
+        restitution: 0.7
+    }
+)
+
+world.addContactMaterial(concretePlasticContactMaterial)
+
+// Body or Objects
+
+// Sphere
+const sphereShape = new CANNON.Sphere(0.5)
+const sphereBody = new CANNON.Body({
+    mass: 1,
+    position: new CANNON.Vec3(0, 3, 0),
+    shape: sphereShape
+})
+
+// Floor
+const floorShape = new CANNON.Box(
+    CANNON.Vec3(floor.geometry.parameters.width / 2, floor.geometry.parameters.height / 2, 0.1)
+)
+const floorBody = new CANNON.Body({
+    mass: 0,
+    shape: floorShape
+})
+
+floorBody.quaternion.setFromAxisAngle(
+    new CANNON.Vec3(-1, 0, 0),
+    Math.PI * 0.5
+)
+
+world.addBody(sphereBody, floorBody)
 
 /**
  * Lights
@@ -134,10 +182,20 @@ renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
  * Animate
  */
 const clock = new THREE.Clock()
+let oldElapsedTime = 0
 
 const tick = () =>
 {
     const elapsedTime = clock.getElapsedTime()
+    const deltaTime = elapsedTime - oldElapsedTime
+    oldElapsedTime = elapsedTime
+
+    // Update Physics World
+    world.step(1 / 60, oldElapsedTime, 3)
+
+    sphere.position.copy(sphereBody.position)
+
+    console.log(sphereBody.position.y)
 
     // Update controls
     controls.update()
