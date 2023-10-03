@@ -1451,10 +1451,10 @@ tick()
 
 ### Apply Forces
 
-1. applyForce           Apply force from a specified point in space
-2. applyImpulse         Apply force to the velocity instead of the force
-3. applyLocalForce      Apply force in a specific coordinate
-4. applyLocalImpulse    Same as applyImpulse in a specific coordinate
+* applyForce           Apply force from a specified point in space
+* applyImpulse         Apply force to the velocity instead of the force
+* applyLocalForce      Apply force in a specific coordinate
+* applyLocalImpulse    Same as applyImpulse in a specific coordinate
 
 ``` javascript
 // Ball push
@@ -1573,9 +1573,9 @@ tick()
 ### Performance
 
 `Broadphase`
-1. NaiveBroadphase - Test collisions between bodies against other bodies
-2. GridBroadphase - quadrilles the world and oly teste bodies agains other bodies in the same grid box
-3. SAPBroadphase (Sweep And Prune) - Teste Bodies on arbitrary axes
+* NaiveBroadphase - Test collisions between bodies against other bodies
+* GridBroadphase - quadrilles the world and oly teste bodies agains other bodies in the same grid box
+* SAPBroadphase (Sweep And Prune) - Teste Bodies on arbitrary axes
 
 ``` javascript
 /**
@@ -1669,10 +1669,10 @@ gui.add(debugObject, 'reset')
 
 Enable constraints between bodies
 
-1. HingeConstraint - acts like a door hinge
-2. DistanceConstraint - forces the bodies to keep a distance betwwen each other
-3. LockConstraint - Merges the bodies like if they were one piece
-4. PointToPointCoinstraint - Glues the bodies to a specific point
+* HingeConstraint - acts like a door hinge
+* DistanceConstraint - forces the bodies to keep a distance betwwen each other
+* LockConstraint - Merges the bodies like if they were one piece
+* PointToPointCoinstraint - Glues the bodies to a specific point
 
 [Cannon docs](http://schteppe.github.io/cannon.js/docs/)
 You can extract examples, such as cars with their physics in the documentation.
