@@ -1341,7 +1341,7 @@ import CANNON from 'cannon'
  * Physics World
  */
 const world = new CANNON.World()
-world.gravity.set(0, -1, 0)  // Earth gravity   -1 * 9.82
+world.gravity.set(0, -9.82, 0)  // Earth gravity   -1 * 9.82
 
 // Materials 
 //const concreteMaterial = new CANNON.Material('concrete')
@@ -1541,15 +1541,168 @@ const createSphere = (radius, position) => {
 createSphere(0.5, {x: 0, y: 3, z: 0})
 createSphere(0.5, {x: 2, y: 3, z: 2})
 createSphere(0.5, {x: 3, y: 3, z: 2})
+
+const tick = () =>
+{
+    const elapsedTime = clock.getElapsedTime()
+    const deltaTime = elapsedTime - oldElapsedTime
+    oldElapsedTime = elapsedTime
+
+    // Update Physics World
+    world.step(1 / 60, deltaTime, 3)
+
+    for(const obj of objectsToUpdate) {
+        obj.mesh.position.copy(obj.body.position)
+        // Rotating objects after hitting something
+        obj.mesh.quaternion.copy(obj.body.quaternion)
+    }
+    
+    // Update controls
+    controls.update()
+
+    // Render
+    renderer.render(scene, camera)
+
+    // Call tick again on the next frame
+    window.requestAnimationFrame(tick)
+}
+
+tick()
 ```
 
-### Events 
+### Performance
+
+`Broadphase`
+1. NaiveBroadphase - Test collisions between bodies against other bodies
+2. GridBroadphase - quadrilles the world and oly teste bodies agains other bodies in the same grid box
+3. SAPBroadphase (Sweep And Prune) - Teste Bodies on arbitrary axes
 
 ``` javascript
+/**
+ * Physics World
+ */
+const world = new CANNON.World()
+world.gravity.set(0, -1, 0)  // Earth gravity   -1 * 9.82
+world.broadphase = new CANNON.SAPBroadphase(world)
+world.allowSleep = true
+```
+
+Allow sleep prevents calculations on objects that are stationary
+
+### Events
+
+* Colide
+* Sleep
+* Wakeup
 
 
+``` javascript
+/**
+ * Sounds
+ */
+const hitSound = new Audio('/sounds/hit.mp3')
+
+const playHitSound = (collision) => {
+    console.log(collision.contact.getImpactVelocityAlongNormal())     // Impact speed
+    const impactStrength = collision.contact.getImpactVelocityAlongNormal()
+
+    if(impactStrength > 1.5) {
+        
+        hitSound.currentTime = 0
+        hitSound.play()
+    }
+
+    if(impactStrength > 10) {
+        hitSound.volume = (1 * Math.random()).toFixed(2)
+        console.log((1 * Math.random()).toFixed(2))
+    } else if (impactStrength > 7.5) {
+        hitSound.volume = 0.75
+        console.log((1 * Math.random()).toFixed(2))
+    } else if (impactStrength > 5) {
+        hitSound.volume = 0.5
+        console.log((1 * Math.random()).toFixed(2))
+    } else if (impactStrength > 1.5){
+        hitSound.volume = 0.25
+        console.log((1 * Math.random()).toFixed(2))
+    }
+}
+
+
+const createBox = (widht, height, depth, position) => {
+
+    // ...
+
+    body.addEventListener('collide', playHitSound)
+
+    world.addBody(body)
+
+    // ...
+}
 
 ```
+
+### Remove Objects
+
+``` javascript
+/**
+ * Debug
+ */
+const gui = new dat.GUI()
+const debugObject = {}
+
+debugObject.reset = () => {
+    for(const obj of objectsToUpdate) {
+        // Remove Body
+        obj.body.removeEventListener('collide', playHitSound)   // remove event listener
+        world.removeBody(obj.body)
+
+        // Remove Mesh
+        scene.remove(obj.mesh)
+    }
+    // Empty Array
+    objectsToUpdate.slice(0, objectsToUpdate.length)
+}
+gui.add(debugObject, 'reset')
+```
+
+### Constraints
+
+Enable constraints between bodies
+
+1. HingeConstraint - acts like a door hinge
+2. DistanceConstraint - forces the bodies to keep a distance betwwen each other
+3. LockConstraint - Merges the bodies like if they were one piece
+4. PointToPointCoinstraint - Glues the bodies to a specific point
+
+[Cannon docs](http://schteppe.github.io/cannon.js/docs/)
+You can extract examples, such as cars with their physics in the documentation.
+
+### Workers
+Workers allow dividing the processor's work between several threads, allowing to improve performance
+
+### Change to Cannon-es
+More recent
+
+``` bash
+npm uninstall --save cannon
+npm install --save cannon-es@0.15.1
+```
+``` javascript
+import * as CANNON from 'cannon-es'
+```
+
+### Ammo.js
+
+* Bullet physics engine
+* WebAssembly Support (low-level language)
+* More Popular
+* More Features
+* Harder
+
+### Physijs
+
+* Uses Ammo and uses workers natively
+* Creates body and mesh in the same object
 
 ------
 

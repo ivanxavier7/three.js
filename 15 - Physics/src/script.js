@@ -22,6 +22,33 @@ debugObject.createSphere = () => {
 }
 gui.add(debugObject, 'createSphere')
 
+debugObject.createBox = () => {
+    createBox(
+        Math.random(),
+        Math.random(),
+        Math.random(),
+        {
+            x: (Math.random() * 0.5) * 3,
+            y: 3,
+            z: (Math.random() * 0.5) * 3,
+        })
+}
+gui.add(debugObject, 'createBox')
+
+debugObject.reset = () => {
+    for(const obj of objectsToUpdate) {
+        // Remove Body
+        obj.body.removeEventListener('collide', playHitSound)   // remove event listener
+        world.removeBody(obj.body)
+
+        // Remove Mesh
+        scene.remove(obj.mesh)
+    }
+    // Empty Array
+    objectsToUpdate.slice(0, objectsToUpdate.length)
+}
+gui.add(debugObject, 'reset')
+
 /**
  * Base
  */
@@ -30,6 +57,36 @@ const canvas = document.querySelector('canvas.webgl')
 
 // Scene
 const scene = new THREE.Scene()
+
+/**
+ * Sounds
+ */
+const hitSound = new Audio('/sounds/hit.mp3')
+
+const playHitSound = (collision) => {
+    //console.log(collision.contact.getImpactVelocityAlongNormal())     // Impact speed
+    const impactStrength = collision.contact.getImpactVelocityAlongNormal()
+
+    if(impactStrength > 1.5) {
+        
+        hitSound.currentTime = 0
+        hitSound.play()
+    }
+
+    if(impactStrength > 10) {
+        hitSound.volume = (1 * Math.random()).toFixed(2)
+        console.log((1 * Math.random()).toFixed(2))
+    } else if (impactStrength > 7.5) {
+        hitSound.volume = 0.75
+        console.log((1 * Math.random()).toFixed(2))
+    } else if (impactStrength > 5) {
+        hitSound.volume = 0.5
+        console.log((1 * Math.random()).toFixed(2))
+    } else if (impactStrength > 1.5){
+        hitSound.volume = 0.25
+        console.log((1 * Math.random()).toFixed(2))
+    }
+}
 
 /**
  * Textures
@@ -51,6 +108,8 @@ const environmentMapTexture = cubeTextureLoader.load([
  */
 const world = new CANNON.World()
 world.gravity.set(0, -9.82, 0)  // Earth gravity   -1 * 9.82
+world.broadphase = new CANNON.SAPBroadphase(world)
+world.allowSleep = true
 
 // Materials 
 //const concreteMaterial = new CANNON.Material('concrete')
@@ -210,10 +269,51 @@ const createSphere = (radius, position) => {
     })
 }
 
+const boxGeometry = new THREE.BoxGeometry(1, 1, 1)
+const boxMaterial = new THREE.MeshStandardMaterial({
+    metalness: 0.3,
+    roughness: 0.4,
+    envMap: environmentMapTexture,
+})
+
+const createBox = (widht, height, depth, position) => {
+    const mesh = new THREE.Mesh(boxGeometry, boxMaterial)
+
+    mesh.castShadow = true
+    mesh.position.copy(position)
+    mesh.scale.set(widht, height, depth)
+
+    scene.add(mesh)
+
+    // Physics Body
+    const shape = new CANNON.Box(new CANNON.Vec3(widht * 0.5, height * 0.5, depth * 0.5))
+
+    const body = new CANNON.Body({
+        mass: 1,
+        position: new CANNON.Vec3(0, 3, 0),
+        shape: shape,
+        material: defaultMaterial
+    })
+
+    body.position.copy(position)
+
+    body.addEventListener('collide', playHitSound)
+
+    world.addBody(body)
+
+    // Save Objects
+    objectsToUpdate.push({
+        mesh,
+        body
+    })
+}
+
 // Body or Objects
 createSphere(0.5, {x: 0, y: 3, z: 0})
 createSphere(0.5, {x: 2, y: 3, z: 2})
 createSphere(0.5, {x: 3, y: 3, z: 2})
+createBox(0.5, 0.5, 0.5, {x: 0, y: 3, z: 0})
+
 
 /**
  * Animate
@@ -232,6 +332,8 @@ const tick = () =>
 
     for(const obj of objectsToUpdate) {
         obj.mesh.position.copy(obj.body.position)
+        // Rotating objects after colliding something
+        obj.mesh.quaternion.copy(obj.body.quaternion)
     }
     
     // Update controls
