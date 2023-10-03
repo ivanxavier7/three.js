@@ -2,6 +2,7 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 
 THREE.ColorManagement.enabled = false
 
@@ -20,7 +21,54 @@ const scene = new THREE.Scene()
 /**
  * Models
  */
+
+const dracoLoader = new DRACOLoader()
+dracoLoader.setDecoderPath('/draco/')   // Decoder already in the static path
+
 const gltfLoader = new GLTFLoader()
+gltfLoader.setDRACOLoader(dracoLoader)
+
+let mixer =  null
+
+gltfLoader.load(
+    //'/models/Duck/glTF/Duck.gltf',
+    //'/models/Duck/glTF-Binary/Duck.glb',
+    //'/models/Duck/glTF-Embedded/Duck.gltf',
+    '/models/Fox/glTF/Fox.gltf',
+
+    //'/models/FlightHelmet/glTF/FlightHelmet.gltf',
+    (gltf) => {
+        console.log('success')
+        console.log(gltf)       // We can import everything from this object or just what we need
+
+        // After adding, extracting from the scene, as it reduces the number of children in the scene, reduces the number of cycles and does not load all objects
+        /*
+        const children = [...gltf.scene.children]
+        for(const child of children){
+            scene.add(gltf.scene.children[0])
+        }
+        */
+
+
+        
+        mixer = new THREE.AnimationMixer(gltf.scene)
+        const action = mixer.clipAction(gltf.animations[0])     // Third Animation
+
+        action.play()
+
+        gltf.scene.scale.set(0.025, 0.025, 0.025)
+
+        scene.add(gltf.scene)   // add everything
+    },
+    (progress) => {
+        console.log('progress')
+        console.log(progress)
+    },
+    (error) => {
+        console.log('error')
+        console.log(error)
+    }
+)
 
 /**
  * Floor
@@ -113,6 +161,11 @@ const tick = () =>
     const elapsedTime = clock.getElapsedTime()
     const deltaTime = elapsedTime - previousTime
     previousTime = elapsedTime
+
+    // Update Mixer
+    if(mixer !== null) {
+        mixer.update(deltaTime)
+    }
 
     // Update controls
     controls.update()

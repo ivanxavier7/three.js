@@ -457,19 +457,102 @@ Supports:
 
 ### 4. glTF - Draco
 
-* 
-
-``` javascript
-
-
-```
+* Multiple Files
+* Lighter than default
+* Draco is popular in glTF formats
+* Google algorithm under open-source license
+* Need DRACOLoader instance - Models with exaggerated size or too much diversity of models
 
 ### Loading the model
 
 ``` javascript
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader'
 
+/**
+ * Models
+ */
 
+const dracoLoader = new DRACOLoader()
+dracoLoader.setDecoderPath('/draco/')   // Decoder already in the static path
+
+const gltfLoader = new GLTFLoader()
+gltfLoader.setDRACOLoader(dracoLoader)
+
+gltfLoader.load(
+    //'/models/Duck/glTF/Duck.gltf',
+    //'/models/Duck/glTF-Binary/Duck.glb',
+    //'/models/Duck/glTF-Embedded/Duck.gltf',
+    '/models/Duck/glTF-Draco/Duck.gltf',
+
+    //'/models/FlightHelmet/glTF/FlightHelmet.gltf',
+    (gltf) => {
+        console.log('success')
+        console.log(gltf)       // We can import everything from this object or just what we need
+
+        // After adding, extracting from the scene, as it reduces the number of children in the scene, reduces the number of cycles and does not load all objects
+        /*
+        const children = [...gltf.scene.children]
+        for(const child of children){
+            scene.add(gltf.scene.children[0])
+        }
+        */
+
+        scene.add(gltf.scene)   // add everything
+    },
+    (progress) => {
+        console.log('progress')
+        console.log(progress)
+    },
+    (error) => {
+        console.log('error')
+        console.log(error)
+    }
+)
 ```
+
+### Animations inside the model
+
+Imported models can have `AnimationClips`, to use them we need to create an `AnimationMixer`
+
+``` javascript
+
+gltfLoader.load(
+    '/models/Fox/glTF/Fox.gltf',
+    (gltf) => {
+        mixer = new THREE.AnimationMixer(gltf.scene)
+        const action = mixer.clipAction(gltf.animations[0])     // First Animation
+
+        action.play()
+
+        gltf.scene.scale.set(0.025, 0.025, 0.025)
+
+        scene.add(gltf.scene)   // add everything
+    }
+)
+
+const tick = () =>
+{
+    const elapsedTime = clock.getElapsedTime()
+    const deltaTime = elapsedTime - previousTime
+    previousTime = elapsedTime
+
+    // Update Mixer
+    if(mixer !== null) {
+        mixer.update(deltaTime)
+    }
+    // (...)
+}
+```
+
+### THREE.js Online Editor
+
+We can use the online editor to preview the models before importing them
+[THREE.js Editor](https://threejs.org/editor/)
+
+* Add Ambient Light
+* Add Directional Light
+* Import Model
 
 ------
 
