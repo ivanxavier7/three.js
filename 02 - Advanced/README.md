@@ -399,7 +399,81 @@ import * as CANNON from 'cannon-es'
 
 ------
 
-# 2 - Production
+# 2 - Imported Models
+
+3d models can be imported in different [formats](https://en.wikipedia.org/wiki/List_of_file_formats#3dgrapichs), the most popular being:
+
+1. glTF - JSON-Based
+2. OBJ
+3. FBX
+4. STL
+5. PLY
+6. COLLADA
+7. 3DS - 3DSMax
+
+Let's use glTF, increasingly popular because it was made by the Khronos group (OpenGL, WebGL, Vulkan, Collada) and with several partnerships, such as NVidia, AMD, Google, Apple, Nintendo and others
+
+Supports:
+* Geometries
+* Materials
+* Cameras
+* Lights
+* Scenes
+* Animations
+* Skeletons
+* Morphing
+* (...)
+
+[glTF free models](https://github.com/KhronosGroup/glTF-Sample-Models)
+
+### glTF Formats
+
+1. glTF - Default   - JSON representation
+2. glTF - Binary    - Binary representation
+3. glTF - Embedded  - JSON and Binary representation
+4. glTF - Draco     - JSON representation
+
+
+### 1. glTF - Default
+
+* Multiple files
+* Model.gltf - JSON that contains cameras, lights, scenes, materials and object transformations
+* Model0.bin - Binary file that contains geometries (vertices positions, UV coordinates, normals, colors, etc)
+* ModelCM.png - The texture
+
+### 2. glTF - Binary
+
+* Only one file
+* Contains all data compiled in binary
+* lighter that default
+* harder to modify
+
+### 3. glTF - Embedded
+
+* One file
+* JSON format
+* Texture and Geometries are embedded inside the JSON with binary
+* Heavier
+
+### 4. glTF - Draco
+
+* 
+
+``` javascript
+
+
+```
+
+### Loading the model
+
+``` javascript
+
+
+```
+
+------
+
+# 5 - Production
 
 ``` javascript
 
