@@ -1883,7 +1883,7 @@ We can use the online editor to preview the models before importing them
 
 ------
 
-# 3 - Imported Models
+# 3 - Raycaster and Mouse Events
 
 This Casts an ray in specific direction and trigger a event if so, consumes a lot of resources
 
@@ -2038,3 +2038,15 @@ window.addEventListener('click', (_event) => {
     mouse.y = - (_event.clientY / sizes.height) * 2 + 1     // screen Y between -1 and 1
 })
 ```
+
+------
+
+# 3 - Custom Models
+
+[Blender](https://docs.blender.org/)
+* Free
+* Good performance
+* Light
+* Works on most OS
+* Features
+* Community
