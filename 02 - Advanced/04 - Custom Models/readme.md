@@ -29,7 +29,7 @@
 | `T`                       | Toggle Tools                      |
 | `Space` + `Control`       | Maximize area                     |
 | `Q`                       | Favorites                         |
-| `F3`                      | Search action (Switch to `Space`) |
+| `F3`                      | Search action                     |
 | `Z` +  `Control`          | Undo                              |
 | `Z` + `Space` + `Control` | Redo                              |
 
