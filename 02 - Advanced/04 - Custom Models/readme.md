@@ -174,10 +174,9 @@
 3. Choose file format
 4. Choose project static/models folder
 
-## Importing custom model
+## More Blender Youtube resources
 
-``` javascript
-
-
-
-```
+[Blender Guru](https://www.youtube.com/@blenderguru)
+[Grant Abbitt](https://www.youtube.com/@grabbitt)
+[CGFastTrack](https://www.youtube.com/@CGFastTrack)
+[CGCookie](https://www.youtube.com/@cg_cookie)
