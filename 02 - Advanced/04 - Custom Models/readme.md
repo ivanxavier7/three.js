@@ -166,3 +166,18 @@
 | `P`             | Define range         |
 | `P` + `Alt`     | Reset range          |
 | `V`             | Handle type          |
+
+## Export model
+
+1. Select objects to be exported
+2. File -> Export -> glTF 2.0
+3. Choose file format
+4. Choose project static/models folder
+
+## Importing custom model
+
+``` javascript
+
+
+
+```
