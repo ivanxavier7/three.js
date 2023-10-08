@@ -1,12 +1,29 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import * as dat from 'lil-gui'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
+
+/**
+ * Load Model
+ */
+const glTFLoader = new GLTFLoader()
+glTFLoader.load(
+    '/models/FlightHelmet/glTF/FlightHelmet.gltf',
+    (gltf) => {
+        gltf.scene.scale.set(10, 10, 10)
+        scene.add(gltf.scene)
+
+        updateAllMaterials()
+    }
+)
+
 
 /**
  * Base
  */
 // Debug
 const gui = new dat.GUI()
+const global = {}
 
 // Canvas
 const canvas = document.querySelector('canvas.webgl')
@@ -15,12 +32,65 @@ const canvas = document.querySelector('canvas.webgl')
 const scene = new THREE.Scene()
 
 /**
+ * Update all materials
+ */
+const updateAllMaterials = () => {
+    // Accessing All 3D objects in the scene
+    scene.traverse((child) => {
+        // Update only in the MeshStandardMaterial Objects
+        if(child.isMesh && child.material.isMeshStandardMaterial){
+            child.material.envMapIntensity = global.envMapIntensity  // light intensity
+        }
+    })
+}
+
+/**
+ * Load EnvironmentMap
+ */
+global.envMapIntensity = 1
+gui.add(global, 'envMapIntensity')
+    .min(0)
+    .max(10)
+    .step(0.001)
+    .onChange(updateAllMaterials)
+
+const cubeTextureLoader = new THREE.CubeTextureLoader()
+const environmentMap = cubeTextureLoader.load([
+    '/environmentMaps/2/px.png',
+    '/environmentMaps/2/nx.png',
+    '/environmentMaps/2/py.png',
+    '/environmentMaps/2/ny.png',
+    '/environmentMaps/2/pz.png',
+    '/environmentMaps/2/nz.png',
+])
+
+scene.backgroundBlurriness = 0    // Blur
+scene.backgroundIntensity = 1       // Background brightness
+scene.environment = environmentMap  // apply environment map as lighting to the whole scene
+scene.background = environmentMap   // apply background
+
+gui.add(scene, 'backgroundBlurriness')
+    .min(0)
+    .max(10)
+    .step(0.001)
+
+gui.add(scene, 'backgroundIntensity')
+    .min(0)
+    .max(10)
+    .step(0.001)    
+
+/**
  * Torus Knot
  */
 const torusKnot = new THREE.Mesh(
     new THREE.TorusKnotGeometry(1, 0.4, 100, 16),
-    new THREE.MeshBasicMaterial()
+    new THREE.MeshStandardMaterial({
+        roughness: 0.3,
+        metalness: 1,
+        color: 0xaaaaaa
+    })
 )
+torusKnot.position.x = -4
 torusKnot.position.y = 4
 scene.add(torusKnot)
 
