@@ -1,16 +1,101 @@
-# Three.js Journey
+# Realistic Rendering
 
-## Setup
-Download [Node.js](https://nodejs.org/en/download/).
-Run this followed commands:
+## Tone Maping
 
-``` bash
-# Install dependencies (only the first time)
-npm install
+Convert HDR(High Dynamic Range) to LDR(Low Dynamic Range)
 
-# Run the local server at localhost:8080
-npm run dev
+* `NoToneMapping` - Without mapping the tone
+* `LinearToneMapping` - Lights everything
+* `ReinhardToneMapping` - Realistic with a poorly set camera
+* `CineaonToneMapping` - High contrast
+* `ACESFilmicToneMapping` - Higher contrast
 
-# Build for production in the dist/ directory
-npm run build
+``` javascript
+// Tone Mapping
+renderer.toneMapping = THREE.ACESFilmicToneMapping
+
+gui.add(renderer, 'toneMapping', {
+    No: THREE.NoToneMapping,
+    Linear: THREE.LinearToneMapping,
+    Reinhard: THREE.ReinhardToneMapping,
+    Cineon: THREE.CineonToneMapping,
+    ACESFilmic: THREE.ACESFilmicToneMapping
+})
 ```
+
+## Antialiasing
+
+Reduce ladder-like pixels when we zoom a lot and have high contrast
+
+* SSAA/FSAA - Super Sampling or Fullscreen Sampling (4x more pixels and more time to render)
+* MSSA - Multi Sampling (Check the neighbours and mix its colors on the geometry edges)
+
+``` javascript
+/**
+ * Renderer
+ */
+const renderer = new THREE.WebGLRenderer({
+    canvas: canvas,
+    antialias: true,
+})
+```
+
+## Add Shadow to Environment Map
+
+Create a Light, disable the default lighting and create shadowMaps
+
+``` javascript
+
+/**
+ * Update all materials
+ */
+const updateAllMaterials = () =>
+{
+    scene.traverse((child) =>
+    {
+        if(child.isMesh && child.material.isMeshStandardMaterial)
+        {
+            // (...)
+
+            child.castShadow = true
+            child.receiveShadow = true
+        }
+    })
+}
+
+/**
+ * Lights
+ */
+const directionalLight = new THREE.DirectionalLight( '#ffffff', 2)
+directionalLight.position.set(0, 7, 6)
+directionalLight.target.position.set(0, 6.5, -2) // Target of the light
+directionalLight.shadow.camera.far = 15 // limit the distante with the camera helper
+directionalLight.shadow.mapSize.set(512, 512) // Optimize shadowmap
+directionalLight.target.updateWorldMatrix()
+scene.add(directionalLight)
+
+gui.add(directionalLight, 'intensity').min(0).max(10).step(0.001).name('lightIntensity')
+gui.add(directionalLight.position, 'x').min(-10).max(10).step(0.001).name('lightX')
+gui.add(directionalLight.position, 'y').min(-10).max(10).step(0.001).name('lightY')
+gui.add(directionalLight.position, 'z').min(-10).max(10).step(0.001).name('lightZ')
+
+// Shadows
+renderer.shadowMap.enabled = true
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
+directionalLight.castShadow = true
+
+/*
+// Light Helper for the shadow
+const directionalLightCameraHelper = new THREE.CameraHelper(directionalLight.shadow.camera)
+scene.add(directionalLightCameraHelper)
+*/
+
+gui.add(directionalLight, 'castShadow')
+
+// Turn off default lighting, its irealistic
+renderer.useLegacyLights = false
+gui.add(renderer, 'useLegacyLights')
+
+```
+
+

@@ -33,6 +33,9 @@ const updateAllMaterials = () =>
         if(child.isMesh && child.material.isMeshStandardMaterial)
         {
             child.material.envMapIntensity = global.envMapIntensity
+
+            child.castShadow = true
+            child.receiveShadow = true
         }
     })
 }
@@ -58,6 +61,21 @@ rgbeLoader.load('/environmentMaps/0/2k.hdr', (environmentMap) =>
     scene.environment = environmentMap
 })
 
+/**
+ * Lights
+ */
+const directionalLight = new THREE.DirectionalLight( '#ffffff', 2)
+directionalLight.position.set(0, 7, 6)
+directionalLight.target.position.set(0, 6.5, -2) // Target of the light
+directionalLight.shadow.camera.far = 15 // limit the distante with the camera helper
+directionalLight.shadow.mapSize.set(512, 512) // Optimize shadowmap
+directionalLight.target.updateWorldMatrix()
+scene.add(directionalLight)
+
+gui.add(directionalLight, 'intensity').min(0).max(10).step(0.001).name('lightIntensity')
+gui.add(directionalLight.position, 'x').min(-10).max(10).step(0.001).name('lightX')
+gui.add(directionalLight.position, 'y').min(-10).max(10).step(0.001).name('lightY')
+gui.add(directionalLight.position, 'z').min(-10).max(10).step(0.001).name('lightZ')
 /**
  * Models
  */
@@ -113,10 +131,42 @@ controls.enableDamping = true
  * Renderer
  */
 const renderer = new THREE.WebGLRenderer({
-    canvas: canvas
+    canvas: canvas,
+    antialias: true,
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+// Tone Mapping
+renderer.toneMapping = THREE.ReinhardToneMapping
+renderer.toneMappingExposure = 3
+
+// Shadows
+renderer.shadowMap.enabled = true
+renderer.shadowMap.type = THREE.PCFSoftShadowMap
+directionalLight.castShadow = true
+
+/*
+// Light Helper for the shadow
+const directionalLightCameraHelper = new THREE.CameraHelper(directionalLight.shadow.camera)
+scene.add(directionalLightCameraHelper)
+*/
+
+gui.add(directionalLight, 'castShadow')
+
+// Turn off default lighting, its irealistic
+renderer.useLegacyLights = false
+gui.add(renderer, 'useLegacyLights')
+
+gui.add(renderer, 'toneMapping', {
+    No: THREE.NoToneMapping,
+    Linear: THREE.LinearToneMapping,
+    Reinhard: THREE.ReinhardToneMapping,
+    Cineon: THREE.CineonToneMapping,
+    ACESFilmic: THREE.ACESFilmicToneMapping
+})
+
+gui.add(renderer, 'toneMappingExposure').min(0).max(10).step(0.001)
 
 /**
  * Animate
