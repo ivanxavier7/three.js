@@ -63,10 +63,10 @@ rgbeLoader.load('/environmentMaps/0/2k.hdr', (environmentMap) =>
  */
 // Helmet
 gltfLoader.load(
-    '/models/FlightHelmet/glTF/FlightHelmet.gltf',
+    '/models/SirFrog/SirFrog.gltf',
     (gltf) =>
     {
-        gltf.scene.scale.set(10, 10, 10)
+        gltf.scene.scale.set(5, 5, 5)
         scene.add(gltf.scene)
 
         updateAllMaterials()
