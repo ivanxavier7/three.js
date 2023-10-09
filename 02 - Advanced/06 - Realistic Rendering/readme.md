@@ -1,13 +1,18 @@
 # Realistic Rendering
 
-## Tone Maping
+1. Tone Maping
+2. Antialiasing
+3. Add Shadow to Environment Map
+4. Textures
+
+## 1 - Tone Maping
 
 Convert HDR(High Dynamic Range) to LDR(Low Dynamic Range)
 
 * `NoToneMapping` - Without mapping the tone
 * `LinearToneMapping` - Lights everything
 * `ReinhardToneMapping` - Realistic with a poorly set camera
-* `CineaonToneMapping` - High contrast
+* `CineonToneMapping` - High contrast
 * `ACESFilmicToneMapping` - Higher contrast
 
 ``` javascript
@@ -23,7 +28,7 @@ gui.add(renderer, 'toneMapping', {
 })
 ```
 
-## Antialiasing
+## 2 - Antialiasing
 
 Reduce ladder-like pixels when we zoom a lot and have high contrast
 
@@ -40,7 +45,7 @@ const renderer = new THREE.WebGLRenderer({
 })
 ```
 
-## Add Shadow to Environment Map
+## 3 - Add Shadow to Environment Map
 
 Create a Light, disable the default lighting and create shadowMaps
 
@@ -98,7 +103,7 @@ gui.add(renderer, 'useLegacyLights')
 
 ```
 
-## Textures
+## 4 - Textures
 
 [Poly Haven Textures](https://polyhaven.com/textures)
 
