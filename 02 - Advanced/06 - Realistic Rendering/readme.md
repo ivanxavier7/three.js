@@ -98,4 +98,31 @@ gui.add(renderer, 'useLegacyLights')
 
 ```
 
+## Textures
 
+[Poly Haven Textures](https://polyhaven.com/textures)
+
+And choose the following options:
+
+* Normal(GL) - PNG -  Normal
+* AO/Rough/Metal - JPG - Ambient Occlusion, Roughness and Metalness
+* Diffuse- JPG - Color
+
+Change diffuse/color from linear to SRGB
+
+``` javascript
+colorTexture.colorSpace = three.SRGBColorSpace
+```
+
+If there are bugs between the shadows in the texture we can fix them with these parameters:
+
+* `bias` - flat surfaces
+* `normalBias` - rounded surfaces
+
+Test the perfect value with gui
+``` javascript
+gui.add(directionalLight.shadow, 'normalBias').min(-0.05).max(0.05).step(0.001)
+gui.add(directionalLight.shadow, 'bias').min(-0.05).max(0.05).step(0.001)
+
+directionalLight.shadow.bias = 0.01
+```
