@@ -1,16 +1,90 @@
-# Three.js Journey
+# Structure for Bigger Projects - Object Oriented
 
-## Setup
-Download [Node.js](https://nodejs.org/en/download/).
-Run this followed commands:
+* Modules
+* Classes
 
-``` bash
-# Install dependencies (only the first time)
-npm install
+## 1 -  Classes and Modules
 
-# Run the local server at localhost:8080
-npm run dev
+`Robot.js`
+``` javascript
+export default class Robot
+{
+    constructor(name, legs)
+    {
+        this.name = name;
+        this.legs = legs;
+        console.log(`Robot ${name} created!`)
+    }
 
-# Build for production in the dist/ directory
-npm run build
+    sayHi()
+    {
+        console.log(`Hello! My name is ${this.name}`)
+    }
+}
+```
+
+`FlyingRobot.js`
+``` javascript
+import Robot from './Robot.js';
+
+export default class FlyingRobot extends Robot
+{
+    constructor(name, legs) {
+        super(name, legs)
+        this.canFly = true
+    }
+    sayHi()
+    {
+        super.sayHi()
+        console.log(`Function overwriten`)
+    }
+
+    takeOff() {
+        console.log(`Robot ${this.name} is taking off`)
+    }
+
+    land() {
+        console.log(`Robot ${this.name} is landing`)
+    }
+}
+```
+
+`script.js`
+``` javascript
+import Robot from './Robot.js';
+import FlyingRobot from './FlyingRobot';
+
+const wallE = new Robot('Wall-E', 0)
+const ultron = new FlyingRobot('Ultron', 2)
+const astroBoy = new FlyingRobot('Astro Boy', 2)
+const megaMan = new Robot('Mega-Man', 2)
+
+wallE.sayHi()
+megaMan.sayHi()
+
+ultron.sayHi()
+ultron.takeOff()
+ultron.land()
+
+```
+
+## 2 -  Code Structure
+
+- /Application
+    -
+    -
+    -
+
+
+``` javascript
+
+
+
+```
+
+## 3 -  Usefull Classes
+``` javascript
+
+
+
 ```
