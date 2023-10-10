@@ -32,6 +32,7 @@ export default class Resources extends EventEmitter
 
     startLoading()
     {
+        console.log(this.sources)
         // Load sources
         for(const source of this.sources)
         {
@@ -44,7 +45,8 @@ export default class Resources extends EventEmitter
                         this.sourceLoaded(source, file)
                     }
                 )
-            } else if(source.type === 'texture')
+            }
+            else if(source.type === 'texture')
             {
                 this.loaders.textureLoader.load(
                     source.path,
@@ -53,7 +55,8 @@ export default class Resources extends EventEmitter
                         this.sourceLoaded(source, file)
                     }
                 )
-            } else if(source.type === 'cubeTexture')
+            }
+            else if(source.type === 'cubeTexture')
             {
                 this.loaders.cubeTextureLoader.load(
                     source.path,
@@ -69,6 +72,8 @@ export default class Resources extends EventEmitter
     sourceLoaded(source, file)
     {
         this.items[source.name] = file
+
+        //console.log(this.items)
 
         this.loaded++
 

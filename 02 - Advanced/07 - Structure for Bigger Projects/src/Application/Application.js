@@ -46,8 +46,6 @@ export default class Application
         {
             this.update()
         })
-
-        this.resources.startLoading()
     }
 
     resize()

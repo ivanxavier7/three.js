@@ -42,6 +42,7 @@ export default class EventEmitter
             this.callbacks[ name.namespace ][ name.value ].push(callback)
         })
 
+        //console.log(this)
         return this
     }
 
