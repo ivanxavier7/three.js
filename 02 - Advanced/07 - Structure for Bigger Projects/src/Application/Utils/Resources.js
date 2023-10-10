@@ -32,7 +32,6 @@ export default class Resources extends EventEmitter
 
     startLoading()
     {
-        console.log(this.sources)
         // Load sources
         for(const source of this.sources)
         {

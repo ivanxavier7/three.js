@@ -57,6 +57,7 @@ export default class Application
     update()
     {
         this.camera.update()
+        this.world.update()
         this.renderer.update()
     }
 }
