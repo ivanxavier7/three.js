@@ -70,8 +70,11 @@ ultron.land()
 
 ## 2 -  Code Structure
 
-- /Application
-    -
+- Application
+    - Utils
+        - EventEmitter - Returns a string whenever an event is triggered so that it can be accessed by other classes in a simple way
+        - Sizes - Handle the size and resize oh the window
+        -
     -
     -
 
