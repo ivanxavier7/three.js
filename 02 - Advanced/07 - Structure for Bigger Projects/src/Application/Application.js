@@ -3,6 +3,8 @@ import * as THREE from 'three'
 import Sizes from './Utils/Sizes.js'
 import Time from './Utils/Time.js'
 import Resources from './Utils/Resources.js'
+import Debug from './Utils/Debug.js'
+
 import Camera from './Camera.js'
 import Renderer from './Renderer.js'
 import World from './World/World.js'
@@ -29,6 +31,7 @@ export default class Application
         this.canvas = _canvas
 
         // Setup
+        this.debug = new Debug()
         this.sizes = new Sizes()
         this.time = new Time()
         this.scene = new THREE.Scene()
@@ -59,5 +62,45 @@ export default class Application
         this.camera.update()
         this.world.update()
         this.renderer.update()
+    }
+
+    destroy()
+    {
+        // Remove event listeners
+        this.sizes.off('resize')
+        this.time.off('tick')
+        // Can remove the rest of the eventListener with js (removeEventListener)
+
+        this.scene.traverse((child) =>
+        {
+            if(child instanceof THREE.Mesh)
+            {
+                // Remove object
+                child.geometry.dispose()
+
+                // Remove object properties
+                for(const key in child.material)
+                {
+                    const value = child.material[key]
+
+                    if(value && typeof value.dispose === 'function')
+                    {
+                        value.dispose()
+                    }
+                }
+            }
+        })
+
+        // Remove camera controls
+        this.camera.controls.dispose()
+
+        // Remove renderer
+        this.renderer.instance.dispose()
+
+        // Remove debug
+        if(this.debug.active)
+        {
+            this.debug.ui.destroy()
+        }
     }
 }

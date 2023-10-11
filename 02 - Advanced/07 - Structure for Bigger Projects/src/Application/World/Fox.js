@@ -9,8 +9,15 @@ export default class Fox
         this.scene = this.application.scene
         this.resources = this.application.resources
         this.time = this.application.time
+        this.debug = this.application.debug
 
-        // Resource
+        // Debug Folder
+        if(this.debug.active)
+        {
+            this.debugFolder = this.debug.ui.addFolder('Fox')
+        }
+
+        // Setuo
         this.resource = this.resources.items.foxModel
 
         this.setModel()
@@ -60,6 +67,19 @@ export default class Fox
             newAction.crossFadeFrom(oldAction, 1)
 
             this.animation.actions.current = newAction
+        }
+
+        // Debug
+        if(this.debug.active)
+        {
+            const debugObject = {
+                playIdle: () => { this.animation.play('idle') },
+                playWalking: () => { this.animation.play('walking') },
+                playRunning: () => { this.animation.play('running') },
+            }
+            this.debugFolder.add(debugObject, 'playIdle')
+            this.debugFolder.add(debugObject, 'playWalking')
+            this.debugFolder.add(debugObject, 'playRunning')
         }
     }
 

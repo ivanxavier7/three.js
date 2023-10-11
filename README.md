@@ -22,7 +22,7 @@
 5. Custom Models - Blender
 6. Environment Map
 7. Realistic Render
-8. Code Structure
+8. Code Structure - Object Oriented
 9. Production
 
 ## Projects
