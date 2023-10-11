@@ -16,13 +16,13 @@
 ## Advanced
 
 1. Physics
-2. Production
-3. Imported Models
-4. RayCaster and Mouse Events
-5. Custom Models - Blender
-6. Environment Map
-7. Realistic Render
-8. Code Structure - Object Oriented
+2. Imported Models
+3. RayCaster and Mouse Events
+4. Custom Models - Blender
+5. Environment Map
+6. Realistic Render
+7. Code Structure - Object Oriented
+8. Shaders
 9. Production
 
 ## Projects
