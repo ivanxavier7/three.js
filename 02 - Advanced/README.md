@@ -1354,7 +1354,7 @@ ultron.land()
         - `Time.js` - Handle the time for animations
     - `/World` - Objects
         - `Environment.js`
-        . `Floor.js`
+        - `Floor.js`
         - `Fox.js`
         - `World.js`
 
