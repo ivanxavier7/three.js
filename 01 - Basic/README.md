@@ -1,4 +1,4 @@
-# Three.js
+# Three.js - Basic
 
 * [Three.js Docs](https://threejs.org/docs/)
 
