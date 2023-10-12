@@ -308,3 +308,7 @@ void main()
     gl_FragColor = textureColor;
 }
 ```
+
+## 2 - Shader Patterns
+
+### 2.1 - 
