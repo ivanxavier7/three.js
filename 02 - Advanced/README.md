@@ -10,7 +10,8 @@
 6. Realistic Render
 7. Code Structure - Object Oriented
 8. Shaders
-9. Production
+9. Performance
+10. Production
 
 ------
 
