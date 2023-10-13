@@ -1,5 +1,7 @@
 # Shaders
 
+When we try to animate particles or nature we must improve animation performance with custom shaders
+
 Custom Shaders:
 1. Basics
 2. Shader Patterns
