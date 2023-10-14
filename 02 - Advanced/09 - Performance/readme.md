@@ -1,4 +1,16 @@
-# 1 - Post-processing
+
+# Performance
+
+1. Post-processing
+2. Performance
+3. Loading and Intro
+4. HTML and WebGl
+
+
+------
+
+
+## 1 - Post-processing
 
 Small post-rendering modifications that can result in major changes to the final result, adding effects like:
 * Depth of field
@@ -284,3 +296,5 @@ const tick = () =>
 
 tick()
 ```
+
+------
