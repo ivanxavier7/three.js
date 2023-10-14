@@ -1,6 +1,13 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import Stats from 'stats.js'
 
+/**
+ * Performance Monitor
+ */
+const stats = new Stats()
+stats.showPanel( 1 );
+document.body.appendChild( stats.dom )
 
 /**
  * Base
@@ -66,6 +73,8 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(window.devicePixelRatio)
 
+console.log(renderer.info)
+
 /**
  * Test meshes
  */
@@ -123,6 +132,8 @@ const clock = new THREE.Clock()
 
 const tick = () =>
 {
+    stats.begin()
+
     const elapsedTime = clock.getElapsedTime()
 
     // Update test mesh
@@ -136,6 +147,8 @@ const tick = () =>
 
     // Call tick again on the next frame
     window.requestAnimationFrame(tick)
+
+    stats.end()
 }
 
 tick()
