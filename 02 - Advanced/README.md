@@ -4082,7 +4082,7 @@ console.log(renderer.info)
 
 ## 9.2.2 - Performance Tips
 
-### 5. Geometry
+### 1. Geometry
 
 * Dispose textures and materials after removing the object
 
