@@ -346,6 +346,18 @@ console.log(renderer.info)
 
 ## 2.2 - Performance Tips
 
+1. Geometry
+2. Light
+3. Shadow
+4. Texture
+5. Material
+6. Mesh
+7. Model
+8. Camera
+9. Renderer
+10. Post-processing
+11. Shader
+
 ### 1. Geometry
 
 * Dispose textures and materials after removing the object
