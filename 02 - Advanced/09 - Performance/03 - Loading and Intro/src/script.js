@@ -2,6 +2,10 @@ import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
+//import shaderVertex from './shaders/intro/vertex.glsl'
+//import shaderFragment from './shaders/intro/fragment.glsl'
+
+
 /**
  * Loaders
  */
@@ -9,7 +13,7 @@ const gltfLoader = new GLTFLoader()
 const cubeTextureLoader = new THREE.CubeTextureLoader()
 
 /**
- * Base
+ * Bases
  */
 // Debug
 const debugObject = {}
@@ -19,6 +23,30 @@ const canvas = document.querySelector('canvas.webgl')
 
 // Scene
 const scene = new THREE.Scene()
+
+/**
+ * Overlay
+ */
+const overlayGeometry = new THREE.PlaneGeometry(1, 1, 1, 1)
+const overlayMaterial = new THREE.ShaderMaterial({
+    vertexShader: 
+    `
+        void main()
+        {   
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    `,
+    fragmentShader:
+    `
+    void main()
+        {   
+            gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
+        }
+    `
+})
+const overlay = new THREE.Mesh(overlayGeometry, overlayMaterial)
+
+scene.add(overlay)
 
 /**
  * Update all materials
