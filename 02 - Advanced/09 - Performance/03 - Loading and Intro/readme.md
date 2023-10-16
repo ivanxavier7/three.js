@@ -2,13 +2,13 @@
 
 Let's overlay an image on top and load a bar, when the resources are ready it will display the scene
 
-## Lower the download speed
+## 1 - Lower the download speed
 
 Browser -> Developer Tools -> Network
 1. Disable cache
 2. Whitout limitation -> add profile with 100000 speed (9.8mb/s) -> Choose that profile
 
-## 
+## 2 - Implementation
 
 ``` javascript
 import { gsap } from 'gsap'
