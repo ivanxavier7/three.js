@@ -36,3 +36,60 @@ body
     transform-origin: 100% 0;
     transition: transform 1.5s ease-in-out;
 }
+
+.point
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-family: Helvetica, Arial, sans-serif;
+    color: #ffffff;
+    font-weight: 100;
+    font-size: 14px;
+}
+
+.point .label
+{
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #ffffff77;
+    text-align: center;
+    line-height: 40px;
+    background: #00000077;
+    cursor: help;
+    transform: scale(0, 0);
+    transition: transform 0.3s;
+}
+
+.point.visible .label{
+    transform: scale(1, 1);
+}
+
+.point .label:hover
+{
+    background: #ce491477
+}
+
+.point .text
+{
+    position: absolute;
+    top: 30px;
+    left: -120px;
+    width: 200px;
+    padding: 20px;
+    border-radius: 4px;
+    border: 1px solid #ffffff77;
+    background: #00000077;
+    line-height: 1.3em;
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+.point:hover .text{
+    opacity: 1;
+}
