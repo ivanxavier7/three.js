@@ -11,3 +11,11 @@
 ``` javascript
 
 ```
+
+
+Before doing uv unwrapping or exporting the model we must see if the textures are correctly turned, otherwise we have to flip them
+
+Top right corner, two balls, enable face orientation filter
+
+Next we must select everything, control A and stabilize the scale, only now can we start unwrapping
+
