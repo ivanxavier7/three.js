@@ -31,4 +31,4 @@ We can do this individually after selecting the object with `P`
 
 8. After unwrapping everything, it is better to separate each object to improve mipmaping, add margin after unwrapping
 
-9. Apply filmic filter to the Baked image, 
+9. Apply filmic filter to the Baked image, change the view mode to Compositor, click on use nodes, add `Image` node and `Denoise`, mute the `Render layers` with the `M`
