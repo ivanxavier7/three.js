@@ -1,6 +1,6 @@
 # Portal
 
-## Custom Blender Models
+
 
 ## Importing Custom model
 
@@ -11,6 +11,8 @@
 ``` javascript
 
 ```
+
+## UV unwrapping
 
 1. Disjoint all objects with `F3` -> make singel object and data
 We can do this individually after selecting the object with `P`
@@ -32,3 +34,10 @@ We can do this individually after selecting the object with `P`
 8. After unwrapping everything, it is better to separate each object to improve mipmaping, add margin after unwrapping
 
 9. Apply filmic filter to the Baked image, change the view mode to Compositor, click on use nodes, add `Image` node and `Denoise`, mute the `Render layers` with the `M`
+
+## Exporting Custom model to be wrappped
+
+Export the Model after selecting all except the camera and the lights:
+
+Go to file -> glTF Binary -> Selected Objects -> +Y Up -> UVs -> No export Materials -> compression -> Disable Animation, Shape Keys and Skinning
+
