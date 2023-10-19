@@ -4,10 +4,14 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
+import firefliesShaderVertex from './shaders/fireflies/vertex.glsl'
+import firefliesShaderFragment from './shaders/fireflies/fragment.glsl'
+
 /**
  * Base
  */
 // Debug
+const debugObject = {}
 const gui = new dat.GUI({
     width: 400
 })
@@ -66,10 +70,42 @@ gltfLoader.load(
         poleLightAMesh.material = poleLightMaterial
         poleLightBMesh.material = poleLightMaterial
         portalLightMesh.material = portalLightMaterial
-
         scene.add(gltf.scene)
     }
 )
+
+/**
+ * Particles
+ */
+// Geometry
+const firefliesGeometry = new THREE.BufferGeometry()
+const firefliesCount = 30
+const positionArray = new Float32Array(firefliesCount * 3)
+
+for(let i = 0; i < firefliesCount; i++)
+{
+    // Generate random positions for the particles
+    positionArray[i * 3 + 0] = (Math.random()  - 0.5) * 4
+    positionArray[i * 3 + 1] = Math.random() * 1.5
+    positionArray[i * 3 + 2] = (Math.random() - 0.5) * 4
+}
+
+firefliesGeometry.setAttribute('position', new THREE.BufferAttribute(positionArray, 3))
+
+// Material
+const firefliesMaterial = new THREE.ShaderMaterial({
+    vertexShader: firefliesShaderVertex,
+    fragmentShader: firefliesShaderFragment,
+    uniforms: {
+        uPixelRatio: { value: Math.min(window.devicePixelRatio, 2)},
+        
+    }
+})
+
+// Object
+const fireflies = new THREE.Points(firefliesGeometry, firefliesMaterial)
+scene.add(fireflies)
+
 
 /**
  * Sizes
@@ -92,6 +128,9 @@ window.addEventListener('resize', () =>
     // Update renderer
     renderer.setSize(sizes.width, sizes.height)
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+    // Update fireflies
+    firefliesMaterial.uniforms.uPixelRatio.value = Math.min(window.devicePixelRatio, 2)
 })
 
 /**
@@ -99,9 +138,9 @@ window.addEventListener('resize', () =>
  */
 // Base camera
 const camera = new THREE.PerspectiveCamera(45, sizes.width / sizes.height, 0.1, 100)
-camera.position.x = 4
-camera.position.y = 2
-camera.position.z = 4
+camera.position.x = 3.1
+camera.position.y = 2.5
+camera.position.z = -3.1
 scene.add(camera)
 
 // Controls
@@ -117,6 +156,16 @@ const renderer = new THREE.WebGLRenderer({
 })
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
+
+// Background color
+debugObject.backgroundColor = '#0b0f06'
+renderer.setClearColor(debugObject.backgroundColor)
+
+gui.addColor(debugObject, 'backgroundColor').name('Background Color').onChange( () =>
+    {
+        renderer.setClearColor(debugObject.backgroundColor)
+    }
+)
 
 /**
  * Animate
