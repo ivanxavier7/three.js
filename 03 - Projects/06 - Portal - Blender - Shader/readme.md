@@ -14,7 +14,7 @@
 
 ## UV unwrapping
 
-1. Disjoint all objects with `F3` -> make singel object and data
+1. Disjoint all objects with `F3` -> make single object and data
 We can do this individually after selecting the object with `P`
 
 2. Before doing uv unwrapping or exporting the model we must see if the textures are correctly turned, otherwise we have to flip them.
