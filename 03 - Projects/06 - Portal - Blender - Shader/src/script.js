@@ -33,6 +33,11 @@ dracoLoader.setDecoderPath('draco/')
  */
 const bakedTexture = textureLoader.load('baked.jpg')
 bakedTexture.flipY = false
+bakedTexture.colorspace = THREE.SRGBClorSpace
+
+// Emission material
+const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xCF9B52 })
+const portalLightMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff })
 
 const bakedMaterial = new THREE.MeshBasicMaterial({ map: bakedTexture })
 
@@ -43,10 +48,25 @@ gltfLoader.load(
     'portal.glb',
     (gltf) =>
     {
+        /*
         gltf.scene.traverse((child) =>
         {
             child.material = bakedMaterial
         })
+        scene.add(gltf.scene)
+        */
+
+        const bakedMesh = gltf.scene.children.find((child) => child.name === 'baked')
+        // Get emission objects
+        const poleLightAMesh = gltf.scene.children.find((child) => child.name === 'poleLightA')
+        const poleLightBMesh = gltf.scene.children.find((child) => child.name === 'poleLightB')
+        const portalLightMesh = gltf.scene.children.find((child) => child.name === 'portalLight')
+
+        bakedMesh.material = bakedMaterial
+        poleLightAMesh.material = poleLightMaterial
+        poleLightBMesh.material = poleLightMaterial
+        portalLightMesh.material = portalLightMaterial
+
         scene.add(gltf.scene)
     }
 )
