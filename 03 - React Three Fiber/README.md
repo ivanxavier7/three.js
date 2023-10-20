@@ -19,6 +19,8 @@ React - Data binding- application react to the data (event triggering)
 11. Physics
 12. Simple Game
 
+Note: change .js files to .jsx
+
 
 ------
 
