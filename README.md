@@ -26,12 +26,11 @@
 9. Performance
 10. Production
 
-## 3 - React Three Fiber
-
-1. 
-
-## 4 - Projects
+## 3 - Projects
 
 1. Simple House
 2. Particles Galaxy
 3. Scroll and Cursor Animation
+4. Sea Particles - Shader
+5. Animated Galaxy - Shader
+6. Portal - Blender - Shader
