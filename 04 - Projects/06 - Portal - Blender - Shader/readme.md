@@ -1,17 +1,5 @@
 # Portal
 
-
-
-## Importing Custom model
-
-## Optimizing the scene
-
-## Adding particles and other patters
-
-``` javascript
-
-```
-
 ## UV unwrapping
 
 1. Disjoint all objects with `F3` -> make single object and data

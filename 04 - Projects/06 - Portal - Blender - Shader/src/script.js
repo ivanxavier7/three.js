@@ -15,9 +15,9 @@ import portalShaderFragment from './shaders/portal/fragment.glsl'
 // Debug
 const debugObject = {
     backgroundColor: '0x0b0f06',
-    portalColorStart: '0x00ffff',
-    portalColorEnd: '0x114444'
-
+    portalColorStart: '0x275f62',
+    portalColorEnd: '0xe8e8e8',
+    poleLightColor: '0xCF9B52',
 }
 const gui = new dat.GUI({
     width: 400
@@ -47,13 +47,19 @@ bakedTexture.flipY = false
 bakedTexture.colorspace = THREE.SRGBClorSpace
 
 // Emission material
-const poleLightMaterial = new THREE.MeshBasicMaterial({ color: 0xCF9B52 })
+const poleLightMaterial = new THREE.MeshBasicMaterial({ color: '#ffe3bd' })
+
+gui.addColor(debugObject, 'poleLightColor').onChange(() => 
+{
+    poleLightMaterial.color.set(debugObject.poleLightColor)
+})
+
 // Portal Mesh
 const portalLightMaterial = new THREE.ShaderMaterial({
     uniforms: {
         uTime: { value: 0},
-        uColorStart: { value: new THREE.Color(0x7b12a1) },
-        uColorEnd: { value: new THREE.Color(0x92bfbf)}
+        uColorStart: { value: new THREE.Color(0x275f62) },
+        uColorEnd: { value: new THREE.Color(0xe8e8e8)}
     },
     vertexShader: portalShaderVertex,
     fragmentShader: portalShaderFragment
@@ -105,7 +111,7 @@ gltfLoader.load(
  */
 // Geometry
 const firefliesGeometry = new THREE.BufferGeometry()
-const firefliesCount = 50
+const firefliesCount = 100
 const positionArray = new Float32Array(firefliesCount * 3)
 const scaleArray = new Float32Array(firefliesCount * 3)
 
@@ -113,7 +119,7 @@ for(let i = 0; i < firefliesCount; i++)
 {
     // Generate random positions for the particles
     positionArray[i * 3 + 0] = (Math.random()  - 0.5) * 4
-    positionArray[i * 3 + 1] = Math.random() * 1.5
+    positionArray[i * 3 + 1] = Math.random() * 2.5 + 0.1
     positionArray[i * 3 + 2] = (Math.random() - 0.5) * 6 + 1
     scaleArray[i] = Math.random()
 }
