@@ -10,6 +10,7 @@
 6. [Realistic Render](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#6---realistic-rendering)
 7. [Code Structure - Object Oriented](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#7---structure-for-bigger-projects---object-oriented)
 8. [Shaders](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8---shaders)
+9. [Post-processing]()
 9. [Performance](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#9---performance)
 10. [UV unwrapping](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#10---uv-unwrapping)
 
@@ -3786,16 +3787,7 @@ tick()
 
 ------
 
-
-# 9 - Performance
-
-1. [Post-processing](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#91---post-processing)
-2. [Performance](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#92---performance)
-3. [Loading and Intro]()
-4. [HTML and WebGl]()
-
-
-## 9.1 - Post-processing
+# 9 - Post-processing
 
 Small post-rendering modifications that can result in major changes to the final result, adding effects like:
 * Depth of field
@@ -4083,19 +4075,19 @@ tick()
 ```
 
 
-## 9.2 - Performance
+# 10 - Performance
 
-1. Stats
-2. Monitor Draws
-3. Performance Tips
-4. Loading and Intro
-5. HTML and WebGL
+1. [Stats](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#921---stats)
+2. [Monitor Draws](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#922---monitor-drawns)
+3. [Performance Tips](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#923---performance-tips)
+4. [Loading and Intro](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#924---loading-and-intro)
+5. [HTML and WebGL](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#925-html-and-webgl)
 
 
 * Target should be 60 FPS
 * Less draws, the better
 
-### 9.2.1 - Stats
+## 10.1 - Stats
 
 We will use `stats.js`
 
@@ -4123,7 +4115,7 @@ const tick = () =>
 }
 ```
 
-### 9.2.2 - Monitor Drawns
+## 10.2 - Monitor Drawns
 
 Chrome extension:
 * [Spectorjs](https://chrome.google.com/webstore/detail/spectorjs/denbgaamihkadbghdceggmchnflmhpmk)
@@ -4135,7 +4127,7 @@ To see what is been drawned in the renderer we can use:
 console.log(renderer.info)
 ```
 
-### 9.2.3 - Performance Tips
+## 10.3 - Performance Tips
 
 1. Geometry
 2. Light
@@ -4149,7 +4141,7 @@ console.log(renderer.info)
 10. Post-processing
 11. Shader
 
-#### 9.2.3.1 - Geometry
+### 10.3.1 - Geometry
 
 * Dispose textures and materials after removing the object
 
@@ -4199,7 +4191,7 @@ scene.add(mesh)
 ```
 
 
-#### 9.2.3.2 - Light
+### 10.3.2 - Light
 
 * Avoid Lights
 * Use cheap lights like AmbientLight DirectionalLight or HemisphereLight
@@ -4207,7 +4199,7 @@ scene.add(mesh)
 * Avoid adding and removing lights, all the materials will be recompiled
 
 
-#### 9.2.3.3 - Shadow
+### 10.3.3 - Shadow
 
 * Avoid shadows
 * Bake the shadows in the texture
@@ -4233,7 +4225,7 @@ renderer.shadowMap.needsUpdate = true
 ```
 
 
-#### 9.2.3.4 - Texture
+### 10.3.4 - Texture
 
 * Small resolution as possible
 * Use power of 2 resolutions: 256, 512, 1024
@@ -4241,13 +4233,13 @@ renderer.shadowMap.needsUpdate = true
 * Reduce TinyPNG to reduce the weight of PNG or JPEG
 
 
-#### 9.2.3.5 - Material
+### 10.3.5 - Material
 
 * Use the same materials for different objects
 * Avoid expensive materials like MeshStandardMaterial or MeshPhysicalMaterial
 
 
-#### 9.2.3.6 - Mesh
+### 10.3.6 - Mesh
 
 * Create one IntanceMesh and provide transformation matrix with Matrix4
 
@@ -4284,19 +4276,19 @@ for(let i = 0; i < 50; i++)
 }
 ```
 
-#### 9.2.3.7 - Model
+### 10.3.7 - Model
 
 * When have alot of objects use Draco compression, freeze in the begining while decompress but its faster
 * GZIP - Compression in the server side, for `.glb`, `.gltf`, `.obj`
 
 
-#### 9.2.3.8 - Camera
+### 10.3.8 - Camera
 
 * Reduce the field of view, when we have something that we dont see and dont want to render
 * Reduce near and far render the objects that we can see and are closer
 * Use camera helpers
 
-#### 9.2.3.9 - Renderer
+### 10.3.9 - Renderer
 
 * Use the device pixel ratio function, don't use the default one
 * Use this property in the rederer to reserve high-power
@@ -4313,12 +4305,12 @@ const renderer = new THREE.WebGLRenderer({
 ```
 
 
-#### 9.2.3.10 - Post-processing
+#### 10.3.10 - Post-processing
 
 * Limit the passes, less is better
 * 4 passes with pixel ratio 2 = 1920 * 2 * 1080 * 2 * 4 = 33177600 Pixels to renderer, less performant exponentially 
 
-#### 9.2.3.11 - Shader
+#### 10.3.11 - Shader
 
 * Reduce the precision of the shader
 * Simplifies the mathematical algorithm as much as possible
@@ -4409,20 +4401,20 @@ shaderMesh.rotation.x = - Math.PI * 0.5
 scene.add(shaderMesh)
 ```
 
-## 9.2.4 - Loading and Intro
+## 10.4 - Loading and Intro
 
 1. Lower the download speed
 2. Implementation
 
 Let's overlay an image on top and load a bar, when the resources are ready it will display the scene
 
-### 9.2.4.1 - Lower the download speed
+### 10.4.1 - Lower the download speed
 
 Browser -> Developer Tools -> Network
 1. Disable cache
 2. Whitout limitation -> add profile with 100000 speed (9.8mb/s) -> Choose that profile
 
-### 9.2.4.2 - Implementation
+### 10.4.2 - Implementation
 
 ``` javascript
 import { gsap } from 'gsap'
@@ -4523,7 +4515,7 @@ scene.add(overlay)
 }
 ```
 
-## 9.2.5 HTML and WebGL
+## 10.5 HTML and WebGL
 
 Allows you to introduce points in space, for example to label the object, when you move the mouse over it a descriptive box will appear, when the point is behind the object it should not be visible
 
@@ -4703,7 +4695,7 @@ tick()
 
 ------
 
-# 10 - UV unwrapping
+# 11 - UV unwrapping
 
 1. Wrap
 2. Export
@@ -4711,7 +4703,7 @@ tick()
 `Blender`
 
 
-## 10.1 - Wrap
+## 11.1 - Wrap
 
 1. Disjoint all objects with `F3` -> make single object and data
 We can do this individually after selecting the object with `P`
@@ -4733,7 +4725,7 @@ We can do this individually after selecting the object with `P`
 9. Apply filmic filter to the Baked image, change the view mode to Compositor, click on use nodes, add `Image` node and `Denoise`, mute the `Render layers` with the `M`
 
 
-## 10.2 - Export
+## 11.2 - Export
 
 Export the Model after selecting all except the camera and the lights:
 
