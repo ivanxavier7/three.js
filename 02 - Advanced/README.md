@@ -3,8 +3,8 @@
 * [Three.js Docs](https://threejs.org/docs/)
 
 1. [Physics](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1---physics)
-2. [Imported Models](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1---physics)
-3. [RayCaster and Mouse Events](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1---physics)
+2. [Imported Models](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#2---imported-models)
+3. [RayCaster and Mouse Events](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#3---raycaster-and-mouse-events)
 4. [Custom Models - Blender](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#4---custom-models---blender)
 5. [Environment Map](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#5---environment-mapping-and-ai)
 6. [Realistic Render](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#6---realistic-rendering)
@@ -35,17 +35,17 @@ We need to create a physical world and associate it with the THREE.js world
 ## 1.1 - Libraries
 
 ### 1.1.1 - 3D Physics Libraries
-1. [Ammo.js](https://github.com/kripken/ammo.js)
-2. [Cannon.js](https://github.com/schteppe/cannon.js?files=1)
-3. [Oimo.js](https://github.com/lo-th/Oimo.js/)
-4. [Rapier](https://github.com/dimforge/rapier)
+* [Ammo.js](https://github.com/kripken/ammo.js)
+* [Cannon.js](https://github.com/schteppe/cannon.js?files=1)
+* [Oimo.js](https://github.com/lo-th/Oimo.js/)
+* [Rapier](https://github.com/dimforge/rapier)
 
 ### 1.1.2 - 2D Physics Libraries
-1. [Matter.js](https://github.com/liabru/matter-js)
-2. [P2.js](https://github.com/schteppe/p2.js)
-3. [Planck.js](https://github.com/shakiba/planck.js)
-4. [Box2D.js](https://github.com/kripken/box2d.js/)
-5. [Rapier](https://github.com/dimforge/rapier)
+* [Matter.js](https://github.com/liabru/matter-js)
+* [P2.js](https://github.com/schteppe/p2.js)
+* [Planck.js](https://github.com/shakiba/planck.js)
+* [Box2D.js](https://github.com/kripken/box2d.js/)
+* [Rapier](https://github.com/dimforge/rapier)
 
 ## 1.2 - Cannon library
 
@@ -679,8 +679,8 @@ tick()
 
 Tests when the mouse pointer is above the object and changes its color
 
-1. Hovering
-2. Clicking
+1. [Hovering](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#331---hovering)
+2. [Clicking](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#332---clicking)
 
 ### 3.3.1 - Hovering
 
