@@ -3790,7 +3790,7 @@ tick()
 # 9 - Performance
 
 1. [Post-processing](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#91---post-processing)
-2. [Performance]()
+2. [Performance](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#92---performance)
 3. [Loading and Intro]()
 4. [HTML and WebGl]()
 
@@ -4410,6 +4410,9 @@ scene.add(shaderMesh)
 ```
 
 ## 9.2.4 - Loading and Intro
+
+1. Lower the download speed
+2. Implementation
 
 Let's overlay an image on top and load a bar, when the resources are ready it will display the scene
 
