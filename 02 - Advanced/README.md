@@ -2,37 +2,50 @@
 
 * [Three.js Docs](https://threejs.org/docs/)
 
-1. Physics
-2. Imported Models
-3. RayCaster and Mouse Events
-4. Custom Models - Blender
-5. Environment Map
-6. Realistic Render
-7. Code Structure - Object Oriented
-8. Shaders
-9. Performance
-10. Production
+1. [Physics]()
+2. [Imported Models]()
+3. [RayCaster and Mouse Events]()
+4. [Custom Models - Blender]()
+5. [Environment Map]()
+6. [Realistic Render]()
+7. [Code Structure - Object Oriented]()
+8. [Shaders]()
+9. [Performance]()
 
 ------
 
 # 1 - Physics
 
+1. Libraries
+2. Cannon library
+3. Apply Forces
+4. Handle Multiple Objects
+5. Performance
+6. Events
+7. Remove Objects
+8. Constraints
+9. Aditional Notes
+10. Popular alternatives
+
+
 We need to create a physical world and associate it with the THREE.js world
 
-### 3D Physics Libraries
+## 1.1 - Libraries
+
+### 1.1.1 - 3D Physics Libraries
 1. [Ammo.js](https://github.com/kripken/ammo.js)
 2. [Cannon.js](https://github.com/schteppe/cannon.js?files=1)
 3. [Oimo.js](https://github.com/lo-th/Oimo.js/)
 4. [Rapier](https://github.com/dimforge/rapier)
 
-### 2D Physics Libraries
+### 1.1.2 - 2D Physics Libraries
 1. [Matter.js](https://github.com/liabru/matter-js)
 2. [P2.js](https://github.com/schteppe/p2.js)
 3. [Planck.js](https://github.com/shakiba/planck.js)
 4. [Box2D.js](https://github.com/kripken/box2d.js/)
 5. [Rapier](https://github.com/dimforge/rapier)
 
-Cannon.js example
+## 1.2 - Cannon library
 
 ``` bash
 npm install --save cannon
@@ -153,7 +166,7 @@ const tick = () =>
 tick()
 ```
 
-### Apply Forces
+## 1.3 - Apply Forces
 
 * applyForce           Apply force from a specified point in space
 * applyImpulse         Apply force to the velocity instead of the force
@@ -179,7 +192,7 @@ const tick = () =>
 tick()
 ```
 
-### Handle Multiple Objects
+## 1.4 - Handle Multiple Objects
 
 ``` javascript
 /**
@@ -274,7 +287,7 @@ const tick = () =>
 tick()
 ```
 
-### Performance
+## 1.5 - Performance
 
 `Broadphase`
 * NaiveBroadphase - Test collisions between bodies against other bodies
@@ -293,7 +306,7 @@ world.allowSleep = true
 
 Allow sleep prevents calculations on objects that are stationary
 
-### Events
+## 1.6 - Events
 
 * Colide
 * Sleep
@@ -345,7 +358,7 @@ const createBox = (widht, height, depth, position) => {
 
 ```
 
-### Remove Objects
+## 1.7 - Remove Objects
 
 ``` javascript
 /**
@@ -369,7 +382,7 @@ debugObject.reset = () => {
 gui.add(debugObject, 'reset')
 ```
 
-### Constraints
+## 1.8 - Constraints
 
 Enable constraints between bodies
 
@@ -381,10 +394,12 @@ Enable constraints between bodies
 [Cannon docs](http://schteppe.github.io/cannon.js/docs/)
 You can extract examples, such as cars with their physics in the documentation.
 
-### Workers
+## 1.9 - Aditional Notes
+
+### 1.9.1 - Workers
 Workers allow dividing the processor's work between several threads, allowing to improve performance
 
-### Change to Cannon-es
+### 1.9.2 - Change to Cannon-es
 More recent
 
 ``` bash
@@ -395,7 +410,9 @@ npm install --save cannon-es@0.15.1
 import * as CANNON from 'cannon-es'
 ```
 
-### Ammo.js
+## 1.10 - Popular alternatives
+
+### 1.10.1 - Ammo.js
 
 * Bullet physics engine
 * WebAssembly Support (low-level language)
@@ -403,7 +420,7 @@ import * as CANNON from 'cannon-es'
 * More Features
 * Harder
 
-### Physijs
+### 1.10.2 - Physijs
 
 * Uses Ammo and uses workers natively
 * Creates body and mesh in the same object
@@ -411,6 +428,18 @@ import * as CANNON from 'cannon-es'
 ------
 
 # 2 - Imported Models
+
+1. Types of Models
+2. glTF Formats
+3. Loading the Model
+4. Animations inside the model
+5. THREE.js Online Editor
+
+
+[glTF free models](https://github.com/KhronosGroup/glTF-Sample-Models)
+
+
+## 2.1 - Types of Models
 
 3d models can be imported in different [formats](https://en.wikipedia.org/wiki/List_of_file_formats#3dgrapichs), the most popular being:
 
@@ -435,38 +464,37 @@ Supports:
 * Morphing
 * (...)
 
-[glTF free models](https://github.com/KhronosGroup/glTF-Sample-Models)
 
-### glTF Formats
+## 2.2 - glTF Formats
 
-1. glTF - Default   - JSON representation
-2. glTF - Binary    - Binary representation
-3. glTF - Embedded  - JSON and Binary representation
-4. glTF - Draco     - JSON representation
+1. glTF / Default   - JSON representation
+2. glTF / Binary    - Binary representation
+3. glTF / Embedded  - JSON and Binary representation
+4. glTF / Draco     - JSON representation
 
 
-### 1. glTF - Default
+### 2.2.1 - glTF / Default
 
 * Multiple files
 * Model.gltf - JSON that contains cameras, lights, scenes, materials and object transformations
 * Model0.bin - Binary file that contains geometries (vertices positions, UV coordinates, normals, colors, etc)
 * ModelCM.png - The texture
 
-### 2. glTF - Binary
+### 2.2.2 glTF / Binary
 
 * Only one file
 * Contains all data compiled in binary
 * lighter that default
 * harder to modify
 
-### 3. glTF - Embedded
+### 2.2.3 - glTF / Embedded
 
 * One file
 * JSON format
 * Texture and Geometries are embedded inside the JSON with binary
 * Heavier
 
-### 4. glTF - Draco
+### 2.2.4 - glTF / Draco
 
 * Multiple Files
 * Lighter than default
@@ -474,7 +502,7 @@ Supports:
 * Google algorithm under open-source license
 * Need DRACOLoader instance - Models with exaggerated size or too much diversity of models
 
-### Loading the model
+## 2.3 - Loading the Model
 
 ``` javascript
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -522,7 +550,7 @@ gltfLoader.load(
 )
 ```
 
-### Animations inside the model
+## 2.4 - Animations inside the model
 
 Imported models can have `AnimationClips`, to use them we need to create an `AnimationMixer`
 
@@ -556,7 +584,7 @@ const tick = () =>
 }
 ```
 
-### THREE.js Online Editor
+## 2.5 - THREE.js Online Editor
 
 We can use the online editor to preview the models before importing them
 [THREE.js Editor](https://threejs.org/editor/)
@@ -569,13 +597,20 @@ We can use the online editor to preview the models before importing them
 
 # 3 - Raycaster and Mouse Events
 
+1. Intersect properties
+2. Horizontal Ray
+3. Mouse Events
+
+
 This Casts an ray in specific direction and trigger a event if so, consumes a lot of resources
 
-### Usage examples:
+Usage examples:
 * Collision with an wall
 * Shooting a gun in a game
 * Something under the mouse pointer
 * Show alert message if player is leaving the map
+
+## 3.1 - Intersect properties
 
 Intersect and Intersects objects contains:
 * `distance` - Distance between the origin of the ray and the collision point
@@ -585,7 +620,7 @@ Intersect and Intersects objects contains:
 * `Point` - Vector3 of the exact point of the collision
 * `uv` -  UV coordinates in that geometry
 
-### Horizontal Ray
+## 3.2 - Horizontal Ray
 
 Tests when three spheres pass through the beam and changes its color when that happens
 
@@ -638,14 +673,14 @@ const tick = () =>
 tick()
 ```
 
-### Mouse Event
+## 3.3 - Mouse Events
 
 Tests when the mouse pointer is above the object and changes its color
 
 1. Hovering
 2. Clicking
 
-### 1. Hovering
+### 3.3.1 - Hovering
 
 We also have a section dedicated to when the mouse pointer is inside or outside the object
 
@@ -709,7 +744,7 @@ const tick = () =>
 tick()
 ```
 
-### 2. Clicking
+### 3.3.2 - Clicking
 
 ``` javascript
 /**
@@ -725,17 +760,8 @@ window.addEventListener('click', (_event) => {
 
 ------
 
-# 3 - Custom Models
 
-[Blender](https://docs.blender.org/)
-* Free
-* Good performance
-* Light
-* Works on most OS
-* Features
-* Community
-
-## Blender Shortcuts
+# 3 - Custom Models - Blender
 
 1. Layout
 2. Scene
@@ -747,6 +773,19 @@ window.addEventListener('click', (_event) => {
 8. Curves
 9. Render
 10. Timeline
+11. Export model
+12. More Blender Youtube resources
+
+
+[Blender](https://docs.blender.org/)
+
+
+* Free
+* Good performance
+* Light
+* Works on most OS
+* Features
+* Community
 
 
 ## 3.1 - Layout
@@ -894,14 +933,14 @@ window.addEventListener('click', (_event) => {
 | `P` + `Alt`     | Reset range          |
 | `V`             | Handle type          |
 
-## Export model
+## 3.11 - Export model
 
 1. Select objects to be exported
 2. File -> Export -> glTF 2.0
 3. Choose file format
 4. Choose project static/models folder
 
-## More Blender Youtube resources
+## 3.12 - More Blender Youtube resources
 
 [Blender Guru](https://www.youtube.com/@blenderguru)
 [Grant Abbitt](https://www.youtube.com/@grabbitt)
@@ -912,12 +951,16 @@ window.addEventListener('click', (_event) => {
 
 # 5 - Environment Mapping and AI
 
-1. Blur and Light
-2. HDRI Equirectangular Environment Map
-3. Generate HDRI
-4. Bring object inside Environment Map closer to the ground
-5. Real-Time Environment Map
+1. Download resources
+2. Implementation
+3. Blur and Light
+4. HDRI Equirectangular Environment Map
+5. Generate HDRI
+6. Bring object inside Environment Map closer to the ground
+7. Real-Time Environment Map
 
+
+## 5.1. Download Resources
 See how to load models or environment maps in the basics part
 
 Models
@@ -931,12 +974,14 @@ HDRI
 Convert to 6 PNG, cube map textures with [HDRI to CubeMap](https://matheowis.github.io/HDRI-to-CubeMap/)
 
 
+## 5.2 - Implementation
+
 ``` javascript
 scene.environment = environmentMap  // apply environment map as lighting to the whole scene
 scene.background = environmentMap   // apply background
 ```
 
-## 5.1 - Blur and Light
+## 5.3 - Blur and Light
 
 ``` javascript
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
@@ -1004,7 +1049,7 @@ gui.add(scene, 'backgroundIntensity')
     .step(0.001)    
 ```
 
-## 5.2 - HDRI Equirectangular Environment Map
+## 5.4 - HDRI Equirectangular Environment Map
 
 High Dynamic Range Image, color valus stored have much higher values range than traditional images, only one file
 
@@ -1027,35 +1072,37 @@ rgbeLoader.load('/environmentMaps/0/2k.hdr', (environmentMap) => {
 })
 ```
 
-## 5.3 - Generate HDRI
+## 5.5 - Generate HDRI
 
-### Blender
+1. Blender
+2. AI NVidia Canvas
+3. Skybox Lab
+4. Load JPEG file
 
+
+### 5.5.1 - Blender
 1. Reduce max sampling from 4096 to 512
-
 2. Add black background to the scene
-
 3. Change resolution to 2048x1024
-
 4. Add camera in the middle of the scene
-
 5. Change lens from perspective to panoramic and choose Equirectangular
-
 6. To see the lights in the render go to Object->visibility-> enable camera
-
 7. Save the image with radiance .hdr format
 
-### AI NVidia Canvas
+
+### 5.5.2 - AI NVidia Canvas
 
 Only for Windows with NVidia RTX
 
 [NVidia Canvas](https://www.nvidia.com/en-us/studio/canvas/)
 
-### Skybox Lab
+
+### 5.5.3 - Skybox Lab
 
 Write something to ask the AI and it will generate the HDRI, use generate depth
 
-#### Load JPEG file
+
+#### 5.5.4 - Load JPEG file
 
 ``` javascript
 // LDR Equirectangular
@@ -1069,8 +1116,8 @@ scene.environment = environmentMap
 scene.background = environmentMap
 ```
 
-## 5.4 - Bring object inside Environment Map closer to the ground
 
+## 5.6 - Bring object inside Environment Map closer to the ground
 
 ``` javascript
 import { GroundProjectedSkybox } from 'three/examples/jsm/objects/GroundProjectedSkybox.js'
@@ -1089,7 +1136,7 @@ rgbeLoader.load('/environmentMaps/3/2k.hdr', (environmentMap) => {
 
 ```
 
-## 5.5 - Real-Time Environment Map
+## 5.7 - Real-Time Environment Map
 
 Allows an object to illuminate others and see its reflections with the environment map, we can organize it by layers
 
@@ -1278,7 +1325,13 @@ gui.add(directionalLight.shadow, 'bias').min(-0.05).max(0.05).step(0.001)
 directionalLight.shadow.bias = 0.01
 ```
 
+------
+
 # 7 - Structure for Bigger Projects - Object Oriented
+
+1. Classes and Modules
+2. Object Oriented Structure
+3. Utils Folder
 
 * Modules
 * Classes
@@ -1345,31 +1398,32 @@ megaMan.sayHi()
 ultron.sayHi()
 ultron.takeOff()
 ultron.land()
-
 ```
 
 ## 7.2 -  Object Oriented Structure
+
 - `intex.html`
-- `script.js`
+- `script.jsx`
 - `style.css`
 - `/Application`
-    - `Application.js` - Main application
-    - `Camera.js` - Camera
-    - `Renderer.js` - Renderer
-    - `sources.js` - Array of sources paths to load 
+    - `Application.jsx` - Main application
+    - `Camera.jsx` - Camera
+    - `Renderer.jsx` - Renderer
+    - `sources.jsx` - Array of sources paths to load 
     - `/Utils`
-        - `Debug.js` - Debug console
-        - `EventEmitter.js` - Returns a string whenever an event is triggered so that it can be accessed by other classes in a simple way
-        - `Resources.js` - Loads the resources
-        - `Sizes.js` - Handle the size and resize oh the window
-        - `Time.js` - Handle the time for animations
+        - `Debug.jsx` - Debug console
+        - `EventEmitter.jsx` - Returns a string whenever an event is triggered so that it can be accessed by other classes in a simple way
+        - `Resources.jsx` - Loads the resources
+        - `Sizes.jsx` - Handle the size and resize oh the window
+        - `Time.jsx` - Handle the time for animations
     - `/World` - Objects
-        - `Environment.js`
-        - `Floor.js`
-        - `Fox.js`
-        - `World.js`
+        - `Environment.jsx`
+        - `Floor.jsx`
+        - `Fox.jsx`
+        - `World.jsx`
 
-### index.html
+
+## 7.2.1 - `index.html`
 ``` html
 <!DOCTYPE html>
 <html lang="en">
@@ -1386,14 +1440,16 @@ ultron.land()
 </html>
 ```
 
-### script.js
+
+## 7.2.2 - `script.jsx`
 ``` javascript
 import Application from './Application/Application'
 
 const application = new Application(document.querySelector('canvas.webgl'))
 ```
 
-### style.css
+
+## 7.2.3 - `style.css`
 ``` css
 *
 {
@@ -1416,9 +1472,10 @@ body
 }
 ```
 
-## Application Folder
 
-### Application.js
+## 7.2.4 - `/Application`
+
+### 7.2.4.1 - `Application.jsx`
 ``` javascript
 import * as THREE from 'three'
 
@@ -1528,7 +1585,7 @@ export default class Application
 }
 ```
 
-### Camera.js
+### 7.2.4.2 - `Camera.jsx`
 ``` javascript
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
@@ -1582,7 +1639,7 @@ export default class Camera
 }
 ```
 
-### Renderer.js
+### 7.2.4.3 - `Renderer.jsx`
 ``` javascript
 import Application from "./Application";
 
@@ -1631,7 +1688,7 @@ export default class Renderer
 }
 ```
 
-### sources.js
+### 7.2.4.4 - `sources.jsx`
 ``` javascript
 export default [
     {
@@ -1665,9 +1722,9 @@ export default [
 ]
 ```
 
-## Utils Folder
+## 7.2.5 - `/Utils`
 
-### Debug.js
+### 7.2.5.1 - `Debug.jsx`
 ``` javascript
 import * as dat from 'lil-gui'
 
@@ -1685,7 +1742,7 @@ export default class Debug
 }
 ```
 
-### EventEmitter.js
+### 7.2.5.2 - `EventEmitter.jsx`
 ``` javascript
 export default class EventEmitter
 {
@@ -1886,7 +1943,7 @@ export default class EventEmitter
 }
 ```
 
-### Resources.js
+### 7.2.5.3 - `Resources.jsx`
 ``` javascript
 import * as THREE from 'three'
 
@@ -1974,7 +2031,7 @@ export default class Resources extends EventEmitter
 }
 ```
 
-### Sizes.js
+### 7.2.5.4 - `Sizes.jsx`
 ``` javascript
 import EventEmitter from './EventEmitter';
 
@@ -2002,7 +2059,7 @@ export default class Sizes extends EventEmitter
 }
 ```
 
-### Time.js
+### 7.2.5.5 - `Time.jsx`
 ``` javascript
 import EventEmitter from "./EventEmitter"
 
@@ -2042,9 +2099,10 @@ export default class Time extends EventEmitter
 }
 ```
 
-## World Folder
+## 7.2.6 - `/World`
 
-### Environment.js
+### 7.2.6.1 - `Environment.jsx`
+
 ``` javascript
 import * as THREE from 'three'
 
@@ -2152,7 +2210,7 @@ export default class Environment
 }
 ```
 
-### Floor.js
+### 7.2.6.2 - `Floor.jsx`
 ``` javascript
 import * as THREE from 'three'
 
@@ -2215,7 +2273,7 @@ export default class Floor
 }
 ```
 
-### Fox.js
+### 7.2.6.3 - `Fox.jsx`
 ``` javascript
 import * as THREE from 'three'
 import Application from '../Application.js'
@@ -2309,7 +2367,7 @@ export default class Fox
 }
 ```
 
-### World.js
+### 7.2.6.4 - `World.jsx`
 ``` javascript
 import Application from "../Application.js";
 import Environment from './Environment.js';
@@ -2346,12 +2404,14 @@ export default class World
 
 # 8 - Shaders
 
-Custom Shaders:
 1. Basics
 2. Shader Patterns
 3. Modified Materials
 
-8.1 - Basics:
+[Noise Templates](https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83)
+
+## 8.1 - Basics
+
 1. Description
 2. Documentation
 3. Shader Material
@@ -2361,65 +2421,6 @@ Custom Shaders:
 7. ShaderMaterial
 8. More information about Shaders
 9. Implementation
-
-8.2 - Shader Patterns:
-01. Normal pattern
-02. Normal pattern alternative
-03. Simple Grey gradient 
-04. Rotated Grey gradient 
-05. Inverted Grey gradient
-06. Grey gradient but with more white
-07. Grey gradient repeating like roof tiles
-08. Grey gradient repeating like roof tiles but more black space between tiles
-09. Grey gradient repeating like roof tiles but more black space between tiles than pattern 8
-10. Rotate last pattern 
-11. Patern 9 and 10 added together to make multiple squares
-12. Inverted 11 pattern, dots
-13. Make the dots rectangles
-14. Mix with 13 and 13 in other axis
-15. Cross pattern with previous bars
-16. Double vertical grey gradient
-17. 4 Gradients in square with cross in the middle
-18. 4 Gradients in triangles making a X
-19. Square with empty square inside
-20. Square with bigger empty square inside
-21. Color palette of 10 grey colors
-22. Color palette of 10*10 grey colors
-23. Old tv pixels without channel using Random function
-24. Old tv pixels with bigger pixel size, sent the vec2 to random
-25. Old tv pixels with bigger pixel size offset (rotated and stretched)
-26. Corner gradient 
-27. Center gradient 
-28. Center gradient but white in the center
-29. Center gradient but small white like a sun
-30. Same as 30 but stretch, elipse sun
-31. Star
-32. Rotated Star using function
-33. Square empty circle in the middle
-34. Eclipse with gradient inside and outside
-35. Empty Circle
-36. Circle
-37. Elastic (Circle with waves)
-38. Elastic with X (makes some particles)
-39. Complex, like a CPU connector
-40. Complex, like a CPU connector
-41. 45 % angle gradient
-42. 45% angle gradient and screen cuted in the middle
-43. 45% gradient like a clock
-44. Illusion with 20 triangles
-45. Illusion with 20 triangles and bigger dark space
-46. Waving circle
-47. Perlin Noise - Clouds, Water, Fire, Terrain, Elevation and to animate Grass and Snow (Nature Algorithm)
-48. Camouflage
-49. Neon Camouflage
-50. Celular ( random elastic Circles inside circles)
-51. Color application in the Pattern
-
-[Noise Templates](https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83)
-
-8.3 - Modified Materials:
-
-## 8.1 - Basics
 
 ### 8.1.1 - Description
 
@@ -2705,9 +2706,61 @@ void main()
 
 ## 8.2 - Shader Patterns
 
+1. Normal pattern
+2. Normal pattern alternative
+3. Simple Grey gradient 
+4. Rotated Grey gradient 
+5. Inverted Grey gradient
+6. Grey gradient but with more white
+7. Grey gradient repeating like roof tiles
+8. Grey gradient repeating like roof tiles but more black space between tiles
+9. Grey gradient repeating like roof tiles but more black space between tiles than pattern 8
+10. Rotate last pattern 
+11. Patern 9 and 10 added together to make multiple squares
+12. Inverted 11 pattern, dots
+13. Make the dots rectangles
+14. Mix with 13 and 13 in other axis
+15. Cross pattern with previous bars
+16. Double vertical grey gradient
+17. 4 Gradients in square with cross in the middle
+18. 4 Gradients in triangles making a X
+19. Square with empty square inside
+20. Square with bigger empty square inside
+21. Color palette of 10 grey colors
+22. Color palette of 10*10 grey colors
+23. Old tv pixels without channel using Random function
+24. Old tv pixels with bigger pixel size, sent the vec2 to random
+25. Old tv pixels with bigger pixel size offset (rotated and stretched)
+26. Corner gradient 
+27. Center gradient 
+28. Center gradient but white in the center
+29. Center gradient but small white like a sun
+30. Same as 30 but stretch, elipse sun
+31. Star
+32. Rotated Star using function
+33. Square empty circle in the middle
+34. Eclipse with gradient inside and outside
+35. Empty Circle
+36. Circle
+37. Elastic (Circle with waves)
+38. Elastic with X (makes some particles)
+39. Complex, like a CPU connector
+40. Complex, like a CPU connector
+41. 45 % angle gradient
+42. 45% angle gradient and screen cuted in the middle
+43. 45% gradient like a clock
+44. Illusion with 20 triangles
+45. Illusion with 20 triangles and bigger dark space
+46. Waving circle
+47. Perlin Noise - Clouds, Water, Fire, Terrain, Elevation and to animate Grass and Snow (Nature Algorithm)
+48. Camouflage
+49. Neon Camouflage
+50. Celular ( random elastic Circles inside circles)
+51. Color application in the Pattern
+
 `fragment.glsl`
 
-### 8.2.01 - Normal pattern
+### 8.2.1 - Normal pattern
 
 ``` c
 void main()
@@ -2716,7 +2769,7 @@ void main()
 }
 ```
 
-### 8.2.02 - Normal pattern alternative
+### 8.2.2 - Normal pattern alternative
 
 ``` c
 void main()
@@ -2725,7 +2778,7 @@ void main()
 }
 ```
 
-### 8.2.03 - Simple Grey gradient  
+### 8.2.3 - Simple Grey gradient  
 
 ``` c
 void main()
@@ -2736,7 +2789,7 @@ void main()
 }
 ```
 
-### 8.2.04 - Rotated Grey gradient 
+### 8.2.4 - Rotated Grey gradient 
 
 ``` c
 void main()
@@ -2747,7 +2800,7 @@ void main()
 }
 ```
 
-### 8.2.05 - Inverted Grey gradient
+### 8.2.5 - Inverted Grey gradient
 
 ``` c
 void main()
@@ -2758,7 +2811,7 @@ void main()
 }
 ```
 
-### 8.2.06 - Grey gradient but with more white
+### 8.2.6 - Grey gradient but with more white
 
 ``` c
 void main()
@@ -2769,7 +2822,7 @@ void main()
 }
 ```
 
-### 8.2.07 - Grey gradient repeating like roof tiles
+### 8.2.7 - Grey gradient repeating like roof tiles
 
 ``` c
 void main()
@@ -2780,7 +2833,7 @@ void main()
 }
 ```
 
-### 8.2.08 - Grey gradient repeating like roof tiles but more black space between tiles
+### 8.2.8 - Grey gradient repeating like roof tiles but more black space between tiles
 
 ``` c
 void main()
@@ -2792,7 +2845,7 @@ void main()
 }
 ```
 
-### 8.2.09 - Grey gradient repeating like roof tiles but more black space between tiles than pattern 8
+### 8.2.9 - Grey gradient repeating like roof tiles but more black space between tiles than pattern 8
 
 ``` c
 void main()
@@ -3733,15 +3786,13 @@ tick()
 
 ------
 
+
 # 9 - Performance
 
 1. Post-processing
 2. Performance
 3. Loading and Intro
 4. HTML and WebGl
-
-
-------
 
 
 ## 9.1 - Post-processing
@@ -4031,16 +4082,20 @@ const tick = () =>
 tick()
 ```
 
-------
-
-------
 
 # 9.2 - Performance
+
+1. Stats
+2. Monitor Draws
+3. Performance Tips
+4. Loading and Intro
+5. HTML and WebGL
+
 
 * Target should be 60 FPS
 * Less draws, the better
 
-## Monitor FPS
+## 9.2.1 - Stats
 
 We will use `stats.js`
 
@@ -4068,7 +4123,7 @@ const tick = () =>
 }
 ```
 
-## 9.2.1 - Monitor Drawns
+## 9.2.2 - Monitor Drawns
 
 Chrome extension:
 * [Spectorjs](https://chrome.google.com/webstore/detail/spectorjs/denbgaamihkadbghdceggmchnflmhpmk)
@@ -4080,7 +4135,7 @@ To see what is been drawned in the renderer we can use:
 console.log(renderer.info)
 ```
 
-## 9.2.2 - Performance Tips
+## 9.2.3 - Performance Tips
 
 1. Geometry
 2. Light
@@ -4094,7 +4149,7 @@ console.log(renderer.info)
 10. Post-processing
 11. Shader
 
-### 9.2.1. Geometry
+### 9.2.3.1 - Geometry
 
 * Dispose textures and materials after removing the object
 
@@ -4144,7 +4199,7 @@ scene.add(mesh)
 ```
 
 
-### 9.2.2. Light
+### 9.2.3.2 - Light
 
 * Avoid Lights
 * Use cheap lights like AmbientLight DirectionalLight or HemisphereLight
@@ -4152,7 +4207,7 @@ scene.add(mesh)
 * Avoid adding and removing lights, all the materials will be recompiled
 
 
-### 9.2.3. Shadow
+### 9.2.3.3 - Shadow
 
 * Avoid shadows
 * Bake the shadows in the texture
@@ -4178,7 +4233,7 @@ renderer.shadowMap.needsUpdate = true
 ```
 
 
-### 9.2.4. Texture
+### 9.2.3.4 - Texture
 
 * Small resolution as possible
 * Use power of 2 resolutions: 256, 512, 1024
@@ -4186,13 +4241,13 @@ renderer.shadowMap.needsUpdate = true
 * Reduce TinyPNG to reduce the weight of PNG or JPEG
 
 
-### 9.2.5. Material
+### 9.2.3.5 - Material
 
 * Use the same materials for different objects
 * Avoid expensive materials like MeshStandardMaterial or MeshPhysicalMaterial
 
 
-### 9.2.6. Mesh
+### 9.2.3.6 - Mesh
 
 * Create one IntanceMesh and provide transformation matrix with Matrix4
 
@@ -4229,19 +4284,19 @@ for(let i = 0; i < 50; i++)
 }
 ```
 
-### 9.2.7. Model
+### 9.2.3.7 - Model
 
 * When have alot of objects use Draco compression, freeze in the begining while decompress but its faster
 * GZIP - Compression in the server side, for `.glb`, `.gltf`, `.obj`
 
 
-### 9.2.8. Camera
+### 9.2.3.8 - Camera
 
 * Reduce the field of view, when we have something that we dont see and dont want to render
 * Reduce near and far render the objects that we can see and are closer
 * Use camera helpers
 
-### 9. Renderer
+### 9.2.3.9 - Renderer
 
 * Use the device pixel ratio function, don't use the default one
 * Use this property in the rederer to reserve high-power
@@ -4258,12 +4313,12 @@ const renderer = new THREE.WebGLRenderer({
 ```
 
 
-### 9.2.10. Post-processing
+### 9.2.3.10 - Post-processing
 
 * Limit the passes, less is better
 * 4 passes with pixel ratio 2 = 1920 * 2 * 1080 * 2 * 4 = 33177600 Pixels to renderer, less performant exponentially 
 
-### 11. Shader
+### 9.2.3.11 - Shader
 
 * Reduce the precision of the shader
 * Simplifies the mathematical algorithm as much as possible
@@ -4354,19 +4409,17 @@ shaderMesh.rotation.x = - Math.PI * 0.5
 scene.add(shaderMesh)
 ```
 
-------
-
-# 9.3 - Loading and Intro
+## 9.2.4 - Loading and Intro
 
 Let's overlay an image on top and load a bar, when the resources are ready it will display the scene
 
-## 9.3.1 - Lower the download speed
+### 9.2.4.1 - Lower the download speed
 
 Browser -> Developer Tools -> Network
 1. Disable cache
 2. Whitout limitation -> add profile with 100000 speed (9.8mb/s) -> Choose that profile
 
-## 9.3.2 - Implementation
+### 9.2.4.2 - Implementation
 
 ``` javascript
 import { gsap } from 'gsap'
@@ -4467,9 +4520,7 @@ scene.add(overlay)
 }
 ```
 
-------
-
-# 9.4 HTML and WebGL
+## 9.2.5 HTML and WebGL
 
 Allows you to introduce points in space, for example to label the object, when you move the mouse over it a descriptive box will appear, when the point is behind the object it should not be visible
 
@@ -4649,7 +4700,15 @@ tick()
 
 ------
 
-## UV unwrapping
+# 10 - UV unwrapping
+
+1. Wrap
+2. Export
+
+`Blender`
+
+
+## 10.1 - Wrap
 
 1. Disjoint all objects with `F3` -> make single object and data
 We can do this individually after selecting the object with `P`
@@ -4659,11 +4718,9 @@ We can do this individually after selecting the object with `P`
 3. Top right corner, two balls, enable `Face Orientation` filter.
 
 4. Next we must select everything, control A and stabilize the scale, only now can we start unwrapping:
-
 * `A` + `A` -> `Scale`
 
 6. When unwrapping we can say where we are going to start opening the geometry with:
-
 * `U` -> `Mark Seam`
 
 7. To move the unwrapp on the island we can select any part of the object, press `Control` + `L`, and now we can organize the geometry in the wrap
@@ -4672,8 +4729,17 @@ We can do this individually after selecting the object with `P`
 
 9. Apply filmic filter to the Baked image, change the view mode to Compositor, click on use nodes, add `Image` node and `Denoise`, mute the `Render layers` with the `M`
 
-## Exporting Custom model to be wrappped
+
+## 10.2 - Export
 
 Export the Model after selecting all except the camera and the lights:
 
-Go to file -> glTF Binary -> Selected Objects -> +Y Up -> UVs -> No export Materials -> compression -> Disable Animation, Shape Keys and Skinning
+1. Go to file
+2. glTF Binary
+3. Selected Objects
+4. +Y Up
+5. UVs
+6. No export Materials
+7. compression
+8. Disable Animation
+9. Shape Keys and Skinning

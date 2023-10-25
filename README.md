@@ -5,6 +5,7 @@
 
 ------
 
+
 ## [1 - Basic](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic)
 
 1. [Setup](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#1---setup)
@@ -23,7 +24,7 @@
 ------
 
 
-## 2 - Advanced
+## [2 - Advanced](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced)
 
 1. Physics
 2. Imported Models
@@ -40,11 +41,16 @@
 ------
 
 
-## 3 - Projects
+## [3 - Projects](https://github.com/ivanxavier7/three.js/tree/main/03%20-%20Projects)
 
-1. Simple House
-2. Particles Galaxy
-3. Scroll and Cursor Animation
-4. Sea Particles - Shader
-5. Animated Galaxy - Shader
-6. Portal - Blender - Shader
+1. [Simple House](https://github.com/ivanxavier7/three.js/tree/main/03%20-%20Projects/01%20-%20Simple%20House)
+2. [Particles Galaxy](https://github.com/ivanxavier7/three.js/tree/main/03%20-%20Projects/02%20-%20Particles%20Galaxy)
+3. [Scroll and Cursor Animation](https://github.com/ivanxavier7/three.js/tree/main/03%20-%20Projects/03%20-%20Scroll%20and%20Cursor%20Animation)
+4. [Sea Particles - Shader](https://github.com/ivanxavier7/three.js/tree/main/03%20-%20Projects/03%20-%20Scroll%20and%20Cursor%20Animation)
+5. [Animated Galaxy - Shader](https://github.com/ivanxavier7/three.js/tree/main/03%20-%20Projects/05%20-%20Animated%20Galaxy%20%20-%20Shader)
+6. [Portal - Blender - Shader](https://github.com/ivanxavier7/three.js/tree/main/03%20-%20Projects/06%20-%20Portal%20-%20Blender%20-%20Shader)
+
+
+------
+
+
