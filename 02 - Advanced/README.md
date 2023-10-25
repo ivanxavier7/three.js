@@ -5,27 +5,28 @@
 1. [Physics](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1---physics)
 2. [Imported Models](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1---physics)
 3. [RayCaster and Mouse Events](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1---physics)
-4. [Custom Models - Blender]()
-5. [Environment Map]()
-6. [Realistic Render]()
-7. [Code Structure - Object Oriented]()
-8. [Shaders]()
-9. [Performance]()
+4. [Custom Models - Blender](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#4---custom-models---blender)
+5. [Environment Map](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#5---environment-mapping-and-ai)
+6. [Realistic Render](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#6---realistic-rendering)
+7. [Code Structure - Object Oriented](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#7---structure-for-bigger-projects---object-oriented)
+8. [Shaders](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8---shaders)
+9. [Performance](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#9---performance)
+10. [UV unwrapping](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#10---uv-unwrapping)
 
 ------
 
 # 1 - Physics
 
-1. [Libraries]()
-2. [Cannon library]()
-3. [Apply Forces]()
-4. [Handle Multiple Objects]()
-5. [Performance]()
-6. [Events]()
-7. [Remove Objects]()
-8. [Constraints]()
-9. [Aditional Notes]()
-10. [Popular alternatives]()
+1. [Libraries](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#11---libraries)
+2. [Cannon library](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#12---cannon-library)
+3. [Apply Forces](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#13---apply-forces)
+4. [Handle Multiple Objects](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#14---handle-multiple-objects)
+5. [Performance](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#15---performance)
+6. [Events](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#16---events)
+7. [Remove Objects](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#17---remove-objects)
+8. [Constraints](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#18---constraints)
+9. [Aditional Notes](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#19---aditional-notes)
+10. [Popular alternatives](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#110---popular-alternatives)
 
 
 We need to create a physical world and associate it with the THREE.js world
@@ -429,11 +430,11 @@ import * as CANNON from 'cannon-es'
 
 # 2 - Imported Models
 
-1. Types of Models
-2. glTF Formats
-3. Loading the Model
-4. Animations inside the model
-5. THREE.js Online Editor
+1. [Types of Models](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#21---types-of-models)
+2. [glTF Formats](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#22---gltf-formats)
+3. [Loading the Model](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#23---loading-the-model)
+4. [Animations inside the model](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#24---animations-inside-the-model)
+5. [THREE.js Online Editor](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#24---animations-inside-the-model)
 
 
 [glTF free models](https://github.com/KhronosGroup/glTF-Sample-Models)
@@ -597,9 +598,9 @@ We can use the online editor to preview the models before importing them
 
 # 3 - Raycaster and Mouse Events
 
-1. Intersect properties
-2. Horizontal Ray
-3. Mouse Events
+1. [Intersect properties](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#31---intersect-properties)
+2. [Horizontal Ray](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#32---horizontal-ray)
+3. [Mouse Events](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#33---mouse-events)
 
 
 This Casts an ray in specific direction and trigger a event if so, consumes a lot of resources
@@ -763,21 +764,18 @@ window.addEventListener('click', (_event) => {
 
 # 4 - Custom Models - Blender
 
-1. Layout
-2. Scene
-3. View
-4. Object
-5. Selection
-6. Modes
-7. Edition
-8. Curves
-9. Render
-10. Timeline
-11. Export model
-12. More Blender Youtube resources
-
-
-[Blender](https://docs.blender.org/)
+1. [Layout](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#41---layout)
+2. [Scene](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#42---scene)
+3. [View](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#43---view)
+4. [Object](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#44---object)
+5. [Selection](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#45---selection)
+6. [Modes](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#46---modes)
+7. [Edition](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#47---edition)
+8. [Curves](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#48---curves)
+9. [Render](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#49---render)
+10. [Timeline](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#410---timeline)
+11. [Export model](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#411---export-model)
+12. [More Blender Youtube resources](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#412---more-blender-youtube-resources)
 
 
 * Free
@@ -786,6 +784,9 @@ window.addEventListener('click', (_event) => {
 * Works on most OS
 * Features
 * Community
+
+
+[Blender](https://docs.blender.org/)
 
 
 ## 4.1 - Layout
@@ -942,22 +943,22 @@ window.addEventListener('click', (_event) => {
 
 ## 4.12 - More Blender Youtube resources
 
-[Blender Guru](https://www.youtube.com/@blenderguru)
-[Grant Abbitt](https://www.youtube.com/@grabbitt)
-[CGFastTrack](https://www.youtube.com/@CGFastTrack)
-[CGCookie](https://www.youtube.com/@cg_cookie)
+* [Blender Guru](https://www.youtube.com/@blenderguru)
+* [Grant Abbitt](https://www.youtube.com/@grabbitt)
+* [CGFastTrack](https://www.youtube.com/@CGFastTrack)
+* [CGCookie](https://www.youtube.com/@cg_cookie)
 
 ------
 
 # 5 - Environment Mapping and AI
 
-1. Download resources
-2. Implementation
-3. Blur and Light
-4. HDRI Equirectangular Environment Map
-5. Generate HDRI
-6. Bring object inside Environment Map closer to the ground
-7. Real-Time Environment Map
+1. [Download resources](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#51-download-resources)
+2. [Implementation](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#52---implementation)
+3. [Blur and Light](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#53---blur-and-light)
+4. [HDRI Equirectangular Environment Map](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#54---hdri-equirectangular-environment-map)
+5. [Generate HDRI](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#55---generate-hdri)
+6. [Bring object inside Environment Map closer to the ground](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#56---bring-object-inside-environment-map-closer-to-the-ground)
+7. [Real-Time Environment Map](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#57---real-time-environment-map)
 
 
 ## 5.1. Download Resources
@@ -1193,10 +1194,10 @@ tick()
 
 # 6 - Realistic Rendering
 
-1. Tone Maping
-2. Antialiasing
-3. Add Shadow to Environment Map
-4. Textures
+1. [Tone Maping](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#61---tone-maping)
+2. [Antialiasing](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#62---antialiasing)
+3. [Add Shadow to Environment Map](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#63---add-shadow-to-environment-map)
+4. [Textures](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#64---textures)
 
 ## 6.1 - Tone Maping
 
@@ -1329,9 +1330,8 @@ directionalLight.shadow.bias = 0.01
 
 # 7 - Structure for Bigger Projects - Object Oriented
 
-1. Classes and Modules
-2. Object Oriented Structure
-3. Utils Folder
+1. [Classes and Modules](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#71----classes-and-modules)
+2. [Object Oriented Structure](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#72----object-oriented-structure)
 
 * Modules
 * Classes
@@ -1423,7 +1423,7 @@ ultron.land()
         - `World.jsx`
 
 
-## 7.2.1 - `index.html`
+### 7.2.1 - `index.html`
 ``` html
 <!DOCTYPE html>
 <html lang="en">
@@ -1441,7 +1441,7 @@ ultron.land()
 ```
 
 
-## 7.2.2 - `script.jsx`
+### 7.2.2 - `script.jsx`
 ``` javascript
 import Application from './Application/Application'
 
@@ -1449,7 +1449,7 @@ const application = new Application(document.querySelector('canvas.webgl'))
 ```
 
 
-## 7.2.3 - `style.css`
+### 7.2.3 - `style.css`
 ``` css
 *
 {
@@ -1473,9 +1473,9 @@ body
 ```
 
 
-## 7.2.4 - `/Application`
+### 7.2.4 - `/Application`
 
-### 7.2.4.1 - `Application.jsx`
+#### 7.2.4.1 - `Application.jsx`
 ``` javascript
 import * as THREE from 'three'
 
@@ -1585,7 +1585,7 @@ export default class Application
 }
 ```
 
-### 7.2.4.2 - `Camera.jsx`
+#### 7.2.4.2 - `Camera.jsx`
 ``` javascript
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
@@ -1639,7 +1639,7 @@ export default class Camera
 }
 ```
 
-### 7.2.4.3 - `Renderer.jsx`
+#### 7.2.4.3 - `Renderer.jsx`
 ``` javascript
 import Application from "./Application";
 
@@ -1688,7 +1688,7 @@ export default class Renderer
 }
 ```
 
-### 7.2.4.4 - `sources.jsx`
+#### 7.2.4.4 - `sources.jsx`
 ``` javascript
 export default [
     {
@@ -1722,9 +1722,9 @@ export default [
 ]
 ```
 
-## 7.2.5 - `/Utils`
+### 7.2.5 - `/Utils`
 
-### 7.2.5.1 - `Debug.jsx`
+#### 7.2.5.1 - `Debug.jsx`
 ``` javascript
 import * as dat from 'lil-gui'
 
@@ -1742,7 +1742,7 @@ export default class Debug
 }
 ```
 
-### 7.2.5.2 - `EventEmitter.jsx`
+#### 7.2.5.2 - `EventEmitter.jsx`
 ``` javascript
 export default class EventEmitter
 {
@@ -1943,7 +1943,7 @@ export default class EventEmitter
 }
 ```
 
-### 7.2.5.3 - `Resources.jsx`
+#### 7.2.5.3 - `Resources.jsx`
 ``` javascript
 import * as THREE from 'three'
 
@@ -2031,7 +2031,7 @@ export default class Resources extends EventEmitter
 }
 ```
 
-### 7.2.5.4 - `Sizes.jsx`
+#### 7.2.5.4 - `Sizes.jsx`
 ``` javascript
 import EventEmitter from './EventEmitter';
 
@@ -2059,7 +2059,7 @@ export default class Sizes extends EventEmitter
 }
 ```
 
-### 7.2.5.5 - `Time.jsx`
+#### 7.2.5.5 - `Time.jsx`
 ``` javascript
 import EventEmitter from "./EventEmitter"
 
@@ -2099,9 +2099,9 @@ export default class Time extends EventEmitter
 }
 ```
 
-## 7.2.6 - `/World`
+### 7.2.6 - `/World`
 
-### 7.2.6.1 - `Environment.jsx`
+#### 7.2.6.1 - `Environment.jsx`
 
 ``` javascript
 import * as THREE from 'three'
@@ -2210,7 +2210,7 @@ export default class Environment
 }
 ```
 
-### 7.2.6.2 - `Floor.jsx`
+#### 7.2.6.2 - `Floor.jsx`
 ``` javascript
 import * as THREE from 'three'
 
@@ -2273,7 +2273,7 @@ export default class Floor
 }
 ```
 
-### 7.2.6.3 - `Fox.jsx`
+#### 7.2.6.3 - `Fox.jsx`
 ``` javascript
 import * as THREE from 'three'
 import Application from '../Application.js'
@@ -2367,7 +2367,7 @@ export default class Fox
 }
 ```
 
-### 7.2.6.4 - `World.jsx`
+#### 7.2.6.4 - `World.jsx`
 ``` javascript
 import Application from "../Application.js";
 import Environment from './Environment.js';
@@ -2404,23 +2404,23 @@ export default class World
 
 # 8 - Shaders
 
-1. Basics
-2. Shader Patterns
-3. Modified Materials
+1. [Basics](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#81---basics)
+2. [Shader Patterns](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#82---shader-patterns)
+3. [Modified Materials](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#83---modified-materials)
 
-[Noise Templates](https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83)
+[Perlin Noise Templates](https://gist.github.com/patriciogonzalezvivo/670c22f3966e662d2f83)
 
 ## 8.1 - Basics
 
-1. Description
-2. Documentation
-3. Shader Material
-4. Vertex Shader
-5. Fragment Shader
-6. Vertex and Fragment Shader
-7. ShaderMaterial
-8. More information about Shaders
-9. Implementation
+1. [Description](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#811---description)
+2. [Documentation](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#812---documentation)
+3. [Shader Material](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#813---shader-material)
+4. [Vertex Shader](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#814---vertex-shader)
+5. [Fragment Shader](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#815---fragment-shader)
+6. [Vertex and Fragment Shader](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#816---vertex-and-fragment-shader)
+7. [ShaderMaterial](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#817---shadermaterial)
+8. [More information about Shaders](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#818---more-information-about-shaders)
+9. [Implementation](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#819---implementation)
 
 ### 8.1.1 - Description
 
@@ -2706,57 +2706,57 @@ void main()
 
 ## 8.2 - Shader Patterns
 
-1. Normal pattern
-2. Normal pattern alternative
-3. Simple Grey gradient 
-4. Rotated Grey gradient 
-5. Inverted Grey gradient
-6. Grey gradient but with more white
-7. Grey gradient repeating like roof tiles
-8. Grey gradient repeating like roof tiles but more black space between tiles
-9. Grey gradient repeating like roof tiles but more black space between tiles than pattern 8
-10. Rotate last pattern 
-11. Patern 9 and 10 added together to make multiple squares
-12. Inverted 11 pattern, dots
-13. Make the dots rectangles
-14. Mix with 13 and 13 in other axis
-15. Cross pattern with previous bars
-16. Double vertical grey gradient
-17. 4 Gradients in square with cross in the middle
-18. 4 Gradients in triangles making a X
-19. Square with empty square inside
-20. Square with bigger empty square inside
-21. Color palette of 10 grey colors
-22. Color palette of 10*10 grey colors
-23. Old tv pixels without channel using Random function
-24. Old tv pixels with bigger pixel size, sent the vec2 to random
-25. Old tv pixels with bigger pixel size offset (rotated and stretched)
-26. Corner gradient 
-27. Center gradient 
-28. Center gradient but white in the center
-29. Center gradient but small white like a sun
-30. Same as 30 but stretch, elipse sun
-31. Star
-32. Rotated Star using function
-33. Square empty circle in the middle
-34. Eclipse with gradient inside and outside
-35. Empty Circle
-36. Circle
-37. Elastic (Circle with waves)
-38. Elastic with X (makes some particles)
-39. Complex, like a CPU connector
-40. Complex, like a CPU connector
-41. 45 % angle gradient
-42. 45% angle gradient and screen cuted in the middle
-43. 45% gradient like a clock
-44. Illusion with 20 triangles
-45. Illusion with 20 triangles and bigger dark space
-46. Waving circle
-47. Perlin Noise - Clouds, Water, Fire, Terrain, Elevation and to animate Grass and Snow (Nature Algorithm)
-48. Camouflage
-49. Neon Camouflage
-50. Celular ( random elastic Circles inside circles)
-51. Color application in the Pattern
+1. [Normal pattern](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#821---normal-pattern)
+2. [Normal pattern alternative](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#822---normal-pattern-alternative)
+3. [Simple Grey gradient](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#823---simple-grey-gradient)
+4. [Rotated Grey gradient](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#824---rotated-grey-gradient)
+5. [Inverted Grey gradient](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#825---inverted-grey-gradient)
+6. [Grey gradient but with more white](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#826---grey-gradient-but-with-more-white)
+7. [Grey gradient repeating like roof tiles](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#827---grey-gradient-repeating-like-roof-tiles)
+8. [Grey gradient repeating like roof tiles but more black space between tiles](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#828---grey-gradient-repeating-like-roof-tiles-but-more-black-space-between-tiles)
+9. [Grey gradient repeating like roof tiles but more black space between tiles than pattern 8](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#829---grey-gradient-repeating-like-roof-tiles-but-more-black-space-between-tiles-than-pattern-8)
+10. [Rotate last pattern](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8210---rotate-last-pattern)
+11. [Patern 9 and 10 added together to make multiple squares](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8211---patern-9-and-10-added-together-to-make-multiple-squares)
+12. [Inverted 11 pattern, dots](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8212---inverted-11-pattern-dots)
+13. [Make the dots rectangles](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8213---make-the-dots-rectangles)
+14. [Mix with 13 and 13 in other axis](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8214---mix-with-13-and-13-in-other-axis)
+15. [Cross pattern with previous bars](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8215---cross-pattern-with-previous-bars)
+16. [Double vertical grey gradient](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8216---double-vertical-grey-gradient)
+17. [4 Gradients in square with cross in the middle](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8217---4-gradients-in-square-with-cross-in-the-middle)
+18. [4 Gradients in triangles making a X](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8218---4-gradients-in-triangles-making-a-x)
+19. [Square with empty square inside](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8219---square-with-empty-square-inside)
+20. [Square with bigger empty square inside](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8220---square-with-bigger-empty-square-inside)
+21. [Color palette of 10 grey colors](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8221---color-palette-of-10-grey-colors)
+22. [Color palette of 10*10 grey colors](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8222---color-palette-of-1010-grey-colors)
+23. [Old tv pixels without channel using Random function](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8223---old-tv-pixels-without-channel-using-random-function)
+24. [Old tv pixels with bigger pixel size, sent the vec2 to random](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8224---old-tv-pixels-with-bigger-pixel-size-sent-the-vec2-to-random)
+25. [Old tv pixels with bigger pixel size offset (rotated and stretched)](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8225---old-tv-pixels-with-bigger-pixel-size-offset-rotated-and-stretched)
+26. [Corner gradient](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8226---corner-gradient)
+27. [Center gradient](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8227---center-gradient)
+28. [Center gradient but white in the center](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8228---center-gradient-but-white-in-the-center)
+29. [Center gradient but small white like a sun](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8229---center-gradient-but-small-white-like-a-sun)
+30. [Same as 29 but stretch, elipse sun](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8230---same-as-30-but-stretch-elipse-sun)
+31. [Star](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8231---star)
+32. [Rotated Star using function](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8232---rotated-star-using-function)
+33. [Square empty circle in the middle](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8233---square-empty-circle-in-the-middle)
+34. [Eclipse with gradient inside and outside](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8234---eclipse-with-gradient-inside-and-outside)
+35. [Empty Circle](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8235---empty-circle)
+36. [Circle](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8236---circle)
+37. [Elastic (Circle with waves)](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8237---elastic-circle-with-waves)
+38. [Elastic with X (makes some particles)](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8238---elastic-with-x-makes-some-particles)
+39. [Complex, like a CPU connector](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8239---complex-like-a-cpu-connector)
+40. [Complex, like a CPU connector](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8240---complex-like-a-cpu-connector)
+41. [45 % angle gradient](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8241---45--angle-gradient)
+42. [45% angle gradient and screen cuted in the middle](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8242---45-angle-gradient-and-screen-cuted-in-the-middle)
+43. [45% gradient like a clock](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8243---45-gradient-like-a-clock)
+44. [Illusion with 20 triangles](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8244---illusion-with-20-triangles)
+45. [Illusion with 20 triangles and bigger dark space](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8245---illusion-with-20-triangles)
+46. [Waving circle](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8246---waving-circle)
+47. [Perlin Noise - Clouds, Water, Fire, Terrain, Elevation and to animate Grass and Snow (Nature Algorithm)](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8247---perlin-noise---clouds-water-fire-terrain-elevation-and)
+48. [Camouflage](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8247---perlin-noise---clouds-water-fire-terrain-elevation-and)
+49. [Neon Camouflage](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8249---neon-camouflage)
+50. [Celular ( random elastic Circles inside circles)](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8250---celular--random-elastic-circles-inside-circles)
+51. [Color application in the Pattern](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8251---color-application-in-the-pattern)
 
 `fragment.glsl`
 
@@ -3347,7 +3347,7 @@ void main()
 }
 ```
 
-### 8.2.45 - Illusion with 20 triangles
+### 8.2.45 - Illusion with 20 triangles and bigger darker space
 
 ``` c
 void main()
@@ -3789,10 +3789,10 @@ tick()
 
 # 9 - Performance
 
-1. Post-processing
-2. Performance
-3. Loading and Intro
-4. HTML and WebGl
+1. [Post-processing](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#91---post-processing)
+2. [Performance]()
+3. [Loading and Intro]()
+4. [HTML and WebGl]()
 
 
 ## 9.1 - Post-processing
@@ -4083,7 +4083,7 @@ tick()
 ```
 
 
-# 9.2 - Performance
+## 9.2 - Performance
 
 1. Stats
 2. Monitor Draws
@@ -4095,7 +4095,7 @@ tick()
 * Target should be 60 FPS
 * Less draws, the better
 
-## 9.2.1 - Stats
+### 9.2.1 - Stats
 
 We will use `stats.js`
 
@@ -4123,7 +4123,7 @@ const tick = () =>
 }
 ```
 
-## 9.2.2 - Monitor Drawns
+### 9.2.2 - Monitor Drawns
 
 Chrome extension:
 * [Spectorjs](https://chrome.google.com/webstore/detail/spectorjs/denbgaamihkadbghdceggmchnflmhpmk)
@@ -4135,7 +4135,7 @@ To see what is been drawned in the renderer we can use:
 console.log(renderer.info)
 ```
 
-## 9.2.3 - Performance Tips
+### 9.2.3 - Performance Tips
 
 1. Geometry
 2. Light
@@ -4149,7 +4149,7 @@ console.log(renderer.info)
 10. Post-processing
 11. Shader
 
-### 9.2.3.1 - Geometry
+#### 9.2.3.1 - Geometry
 
 * Dispose textures and materials after removing the object
 
@@ -4199,7 +4199,7 @@ scene.add(mesh)
 ```
 
 
-### 9.2.3.2 - Light
+#### 9.2.3.2 - Light
 
 * Avoid Lights
 * Use cheap lights like AmbientLight DirectionalLight or HemisphereLight
@@ -4207,7 +4207,7 @@ scene.add(mesh)
 * Avoid adding and removing lights, all the materials will be recompiled
 
 
-### 9.2.3.3 - Shadow
+#### 9.2.3.3 - Shadow
 
 * Avoid shadows
 * Bake the shadows in the texture
@@ -4233,7 +4233,7 @@ renderer.shadowMap.needsUpdate = true
 ```
 
 
-### 9.2.3.4 - Texture
+#### 9.2.3.4 - Texture
 
 * Small resolution as possible
 * Use power of 2 resolutions: 256, 512, 1024
@@ -4241,13 +4241,13 @@ renderer.shadowMap.needsUpdate = true
 * Reduce TinyPNG to reduce the weight of PNG or JPEG
 
 
-### 9.2.3.5 - Material
+#### 9.2.3.5 - Material
 
 * Use the same materials for different objects
 * Avoid expensive materials like MeshStandardMaterial or MeshPhysicalMaterial
 
 
-### 9.2.3.6 - Mesh
+#### 9.2.3.6 - Mesh
 
 * Create one IntanceMesh and provide transformation matrix with Matrix4
 
@@ -4284,19 +4284,19 @@ for(let i = 0; i < 50; i++)
 }
 ```
 
-### 9.2.3.7 - Model
+#### 9.2.3.7 - Model
 
 * When have alot of objects use Draco compression, freeze in the begining while decompress but its faster
 * GZIP - Compression in the server side, for `.glb`, `.gltf`, `.obj`
 
 
-### 9.2.3.8 - Camera
+#### 9.2.3.8 - Camera
 
 * Reduce the field of view, when we have something that we dont see and dont want to render
 * Reduce near and far render the objects that we can see and are closer
 * Use camera helpers
 
-### 9.2.3.9 - Renderer
+#### 9.2.3.9 - Renderer
 
 * Use the device pixel ratio function, don't use the default one
 * Use this property in the rederer to reserve high-power
@@ -4313,12 +4313,12 @@ const renderer = new THREE.WebGLRenderer({
 ```
 
 
-### 9.2.3.10 - Post-processing
+#### 9.2.3.10 - Post-processing
 
 * Limit the passes, less is better
 * 4 passes with pixel ratio 2 = 1920 * 2 * 1080 * 2 * 4 = 33177600 Pixels to renderer, less performant exponentially 
 
-### 9.2.3.11 - Shader
+#### 9.2.3.11 - Shader
 
 * Reduce the precision of the shader
 * Simplifies the mathematical algorithm as much as possible
