@@ -2,16 +2,30 @@
 
 * [Three.js Docs](https://threejs.org/docs/)
 
+
 ------
 
 ## 1 - Basic
 
-1. Setup
-2. Scene
-3. Cameras
-4. Objects
-5. Renderer
-6. Extras
+* [Three.js Docs](https://threejs.org/docs/)
+
+1. [Setup](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#1---setup)
+2. [Scene](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#2---scene)
+3. [Cameras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#3---cameras)
+4. [Objects](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#4---objects)
+5. [Renderer - Animations](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#5---renderer)
+6. [Extras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#6---extras)
+
+### Extras
+
+1. [Debug UI](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#61---debug-ui)
+2. [Measure time loading resources](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#62---measure-time-loading-resources)
+3. [3D Text](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#63---3d-text)
+4. [Particles](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#64---particles)
+
+
+------
+
 
 ## 2 - Advanced
 
@@ -25,6 +39,10 @@
 8. Shaders
 9. Performance
 10. Production
+
+
+------
+
 
 ## 3 - Projects
 
