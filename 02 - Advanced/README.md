@@ -4138,8 +4138,8 @@ console.log(renderer.info)
 7. [Model](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1037---model)
 8. [Camera](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1038---camera)
 9. [Renderer](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1039---renderer)
-10. [Post-processing]()
-11. [Shader]()
+10. [Post-processing](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#10310---post-processing)
+11. [Shader](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#10311---shader)
 
 ### 10.3.1 - Geometry
 
@@ -4403,8 +4403,8 @@ scene.add(shaderMesh)
 
 ## 10.4 - Loading and Intro
 
-1. Lower the download speed
-2. Implementation
+1. [Lower the download speed](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1041---lower-the-download-speed)
+2. [Implementation](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1042---implementation)
 
 Let's overlay an image on top and load a bar, when the resources are ready it will display the scene
 
@@ -4697,8 +4697,8 @@ tick()
 
 # 11 - UV unwrapping
 
-1. Wrap
-2. Export
+1. [Wrap](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#111---wrap)
+2. [Export](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#112---export)
 
 `Blender`
 
