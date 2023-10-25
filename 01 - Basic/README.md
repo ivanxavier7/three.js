@@ -6,8 +6,15 @@
 2. [Scene](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#2---scene)
 3. [Cameras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#3---cameras)
 4. [Objects](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#4---objects)
-5. [Renderer](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#5---renderer)
+5. [Renderer - Animations](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#5---renderer)
 6. [Extras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#6---extras)
+
+### Extras
+
+1. [Debug UI](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#61---debug-ui)
+2. [Measure time loading resources](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#62---measure-time-loading-resources)
+3. [3D Text](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#63---3d-text)
+4. [Particles](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#64---particles)
 
 ------
 
@@ -170,9 +177,9 @@ tick()
 
 ## 3.3 - Fullscreen
 
-1. Fullscreen example
-2. Handle `resize` and `pixel ratio`
-3. Handle `fullscreen` double click
+1. [Fullscreen example](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#331---fullscreen-example)
+2. [Handle `resize` and `pixel ratio`](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#332---handle-resize-and-pixel-ratio)
+3. [Handle `fullscreen` double click](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#333---handle-fullscreen-double-click)
 
 ### 3.3.1 - Fullscreen example
 
@@ -262,19 +269,19 @@ window.addEventListener('dblclick', () => {
 
 To define an object we must take into account the following properties
 
-1. [Geometry]
-2. [Texture]
-3. [Material]
-4. [Lights]
-5. [Shadows]
+1. [Geometry](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#41---geometry)
+2. [Texture](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#42---textures)
+3. [Material](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#43---materials)
+4. [Lights](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#44---lights)
+5. [Shadows](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#45---shadows)
 
 
 ------
 
 ## 4.1 - Geometry
 
-1. [Simple Geometry]()
-2. [Custom Geometry]()
+1. [Simple Geometry](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#411---simple-geometry)
+2. [Custom Geometry](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#412---custom-geometry)
 
 Geometry is defined by the following properties
 
@@ -342,14 +349,14 @@ scene.add(mesh2)
 
 ## 4.2 - Textures
 
-1. Types
-2. Free textures
-3. Loading
-4. Texture Loader
-5. Loading Manager
-6. Transformation
-7. Filtering and MIPMapping
-8. Optimization
+1. [Types](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#421---types)
+2. [Free textures](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#422---free-textures)
+3. [Loading](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#423---loading)
+4. [Texture Loader](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#424---texture-loader)
+5. [Loading Manager](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#425---loading-manager)
+6. [Transformation](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#426---transformation)
+7. [Filtering and MIPMapping](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#427---filtering-and-mipmapping)
+8. [Optimization](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#428---optimization)
 
 ### 4.2.1 - Types
 
@@ -551,9 +558,9 @@ colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 
 ## 4.3 - Materials
 
-1. Default Meshes
-2. Imported texture implementation
-3. Environment Map
+1. [Default Meshes](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#431---default-meshes)
+2. [Imported texture implementation](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#432---imported-texture-implementation)
+3. [Environment Map](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#433---environment-map)
 
 To implement a material in a certain texture we must take into account the following properties
 
@@ -697,9 +704,9 @@ Image of the surroundings of the scene, allows you to create realistic reflectio
 
 [Lights Docs](https://threejs.org/docs/?q=light#api/en/lights/AmbientLight)
 
-1. Types of lights
-2. Implementations
-3. Light Helpers
+1. [Types of lights](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#441---types-of-lights)
+2. [Implementations](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#442---implementations)
+3. [Light Helpers](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#443---light-helpers)
 
 Lights cost a lot in performance, try to add as few lights as possible, and chose the most efficient ones
 
@@ -777,12 +784,12 @@ scene.add(hemisphereLightHelper, directionalLightHelper, pointLightHelper, rectA
 
 ## 4.5 - Shadows
 
-1. Enable Shadows
-2. Optimize shadows resolution
-3. ShadowMap Algorithms
-4. SpotLight
-5. PointLight
-6. Baking Shadows
+1. [Enable Shadows](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#451---enable-shadows)
+2. [Optimize shadows resolution](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#452---optimize-shadows-resolution)
+3. [ShadowMap Algorithms](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#453---shadowmap-algorithms)
+4. [SpotLight](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#454---spotlight)
+5. [PointLight](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#455---pointlight)
+6. [Baking Shadows](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#456---baking-shadows)
 
 
 ### 4.5.1 - Enable Shadows
@@ -901,13 +908,13 @@ const plane = new THREE.Mesh(
 
 ------
 
-# 5 - Renderer
+# 5 - Renderer - Animations
 
-1. Animating
-2. Delta Time
-3. Clock
-4. Animating
-5. Animating with GSAP library
+1. [Animating](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#51---animating)
+2. [Delta Time](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#52---delta-time)
+3. [Clock](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#53---clock)
+4. [Animating](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#54---animating)
+5. [Animating with GSAP library](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#55---animating-with-gsap-library)
 
 Display the scene onto a HTML canvas
 
@@ -1033,12 +1040,10 @@ tick()
 
 # 6 - Extras
 
-1. Debug UI
-2. Measure time loading resources
-3. 3D Text
-4. Particles
-5. Physics
-6. Production
+1. [Debug UI](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#61---debug-ui)
+2. [Measure time loading resources](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#62---measure-time-loading-resources)
+3. [3D Text](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#63---3d-text)
+4. [Particles](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#64---particles)
 
 ## 6.1 - Debug UI
 
@@ -1160,9 +1165,9 @@ console.timeEnd('donuts')
 
 ## 6.3 - 3D Text
 
-1. Types of text
-2. Import font and facetype
-3. Implementation
+1. [Types of text](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#631----types-of-text)
+2. [Import font and facetype](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#632---import-font-and-facetype)
+3. [Implementation](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#633---implementation)
 
 `TextGeometry`
 [TextGeometry Docs](https://threejs.org/docs/?q=textGe#examples/en/geometries/TextGeometry)
@@ -1249,16 +1254,16 @@ fontLoader.load(
 
 # 6.4 - Particles
 
-1. Default Geometry
-2. Custom Geometry
-3. Particles Map and AlphaMap
-4. Randomize colors
-5. Animate particles
-
-[Particle Pack](https://www.kenney.nl/assets/particle-pack)
+1. [Default Geometry](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#641---default-geometry)
+2. [Custom Geometry](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#642---custom-geometry)
+3. [Particles Map and AlphaMap](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#643---particles-map-and-alphamap)
+4. [Randomize colors](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#644---randomize-colors)
+5. [Animate particles](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#645---animate-particles)
 
 * Geometry
 * Points Material
+
+[Particle Pack](https://www.kenney.nl/assets/particle-pack)
 
 ## 6.4.1 - Default Geometry
 ``` javascript
