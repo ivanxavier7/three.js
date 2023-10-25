@@ -2,26 +2,20 @@
 
 * [Three.js Docs](https://threejs.org/docs/)
 
-------
-
-# Starting
-
-1. Setup
-2. Scene
-3. Cameras
-4. Objects
-5. Renderer
-6. Extras
+1. [Setup](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#1---setup)
+2. [Scene](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#2---scene)
+3. [Cameras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#3---cameras)
+4. [Objects](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#4---objects)
+5. [Renderer](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#5---renderer)
+6. [Extras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#6---extras)
 
 ------
 
 # 1 - Setup
 
-Setup project with `Vite`
-
-Download [Node.js](https://nodejs.org/en/download/).
-
-Run this followed commands:
+1. Setup project with `Vite`
+2. Download [Node.js](https://nodejs.org/en/download/).
+3. Run this followed commands:
 
 ``` bash
 # Install dependencies (only the first time)
@@ -41,8 +35,6 @@ npm run build
 * Like a container
 * To put objects, models, lights, etc. in it
 * At some point we ask Three.js to render that scene
-
-Basic scene example
 
 ``` javascript
 // Scene
@@ -82,6 +74,10 @@ renderer.render(scene, camera);
 
 # 3 - Cameras
 
+1. Custom camera controls
+2. Built in Controls
+3. Fullscreen
+
 * Not visible without helpers
 * Serve as point of view when doing a render
 * Can have multiple and switch between them
@@ -89,7 +85,7 @@ renderer.render(scene, camera);
 * Field of View (FOV) in Degrees
 * Aspect Ratio (screen resolution)
 
-Custom camera controls
+## 3.1 - Custom camera controls
 
 ``` javascript
 
@@ -137,7 +133,7 @@ const tick = () =>
 tick()
 ```
 
-Built in Controls
+## 3.2 - Built in Controls
 
 * DeviceOrientationControls (Android)
 * FlyControls
@@ -172,9 +168,15 @@ tick()
 
 ------
 
-## Fullscreen
+## 3.3 - Fullscreen
 
-Fullscreen example
+1. Fullscreen example
+2. Handle `resize` and `pixel ratio`
+3. Handle `fullscreen` double click
+
+### 3.3.1 - Fullscreen example
+
+Full screen application in the scene.
 
 ``` javascript
 const sizes = {
@@ -202,7 +204,9 @@ canvas.webgl {
     outline: none;
 }
 ```
-Handle `resize` and `pixel ratio`
+### 3.3.2 - Handle `resize` and `pixel ratio`
+
+Handle readjustment of browser window size and screen pixel density
 
 ``` javascript
 /**
@@ -227,7 +231,9 @@ window.addEventListener('resize', () => {
 
 ```
 
-Handle `fullscreen`
+### 3.3.3 - Handle `fullscreen` double click
+
+When we click twice, it goes into fullscreen mode, with support for the Safari browser.
 
 ``` javascript
 // Fullscreen with safari support
@@ -646,7 +652,7 @@ pointLight.position.set(2, 3, 4)
 scene.add(pointLight)
 ```
 
-#### 4.3.1 - Environment Map
+### 4.3.1 - Environment Map
 
 Image of the surroundings of the scene, allows you to create realistic reflections on objects
 
@@ -732,9 +738,8 @@ scene.add(hemisphereLightHelper, directionalLightHelper, pointLightHelper, rectA
 
 ------
 
-# 4.5 - Shadows
+## 4.5 - Shadows
 
-### Lights that support shadows
 1. Enable Shadows
 2. Optimize Shadows
 3. ShadowMap Algorithms
@@ -796,7 +801,6 @@ renderer.shadowMap.type = THREE.PCFSoftShadowMap
 ```
 
 ### 4.5.4 - SpotLight
-
 
 ``` javascript
 // SpotLight
@@ -863,6 +867,13 @@ const plane = new THREE.Mesh(
 
 # 5 - Renderer
 
+1. Animating
+2. Delta Time
+3. Clock
+4. Animating
+5. Animating with GSAP library
+6. 
+
 Display the scene onto a HTML canvas
 
 * Render from POV
@@ -870,7 +881,7 @@ Display the scene onto a HTML canvas
 * Canvas is a HTML element in witch you can draw stuff
 * Three.js use WebGL to draw inside the canvas
 
-## Animating
+## 5.1 - Animating
 
 `requestAnimationFrame` calls a function in the next frame
 
@@ -889,7 +900,9 @@ tick()
 
 ```
 
-To sync frames in any device we need time difference implementation
+## 5.2 - Delta Time
+
+To sync frames in any device we need time difference implementation, `deltaTime`.
 
 ``` javascript
 
@@ -914,6 +927,8 @@ const tick = () => {
 tick()
 
 ```
+
+## 5.3 - Clock
 
 The best way to implement time difference is using `Clock` class, we get per second interaction
 
@@ -940,6 +955,8 @@ tick()
 
 ```
 
+## 5.4 - Animating
+
 Animation suggestions for looping
 
 ``` javascript
@@ -951,6 +968,8 @@ Animation suggestions for looping
     camera.lookAt(mesh.position)
 
 ```
+
+## 5.5 - Animating with GSAP library
 
 For simpler animation controll, use `GSAP library`:
 
@@ -993,9 +1012,7 @@ tick()
 [npm lil-gui install](https://www.npmjs.com/package/lil-gui)
 
 ``` bash
-
 npm install --save lil-gui
-
 ```
 
 ``` javascript
@@ -1110,6 +1127,7 @@ console.timeEnd('donuts')
 `TextGeometry`
 [TextGeometry Docs](https://threejs.org/docs/?q=textGe#examples/en/geometries/TextGeometry)
 
+### 3.1 -  Types of text
 
 Default FaceTypes:
 * helvetiker	helvetiker_regular.typeface.json
@@ -1123,20 +1141,23 @@ Default FaceTypes:
 * droid serif	droid/droid_serif_regular.typeface.json
 * droid serif	droid/droid_serif_bold.typeface.json
 
-Inside `three/examples/fonts/`
+### 3.2 - Import font and facetype
 
+1. Inside `three/examples/fonts/`
 ```javascript
 import typefaceFont from 'three/examples/fonts/helvetiker_regular.typeface.json'
 ```
 
-We should put the typeface file inside `/static/fonts`, and use de loader:
-
+2. Put the typeface file inside `/static/fonts`, and use de loader:
 ```javascript
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 ```
 
-Custom Facetype:
+* Custom Facetypes
+
 [Custom FaceTypes](https://gero3.github.io/facetype.js/)
+
+### 3.3 - Implementation
 
 ``` javascript
 /**
@@ -1182,19 +1203,24 @@ fontLoader.load(
 
 ```
 
-------
 
 ------
+
 
 # 4 - Particles
+
+1. Default Geometry
+2. Custom Geometry
+3. Particles Map and AlphaMap
+4. Randomize colors
+5. Animate particles
 
 [Particle Pack](https://www.kenney.nl/assets/particle-pack)
 
 * Geometry
-* Material
-* Points
+* Points Material
 
-## Default Geometry
+## 4.1 - Default Geometry
 ``` javascript
 /**
  * Particles
@@ -1209,7 +1235,7 @@ const particles = new THREE.Points(particlesGeometry, particlesMaterial)
 
 scene.add(particles)
 ```
-## Custom Geometry
+## 4.2 - Custom Geometry
 ``` javascript
 /**
  * Particles
@@ -1235,7 +1261,7 @@ const particles = new THREE.Points(particlesGeometry, particlesMaterial)
 scene.add(particles)
 ```
 
-## Particles Map and AlphaMap
+## 4.3 - Particles Map and AlphaMap
 
 To clean the corners of the texture and the areas that we are not supposed to see on the particle
 
@@ -1254,7 +1280,7 @@ const particlesMaterial = new THREE.PointsMaterial({
     blending: THREE.AdditiveBlending    // Makes the particle in front of another brighter, impact the performance
 })
 ```
-## Randomize colors
+## 4.4 - Randomize colors
 
 We create a random value for R, G and B
 
@@ -1271,8 +1297,7 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 
 particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
 ```
 
-## Animize particles
-
+## 4.5 - Animate particles
 
 ``` javascript	
 /**
