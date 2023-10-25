@@ -5,19 +5,15 @@
 
 ------
 
-## 1 - Basic
-
-* [Three.js Docs](https://threejs.org/docs/)
+## [1 - Basic](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic)
 
 1. [Setup](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#1---setup)
 2. [Scene](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#2---scene)
 3. [Cameras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#3---cameras)
 4. [Objects](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#4---objects)
 5. [Renderer - Animations](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#5---renderer)
-6. [Extras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#6---extras)
 
-### Extras
-
+### [Extras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#6---extras)
 1. [Debug UI](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#61---debug-ui)
 2. [Measure time loading resources](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#62---measure-time-loading-resources)
 3. [3D Text](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#63---3d-text)
