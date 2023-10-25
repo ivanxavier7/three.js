@@ -10,9 +10,9 @@
 6. [Realistic Render](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#6---realistic-rendering)
 7. [Code Structure - Object Oriented](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#7---structure-for-bigger-projects---object-oriented)
 8. [Shaders](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8---shaders)
-9. [Post-processing]()
-9. [Performance](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#9---performance)
-10. [UV unwrapping](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#10---uv-unwrapping)
+9. [Post-processing](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#9---post-processing)
+9. [Performance](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#10---performance)
+10. [UV unwrapping](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#11---uv-unwrapping)
 
 ------
 
@@ -4077,11 +4077,11 @@ tick()
 
 # 10 - Performance
 
-1. [Stats](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#921---stats)
-2. [Monitor Draws](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#922---monitor-drawns)
-3. [Performance Tips](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#923---performance-tips)
-4. [Loading and Intro](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#924---loading-and-intro)
-5. [HTML and WebGL](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#925-html-and-webgl)
+1. [Stats](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#101---stats)
+2. [Monitor Draws](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#102---monitor-drawns)
+3. [Performance Tips](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#103---performance-tips)
+4. [Loading and Intro](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#104---loading-and-intro)
+5. [HTML and WebGL](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#105-html-and-webgl)
 
 
 * Target should be 60 FPS
@@ -4129,17 +4129,17 @@ console.log(renderer.info)
 
 ## 10.3 - Performance Tips
 
-1. Geometry
-2. Light
-3. Shadow
-4. Texture
-5. Material
-6. Mesh
-7. Model
-8. Camera
-9. Renderer
-10. Post-processing
-11. Shader
+1. [Geometry](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1031---geometry)
+2. [Light](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1032---light)
+3. [Shadow](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1033---shadow)
+4. [Texture](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1034---texture)
+5. [Material](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1035---material)
+6. [Mesh](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1036---mesh)
+7. [Model](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1037---model)
+8. [Camera](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1038---camera)
+9. [Renderer](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1039---renderer)
+10. [Post-processing]()
+11. [Shader]()
 
 ### 10.3.1 - Geometry
 
@@ -4305,12 +4305,12 @@ const renderer = new THREE.WebGLRenderer({
 ```
 
 
-#### 10.3.10 - Post-processing
+### 10.3.10 - Post-processing
 
 * Limit the passes, less is better
 * 4 passes with pixel ratio 2 = 1920 * 2 * 1080 * 2 * 4 = 33177600 Pixels to renderer, less performant exponentially 
 
-#### 10.3.11 - Shader
+### 10.3.11 - Shader
 
 * Reduce the precision of the shader
 * Simplifies the mathematical algorithm as much as possible
