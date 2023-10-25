@@ -74,9 +74,9 @@ renderer.render(scene, camera);
 
 # 3 - Cameras
 
-1. Custom camera controls
-2. Built in Controls
-3. Fullscreen
+1. [Custom camera controls](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#31---custom-camera-controls)
+2. [Built in Controls](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#31---custom-camera-controls)
+3. [Fullscreen](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#33---fullscreen)
 
 * Not visible without helpers
 * Serve as point of view when doing a render
@@ -262,14 +262,19 @@ window.addEventListener('dblclick', () => {
 
 To define an object we must take into account the following properties
 
-1. Geometry
-2. Texture
-3. Material
-4. Lighting
-5. Shadows
+1. [Geometry]
+2. [Texture]
+3. [Material]
+4. [Lights]
+5. [Shadows]
+
+
 ------
 
-## 4.1.1 - Geometry
+## 4.1 - Geometry
+
+1. [Simple Geometry]()
+2. [Custom Geometry]()
 
 Geometry is defined by the following properties
 
@@ -279,6 +284,9 @@ Geometry is defined by the following properties
 * widthSegments
 * heightSegments
 * depthSegments
+
+
+### 4.1.1 - Simple Geometry
 
 ``` javascript
 const geometry = new THREE.BoxGeometry(1, 1, 1, 2, 2, 2)
@@ -334,6 +342,17 @@ scene.add(mesh2)
 
 ## 4.2 - Textures
 
+1. Types
+2. Free textures
+3. Loading
+4. Texture Loader
+5. Loading Manager
+6. Transformation
+7. Filtering and MIPMapping
+8. Optimization
+
+### 4.2.1 - Types
+
 Textures are defined by the following properties
 * Color or Albedo
 * Alpha
@@ -372,7 +391,7 @@ The metalness texture is a grayscale image that will specify which part is metal
 The roughness is a grayscale image that comes with metalness, and that will specify which part is rough (white) and which part is smooth (black). This information will help to dissipate the light.
 
 
-Free textures
+### 4.2.2 - Free textures
 
 * [Polligon](https://www.poliigon.com/search/free?type=textures)
 * [3D Textures](https://3dtextures.me/)
@@ -388,7 +407,7 @@ Texture used in the example
 [3D Door Texture](https://3dtextures.me/2019/04/16/door-wood-001/)
 
 
-### 4.2.1 - Loading Textures
+### 4.2.3 - Loading
 
 Put the `image` in the `/static/` folder
 
@@ -414,7 +433,9 @@ const material = new THREE.MeshBasicMaterial({ map: texture })
 
 ```
 
-### 4.2.2 - Loading Textures using `TextureLoader`
+### 4.2.4 - Texture Loader
+
+`TextureLoader`
 
 You should use this for loading textures
 
@@ -429,7 +450,9 @@ const texture = textureLoader.load('/textures/door/color.jpg')
 const material = new THREE.MeshBasicMaterial({ map: texture })
 ```
 
-### 4.2.3 - Using the `LoadingManager`
+### 4.2.5 - Loading Manager
+
+`LoadingManager`
 
 Should be used when loading multiple textures and inform when everything is loaded
 
@@ -463,7 +486,7 @@ const metalnessTexture = textureLoader.load('/textures/door/metalness.jpg')
 const roughnessTexture = textureLoader.load('/textures/door/roughness.jpg')
 ```
 
-### 4.2.4 - Texture transformation
+### 4.2.6 - Transformation
 
 How the texture is wrapped around the object, uses UV coordinates
 
@@ -486,7 +509,7 @@ colorTexture.center.x = 0.5
 colorTexture.center.y = 0.5
 ```
 
-### 4.2.5 - Filtering and MIPMapping
+### 4.2.7 - Filtering and MIPMapping
 
 how the texture is processed near or far, for example a low pixel texture may be blurred with the wrong filter
 
@@ -512,7 +535,7 @@ colorTexture.generateMipmaps = false
 colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 ```
 
-### 4.2.6 - Texture Optimization
+### 4.2.8 - Optimization
 
 * The weight
 * The resolution
@@ -528,6 +551,10 @@ colorTexture.magFilter = THREE.NearestFilter   // Best for performance
 
 ## 4.3 - Materials
 
+1. Default Meshes
+2. Imported texture implementation
+3. Environment Map
+
 To implement a material in a certain texture we must take into account the following properties
 
 * Color
@@ -537,6 +564,8 @@ To implement a material in a certain texture we must take into account the follo
 * Normal
 * Metalness
 * Roughness
+
+## 4.3.1 - Default Meshes
 
 Algorithm that processes the pixels in a certain object to render, we will use some standard meshes
 
@@ -551,6 +580,8 @@ Algorithm that processes the pixels in a certain object to render, we will use s
 * [MeshPhysicalMaterial](https://threejs.org/docs/index.html?q=physica#api/en/materials/MeshPhysicalMaterial)
 
 [Matcaps Textures](https://github.com/nidorx/matcaps/tree/master)
+
+## 4.3.2 - Imported texture implementation
 
 ``` javascript
 /**
@@ -652,7 +683,7 @@ pointLight.position.set(2, 3, 4)
 scene.add(pointLight)
 ```
 
-### 4.3.1 - Environment Map
+### 4.3.3 - Environment Map
 
 Image of the surroundings of the scene, allows you to create realistic reflections on objects
 
@@ -666,7 +697,13 @@ Image of the surroundings of the scene, allows you to create realistic reflectio
 
 [Lights Docs](https://threejs.org/docs/?q=light#api/en/lights/AmbientLight)
 
-Types of light
+1. Types of lights
+2. Implementations
+3. Light Helpers
+
+Lights cost a lot in performance, try to add as few lights as possible, and chose the most efficient ones
+
+### 4.4.1 - Types of lights
 
 * AmbientLight      Minimal
 * HemisphereLight   Minimal
@@ -676,7 +713,7 @@ Types of light
 * RectAreaLight     High
 
 
-Lights cost a lot in performance, try to add as few lights as possible, and chose the most efficient ones
+### 4.4.2 - Implementations
 
 ``` javascript
 /**
@@ -715,7 +752,7 @@ spotLight.target.position.x = -0.75
 scene.add(spotLight.target, spotLight)
 ```
 
-### 4.4.1 - Light Helpers
+### 4.4.3 - Light Helpers
 
 Assit us positioning the lights
 
@@ -741,12 +778,11 @@ scene.add(hemisphereLightHelper, directionalLightHelper, pointLightHelper, rectA
 ## 4.5 - Shadows
 
 1. Enable Shadows
-2. Optimize Shadows
+2. Optimize shadows resolution
 3. ShadowMap Algorithms
-4. PointLight
-5. DirectionalLight
-6. SpotLight
-7. Baking Shadows
+4. SpotLight
+5. PointLight
+6. Baking Shadows
 
 
 ### 4.5.1 - Enable Shadows
@@ -872,7 +908,6 @@ const plane = new THREE.Mesh(
 3. Clock
 4. Animating
 5. Animating with GSAP library
-6. 
 
 Display the scene onto a HTML canvas
 
@@ -1005,11 +1040,12 @@ tick()
 5. Physics
 6. Production
 
-## 1 - Debug UI
+## 6.1 - Debug UI
+
+GUI configuration to help change values.
 
 * [lil-gui](https://github.com/georgealways/lil-gui)
-
-[npm lil-gui install](https://www.npmjs.com/package/lil-gui)
+* [npm lil-gui install](https://www.npmjs.com/package/lil-gui)
 
 ``` bash
 npm install --save lil-gui
@@ -1087,7 +1123,7 @@ gui.add(functions, 'spinY')
 
 ------
 
-## 2- Measure Time loading resources
+## 6.2 - Measure Time loading resources
 
 `console.time()`
 
@@ -1122,12 +1158,16 @@ console.timeEnd('donuts')
 
 ------
 
-## 3 - 3D Text
+## 6.3 - 3D Text
+
+1. Types of text
+2. Import font and facetype
+3. Implementation
 
 `TextGeometry`
 [TextGeometry Docs](https://threejs.org/docs/?q=textGe#examples/en/geometries/TextGeometry)
 
-### 3.1 -  Types of text
+### 6.3.1 -  Types of text
 
 Default FaceTypes:
 * helvetiker	helvetiker_regular.typeface.json
@@ -1141,7 +1181,7 @@ Default FaceTypes:
 * droid serif	droid/droid_serif_regular.typeface.json
 * droid serif	droid/droid_serif_bold.typeface.json
 
-### 3.2 - Import font and facetype
+### 6.3.2 - Import font and facetype
 
 1. Inside `three/examples/fonts/`
 ```javascript
@@ -1157,7 +1197,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 
 [Custom FaceTypes](https://gero3.github.io/facetype.js/)
 
-### 3.3 - Implementation
+### 6.3.3 - Implementation
 
 ``` javascript
 /**
@@ -1207,7 +1247,7 @@ fontLoader.load(
 ------
 
 
-# 4 - Particles
+# 6.4 - Particles
 
 1. Default Geometry
 2. Custom Geometry
@@ -1220,7 +1260,7 @@ fontLoader.load(
 * Geometry
 * Points Material
 
-## 4.1 - Default Geometry
+## 6.4.1 - Default Geometry
 ``` javascript
 /**
  * Particles
@@ -1235,7 +1275,7 @@ const particles = new THREE.Points(particlesGeometry, particlesMaterial)
 
 scene.add(particles)
 ```
-## 4.2 - Custom Geometry
+## 6.4.2 - Custom Geometry
 ``` javascript
 /**
  * Particles
@@ -1261,7 +1301,7 @@ const particles = new THREE.Points(particlesGeometry, particlesMaterial)
 scene.add(particles)
 ```
 
-## 4.3 - Particles Map and AlphaMap
+## 6.4.3 - Particles Map and AlphaMap
 
 To clean the corners of the texture and the areas that we are not supposed to see on the particle
 
@@ -1280,7 +1320,7 @@ const particlesMaterial = new THREE.PointsMaterial({
     blending: THREE.AdditiveBlending    // Makes the particle in front of another brighter, impact the performance
 })
 ```
-## 4.4 - Randomize colors
+## 6.4.4 - Randomize colors
 
 We create a random value for R, G and B
 
@@ -1297,7 +1337,7 @@ particlesGeometry.setAttribute('position', new THREE.BufferAttribute(positions, 
 particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colors, 3))
 ```
 
-## 4.5 - Animate particles
+## 6.4.5 - Animate particles
 
 ``` javascript	
 /**
