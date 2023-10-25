@@ -2,9 +2,9 @@
 
 * [Three.js Docs](https://threejs.org/docs/)
 
-1. [Physics]()
-2. [Imported Models]()
-3. [RayCaster and Mouse Events]()
+1. [Physics](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1---physics)
+2. [Imported Models](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1---physics)
+3. [RayCaster and Mouse Events](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1---physics)
 4. [Custom Models - Blender]()
 5. [Environment Map]()
 6. [Realistic Render]()
@@ -16,16 +16,16 @@
 
 # 1 - Physics
 
-1. Libraries
-2. Cannon library
-3. Apply Forces
-4. Handle Multiple Objects
-5. Performance
-6. Events
-7. Remove Objects
-8. Constraints
-9. Aditional Notes
-10. Popular alternatives
+1. [Libraries]()
+2. [Cannon library]()
+3. [Apply Forces]()
+4. [Handle Multiple Objects]()
+5. [Performance]()
+6. [Events]()
+7. [Remove Objects]()
+8. [Constraints]()
+9. [Aditional Notes]()
+10. [Popular alternatives]()
 
 
 We need to create a physical world and associate it with the THREE.js world
@@ -761,7 +761,7 @@ window.addEventListener('click', (_event) => {
 ------
 
 
-# 3 - Custom Models - Blender
+# 4 - Custom Models - Blender
 
 1. Layout
 2. Scene
@@ -788,7 +788,7 @@ window.addEventListener('click', (_event) => {
 * Community
 
 
-## 3.1 - Layout
+## 4.1 - Layout
 | Shortcut                  | Description                       |
 | ------------------------  |:-------------------------------:  |
 | `N`                       | Toggle sidebar                    |
@@ -800,14 +800,14 @@ window.addEventListener('click', (_event) => {
 | `Z` + `Space` + `Control` | Redo                              |
 
 
-## 3.2 - Scene
+## 4.2 - Scene
 | Shortcut              | Description          |
 | --------------------  |:------------------:  |
 | `C`                   | New collection       |
 | `M`                   | Move to collection   |
 
 
-## 3.3 - View
+## 4.3 - View
 | Shortcut                               | Description                 |
 | -------------------------------------  |:-------------------------:  |
 | `Middle Wheel`                         | Rotate                      |
@@ -827,7 +827,7 @@ window.addEventListener('click', (_event) => {
 | `Q` + `Alt` + `Control`                | Quad view                   |
 
 
-## 3.4 - Object
+## 4.4 - Object
 | Shortcut                        | Description                 |
 | ------------------------------  |:-------------------------:  |
 | `A` +  `Shift`                  | Create an object            |
@@ -854,7 +854,7 @@ window.addEventListener('click', (_event) => {
 | `R` + `Shift`                   | Repeat last                 |
 
 
-## 3.5 - Selection
+## 4.5 - Selection
 | Shortcut                        | Description                 |
 | ------------------------------  |:-------------------------:  |
 | `A`                             | Select all                  |
@@ -867,12 +867,12 @@ window.addEventListener('click', (_event) => {
 | `.`                             | Go to selected object       |
 
 
-## 3.6 - Modes
+## 4.6 - Modes
 | Shortcut                        | Description                 |
 | ------------------------------  |:-------------------------:  |
 | `Tab` + `Control`               | Change mode                 |
 
-## 3.7 - Edition
+## 4.7 - Edition
 | Shortcut                           | Description                 |
 | ---------------------------------  |:-------------------------:  |
 | `Tab`                              | Toggle edition              |
@@ -902,7 +902,7 @@ window.addEventListener('click', (_event) => {
 | `M`                                | Merge                       |
 
 
-## 3.8 - Curves
+## 4.8 - Curves
 | Shortcut        | Description          |
 | -------------   |:------------------:  |
 | `C`             | Toggle open          |
@@ -911,7 +911,7 @@ window.addEventListener('click', (_event) => {
 | `F`             | Change brush size    |
 
 
-## 3.9 - Render
+## 4.9 - Render
 | Shortcut                  | Description          |
 | ------------------------  |:------------------:  |
 | `F12`                     | Render               |
@@ -919,7 +919,7 @@ window.addEventListener('click', (_event) => {
 | `B` + `Alt` + `Control`   | Reset render region  |
 
 
-## 3.10 - Timeline
+## 4.10 - Timeline
 | Shortcut        | Description          |
 | --------------  |:------------------:  |
 | `Arrow Right`   | Next frame           |
@@ -933,14 +933,14 @@ window.addEventListener('click', (_event) => {
 | `P` + `Alt`     | Reset range          |
 | `V`             | Handle type          |
 
-## 3.11 - Export model
+## 4.11 - Export model
 
 1. Select objects to be exported
 2. File -> Export -> glTF 2.0
 3. Choose file format
 4. Choose project static/models folder
 
-## 3.12 - More Blender Youtube resources
+## 4.12 - More Blender Youtube resources
 
 [Blender Guru](https://www.youtube.com/@blenderguru)
 [Grant Abbitt](https://www.youtube.com/@grabbitt)
