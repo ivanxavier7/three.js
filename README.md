@@ -11,17 +11,24 @@
 1. [Setup](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#1---setup)
 2. [Scene](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#2---scene)
 3. [Cameras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#3---cameras)
+
     1. [Custom camera controls](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#31---custom-camera-controls)
     2. [Built in Controls](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#31---custom-camera-controls)
     3. [Fullscreen](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#33---fullscreen)
+
         1. [Fullscreen example](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#331---fullscreen-example)
         2. [Handle resize and pixel ratio](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#332---handle-resize-and-pixel-ratio)
         3. [Handle fullscreen double click](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#333---handle-fullscreen-double-click)
+
 4. [Objects](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#4---objects)
+
     1. [Geometry](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#41---geometry)
+
         1. [Simple Geometry](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#411---simple-geometry)
         2. [Custom Geometry](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#412---custom-geometry)
+
     2. [Texture](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#42---textures)
+
         1. [Types](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#421---types)
         2. [Free textures](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#422---free-textures)
         3. [Loading](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#423---loading)
@@ -30,41 +37,55 @@
         6. [Transformation](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#426---transformation)
         7. [Filtering and MIPMapping](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#427---filtering-and-mipmapping)
         8. [Optimization](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#428---optimization)
+
     3. [Material](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#43---materials)
+
         1. [Default Meshes](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#431---default-meshes)
         2. [Imported texture implementation](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#432---imported-texture-implementation)
         3. [Environment Map](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#433---environment-map)
+
     4. [Lights](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#44---lights)
+
         1. [Types of lights](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#441---types-of-lights)
         2. [Implementations](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#442---implementations)
         3. [Light Helpers](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#443---light-helpers)
+
     5. [Shadows](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#45---shadows)
+
         1. [Enable Shadows](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#451---enable-shadows)
         2. [Optimize shadows resolution](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#452---optimize-shadows-resolution)
         3. [ShadowMap Algorithms](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#453---shadowmap-algorithms)
         4. [SpotLight](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#454---spotlight)
         5. [PointLight](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#455---pointlight)
         6. [Baking Shadows](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#456---baking-shadows)
+
 5. [Renderer - Animations](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#5---renderer)
+
     1. [Animating](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#51---animating)
     2. [Delta Time](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#52---delta-time)
     3. [Clock](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#53---clock)
     4. [Animating](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#54---animating)
     5. [Animating with GSAP library](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#55---animating-with-gsap-library)
 
+
 ### [Extras](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#6---extras)
+
 1. [Debug UI](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#61---debug-ui)
 2. [Measure time loading resources](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#62---measure-time-loading-resources)
 3. [3D Text](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#63---3d-text)
+
     1. [Types of text](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#631----types-of-text)
     2. [Import font and facetype](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#632---import-font-and-facetype)
     3. [Implementation](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#633---implementation)
+
 4. [Particles](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#64---particles)
+
     1. [Default Geometry](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#641---default-geometry)
     2. [Custom Geometry](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#642---custom-geometry)
     3. [Particles Map and AlphaMap](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#643---particles-map-and-alphamap)
     4. [Randomize colors](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#644---randomize-colors)
     5. [Animate particles](https://github.com/ivanxavier7/three.js/tree/main/01%20-%20Basic#645---animate-particles)
+
 
 
 ------
@@ -73,6 +94,7 @@
 ## [2 - Advanced](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced)
 
 1. [Physics](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1---physics)
+
     1. [Libraries](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#11---libraries)
     2. [Cannon library](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#12---cannon-library)
     3. [Apply Forces](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#13---apply-forces)
@@ -83,19 +105,26 @@
     8. [Constraints](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#18---constraints)
     9. [Aditional Notes](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#19---aditional-notes)
     10. [Popular alternatives](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#110---popular-alternatives)
+
 2. [Imported Models](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#2---imported-models)
+
     1. [Types of Models](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#21---types-of-models)
     2. [glTF Formats](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#22---gltf-formats)
     3. [Loading the Model](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#23---loading-the-model)
     4. [Animations inside the model](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#24---animations-inside-the-model)
     5. [THREE.js Online Editor](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#24---animations-inside-the-model)
+
 3. [RayCaster and Mouse Events](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#3---raycaster-and-mouse-events)
+
     1. [Intersect properties](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#31---intersect-properties)
     2. [Horizontal Ray](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#32---horizontal-ray)
     3. [Mouse Events](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#33---mouse-events)
+
         1. [Hovering](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#331---hovering)
         2. [Clicking](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#332---clicking)
+
 4. [Custom Models - Blender](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#4---custom-models---blender)
+
     1. [Layout](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#41---layout)
     2. [Scene](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#42---scene)
     3. [View](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#43---view)
@@ -108,7 +137,9 @@
     10. [Timeline](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#410---timeline)
     11. [Export model](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#411---export-model)
     12. [More Blender Youtube resources](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#412---more-blender-youtube-resources)
+
 5. [Environment Map](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#5---environment-mapping-and-ai)
+
     1. [Download resources](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#51-download-resources)
     2. [Implementation](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#52---implementation)
     3. [Blur and Light](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#53---blur-and-light)
@@ -116,16 +147,23 @@
     5. [Generate HDRI](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#55---generate-hdri)
     6. [Bring object inside Environment Map closer to the ground](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#56---bring-object-inside-environment-map-closer-to-the-ground)
     7. [Real-Time Environment Map](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#57---real-time-environment-map)
+
 6. [Realistic Render](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#6---realistic-rendering)
+
     1. [Tone Maping](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#61---tone-maping)
     2. [Antialiasing](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#62---antialiasing)
     3. [Add Shadow to Environment Map](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#63---add-shadow-to-environment-map)
     4. [Textures](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#64---textures)
+
 7. [Code Structure - Object Oriented](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#7---structure-for-bigger-projects---object-oriented)
+
     1. [Classes and Modules](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#71----classes-and-modules)
     2. [Object Oriented Structure](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#72----object-oriented-structure)
+
 8. [Shaders](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8---shaders)
+
     1. [Basics](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#81---basics)
+
         1. [Description](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#811---description)
         2. [Documentation](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#812---documentation)
         3. [Shader Material](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#813---shader-material)
@@ -135,7 +173,9 @@
         7. [ShaderMaterial](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#817---shadermaterial)
         8. [More information about Shaders](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#818---more-information-about-shaders)
         9. [Implementation](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#819---implementation)
+
     2. [Shader Patterns](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#82---shader-patterns)
+
         1. [Normal pattern](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#821---normal-pattern)
         2. [Normal pattern alternative](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#822---normal-pattern-alternative)
         3. [Simple Grey gradient](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#823---simple-grey-gradient)
@@ -187,12 +227,17 @@
         49. [Neon Camouflage](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8249---neon-camouflage)
         50. [Celular ( random elastic Circles inside circles)](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8250---celular--random-elastic-circles-inside-circles)
         51. [Color application in the Pattern](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#8251---color-application-in-the-pattern)
+
     3. [Modified Materials](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#83---modified-materials)
+
 9. [Post-processing](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#9---post-processing)
-9. [Performance](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#10---performance)
+
+10. [Performance](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#10---performance)
+
     1. [Stats](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#101---stats)
     2. [Monitor Draws](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#102---monitor-drawns)
     3. [Performance Tips](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#103---performance-tips)
+
         1. [Geometry](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1031---geometry)
         2. [Light](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1032---light)
         3. [Shadow](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1033---shadow)
@@ -204,11 +249,16 @@
         9. [Renderer](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1039---renderer)
         10. [Post-processing](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#10310---post-processing)
         11. [Shader](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#10311---shader)
+
     4. [Loading and Intro](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#104---loading-and-intro)
+
         1. [Lower the download speed](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1041---lower-the-download-speed)
         2. [Implementation](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#1042---implementation)
+
     5. [HTML and WebGL](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#105-html-and-webgl)
-10. [UV unwrapping](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#11---uv-unwrapping)
+
+11. [UV unwrapping](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#11---uv-unwrapping)
+
     1. [Wrap](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#111---wrap)
     2. [Export](https://github.com/ivanxavier7/three.js/tree/main/02%20-%20Advanced#112---export)
 
